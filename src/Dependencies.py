@@ -65,6 +65,13 @@ gRogueBattle_image_list = [gRogueBattleIdle_image_list, gRogueBattleAttack_image
                            gRogueBattleDead_image_list, gRogueBattleSkill_image_list]
 # end of rogue battle sprite
 
+#bringer of death battle sprite
+gBringerOfDeathBattle_Attack_list = [sprite_collection["Bringer_of_Death_Attack1"].image, sprite_collection["Bringer_of_Death_Attack2"].image,
+                    sprite_collection["Bringer_of_Death_Attack3"].image, sprite_collection["Bringer_of_Death_Attack4"].image,
+                    sprite_collection["Bringer_of_Death_Attack5"].image, sprite_collection["Bringer_of_Death_Attack6"].image,
+                    sprite_collection["Bringer_of_Death_Attack7"].image, sprite_collection["Bringer_of_Death_Attack8"].image,
+                    sprite_collection["Bringer_of_Death_Attack9"].image, sprite_collection["Bringer_of_Death_Attack10"].image]
+
 gSounds = {
     'music': pygame.mixer.Sound('sounds/music.wav'),
     #extra

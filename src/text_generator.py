@@ -3,8 +3,6 @@ import sys
 import time
 from src.constants import *
 from src.Dependencies import *
-# Initialize Pygame
-pygame.init()
 
 # Set up the display
 screen = pygame.display.set_mode((WIDTH, HEIGHT))

@@ -1,0 +1,15 @@
+{
+    "spriteSheetURL": "./graphics/Bringer_of_Death_sprite/Attack/Bringer-of-Death_Attack_9.png",
+    "type":"none",
+    "size":[140,93],
+    "sprites":[
+        {
+            "name":"Bringer_of_Death_Attack9",
+            "x":0,
+            "y":0,
+            "scalefactor":3,
+            "colorKey":-1
+        }
+    ]
+    
+}
