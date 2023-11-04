@@ -5,7 +5,7 @@ from src.constants import *
 from src.Dependencies import *
 
 #make change
-from src.world.Fighter import *
+from src.world.Player import *
 class BattleState(BaseState):
     def __init__(self, state_machine):
         super(BattleState, self).__init__(state_machine)
@@ -22,10 +22,10 @@ class BattleState(BaseState):
         self.medium_font = pygame.font.Font('./fonts/font.ttf', 48)
 
         #make change later fighter
-        self.player = Fighter(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3 + 60, gRogueBattle_image_list, 30, 10)
+        self.player = Player(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3 + 60, gRogueBattle_image_list, 30, 10)
         self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30, self.player.hp, self.player.max_hp)
         #make change later enemy
-        self.player2 = Fighter(WIDTH / 2 - 96 + 400, HEIGHT - HEIGHT / 3 + 60, gBringerOfDeathBattle_Attack_list, 30, 10)
+        self.player2 = Player(WIDTH / 2 - 96 + 400, HEIGHT - HEIGHT / 3 + 60, gKnightBattleAttack_image_list, 30, 10)
         self.player2Health = (
             HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.player2.hp, self.player2.max_hp))
 

@@ -65,12 +65,11 @@ gRogueBattle_image_list = [gRogueBattleIdle_image_list, gRogueBattleAttack_image
                            gRogueBattleDead_image_list, gRogueBattleSkill_image_list]
 # end of rogue battle sprite
 
-#bringer of death battle sprite
-gBringerOfDeathBattle_Attack_list = [sprite_collection["Bringer_of_Death_Attack1"].image, sprite_collection["Bringer_of_Death_Attack2"].image,
-                    sprite_collection["Bringer_of_Death_Attack3"].image, sprite_collection["Bringer_of_Death_Attack4"].image,
-                    sprite_collection["Bringer_of_Death_Attack5"].image, sprite_collection["Bringer_of_Death_Attack6"].image,
-                    sprite_collection["Bringer_of_Death_Attack7"].image, sprite_collection["Bringer_of_Death_Attack8"].image,
-                    sprite_collection["Bringer_of_Death_Attack9"].image, sprite_collection["Bringer_of_Death_Attack10"].image]
+gKnightBattleAttack_image_list = [sprite_collection["Knight_1_BA"].image, sprite_collection["Knight_2_BA"].image, 
+                                  sprite_collection["Knight_3_BA"].image, sprite_collection["Knight_4_BA"].image,
+                                  sprite_collection["Knight_5_BA"].image]
+
+
 
 gSounds = {
     'music': pygame.mixer.Sound('sounds/music.wav'),
@@ -94,6 +93,7 @@ gFonts = {
     'gothic_large': pygame.font.Font('fonts/GothicPixels.ttf', 96),
 
 }
+
 
 from src.states.game.StartState import StartState
 from src.states.game.CharacterSelectState import CharacterSelectState

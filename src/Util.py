@@ -108,17 +108,8 @@ class SpriteManager:
                 "./sprite/RogueAnimationBattleDead.json",
                 "./sprite/RogueAnimationBattleIdle.json",
                 "./sprite/RogueAnimationBattleSkill.json",
-                #Bringer of death battle
-                "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack1.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack2.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack3.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack4.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack5.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack6.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack7.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack8.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack9.json",
-                 "sprite\BringerOfDeathBattleAttack\BringerOfDeathBattleAttack10.json",
+                #knight enemy battle
+                "./sprite/Enemy/KnightAnimationBattleAttack_level1.json",
             ]
         )
 
