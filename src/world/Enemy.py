@@ -34,8 +34,12 @@ class Enemy():
         if self.frame_index >= len(self.animation_list[self.action]):
             if self.action == 4:
                 self.frame_index = len(self.animation_list[self.action]) - 1
+            elif not self.alive:
+                self.action = 4
+                self.frame_index = 0
+                self.update_time = pygame.time.get_ticks()
             else:
-                self.death()
+                self.idle()
     
     def idle(self):
         # set variables to idle animation

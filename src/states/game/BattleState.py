@@ -28,9 +28,8 @@ class BattleState(BaseState):
         self.player = Player(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3 + 70, gRogueBattle_image_list, 30, 10)
         self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30, self.player.hp, self.player.max_hp)
         #make change later enemy
-        self.player2 = Knight1(WIDTH / 2 - 96 + 400, HEIGHT - HEIGHT / 3 + 40)
-        self.player2Health = (
-            HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.player2.hp, self.player2.max_hp))
+        self.player2 = Knight1()
+        self.player2Health = HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.player2.hp, self.player2.max_hp)
 
     def Enter(self, params):
         #make change
@@ -68,9 +67,9 @@ class BattleState(BaseState):
                 if event.key == pygame.K_w:
                     self.player.attack(self.player2)
                     self.check_dead(self.player.hp, self.player2.hp)
-                    if self.player2.alive == False:
+                
+                if self.player2.alive == False:
                         self.player2.death()
-                        self.player2.reset()
 
                 # test attack key(w)
                 if event.key == pygame.K_e:

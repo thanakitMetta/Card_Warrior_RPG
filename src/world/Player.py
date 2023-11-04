@@ -39,6 +39,8 @@ class Player():
         if self.frame_index >= len(self.animation_list[self.action]):
             if self.action == 4:
                 self.frame_index = len(self.animation_list[self.action]) - 1
+            elif not self.alive:
+                self.death()
             else:
                 self.idle()
 

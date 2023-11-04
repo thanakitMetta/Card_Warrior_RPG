@@ -112,7 +112,8 @@ class SpriteManager:
                 "./sprite/KnightAnimationBattleAttack_level1.json",
                 "./sprite/KnightAnimationBattleHurt1.json",
                 "./sprite/KnightAnimationBattleidle.json",
-                "./sprite/KnightAnimationBattleDeath1.json"
+                "./sprite/KnightAnimationBattleDeath1.json",
+                "./sprite/KnightAnimationBattleDeathIdle1.json"
             ]
         )
 
