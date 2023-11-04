@@ -17,20 +17,14 @@ class Player():
         self.frame_index = 0
         self.action = 0  # 0:idle, 1:attack, 2:hurt, 3:dead, 4:skill, 5:skill
         self.update_time = pygame.time.get_ticks()
-        # make change
-        # load idle images
-        self.animation_list.append(self.name[0])
-        # load attack images
-        self.animation_list.append(self.name[1])
-        # load hurt images
-        self.animation_list.append(self.name[2])
-        # load death images
-        self.animation_list.append(self.name[3])
-        # load skill images
-        self.animation_list.append(self.name[4])
+        self.add_animation_list(self.name)
         self.image = self.animation_list[self.action][self.frame_index]
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
+
+    def add_animation_list(self, name):
+        for animation in name:
+            self.animation_list.append(animation)
 
     def update(self):
         animation_cooldown = 100
@@ -43,7 +37,7 @@ class Player():
             self.frame_index += 1
         # if the animation has run out then reset back to the start
         if self.frame_index >= len(self.animation_list[self.action]):
-            if self.action == 4:
+            if self.action == len(self.animation_list):
                 self.frame_index = len(self.animation_list[self.action]) - 1
             else:
                 self.idle()
@@ -93,6 +87,7 @@ class Player():
         self.update_time = pygame.time.get_ticks()
 
     def hurt(self):
+        # self.hp -= damage
         # set variables to hurt animation
         self.action = 2
         self.frame_index = 0
@@ -113,19 +108,3 @@ class Player():
 
     def draw(self):
         screen.blit(self.image, self.rect)
-
-
-class HealthBar():
-    def __init__(self, x, y, hp, max_hp):
-        self.x = x
-        self.y = y
-        self.hp = hp
-        self.max_hp = max_hp
-
-    def draw(self, hp):
-        # update with new health
-        self.hp = hp
-        # calculate health ratio
-        ratio = self.hp / self.max_hp
-        pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 100, 20))
-        pygame.draw.rect(screen, (0, 255, 0), (self.x, self.y, 100 * ratio, 20))

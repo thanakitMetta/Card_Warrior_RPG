@@ -65,9 +65,11 @@ gRogueBattle_image_list = [gRogueBattleIdle_image_list, gRogueBattleAttack_image
                            gRogueBattleDead_image_list, gRogueBattleSkill_image_list]
 # end of rogue battle sprite
 
-gKnightBattleAttack_image_list = [sprite_collection["Knight_1_BA"].image, sprite_collection["Knight_2_BA"].image, 
-                                  sprite_collection["Knight_3_BA"].image, sprite_collection["Knight_4_BA"].image,
-                                  sprite_collection["Knight_5_BA"].image]
+gKnightBattleAttack_image_list = [sprite_collection["knight_1_BA"].image, sprite_collection["knight_2_BA"].image, 
+                                  sprite_collection["knight_3_BA"].image, sprite_collection["knight_4_BA"].image,
+                                  sprite_collection["knight_5_BA"].image]
+
+gKnightBattle_image_list = [gKnightBattleAttack_image_list]
 
 
 

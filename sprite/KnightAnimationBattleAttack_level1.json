@@ -1,41 +1,41 @@
 {
-    "spriteSheetURL": "../graphics/Knight_enemy_level1/Attack1.png",
+    "spriteSheetURL": "./graphics/Knight_enemy_level1/Attack_1.png",
     "type":"none",
     "size":[86,86],
     "sprites":[
         {
             "name":"knight_1_BA",
             "x":0,
-            "y":86,
-            "scalefactor":3,
+            "y":0,
+            "scalefactor":2,
             "colorKey":-1
 	   },
         {
-            "name":"knigt_2_BA",
+            "name":"knight_2_BA",
             "x":86,
-            "y":86,
-            "scalefactor":3,
+            "y":0,
+            "scalefactor":2,
             "colorKey":-1
         },
         {
             "name":"knight_3_BA",
             "x":86,
-            "y":86,
-            "scalefactor":3,
+            "y":0,
+            "scalefactor":2,
             "colorKey":-1
         },
         {
             "name":"knight_4_BA",
             "x":86,
-            "y":86,
-            "scalefactor":3,
+            "y":0,
+            "scalefactor":2,
             "colorKey":-1
         },
         {
             "name":"knight_5_BA",
             "x":86,
-            "y":86,
-            "scalefactor":3,
+            "y":0,
+            "scalefactor":2,
             "colorKey":-1
         }
     ]
