@@ -37,7 +37,7 @@ class Player():
             self.frame_index += 1
         # if the animation has run out then reset back to the start
         if self.frame_index >= len(self.animation_list[self.action]):
-            if self.action == len(self.animation_list):
+            if self.action == 4:
                 self.frame_index = len(self.animation_list[self.action]) - 1
             else:
                 self.idle()
@@ -108,3 +108,4 @@ class Player():
 
     def draw(self):
         screen.blit(self.image, self.rect)
+

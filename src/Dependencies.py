@@ -69,7 +69,13 @@ gKnightBattleAttack_image_list = [sprite_collection["knight_1_BA"].image, sprite
                                   sprite_collection["knight_3_BA"].image, sprite_collection["knight_4_BA"].image,
                                   sprite_collection["knight_5_BA"].image]
 
-gKnightBattle_image_list = [gKnightBattleAttack_image_list]
+gKnightBattleHurt_image_list = [sprite_collection["knight_1_Hurt"].image, sprite_collection["knight_2_Hurt"].image]
+gKnightBattleIdle_image_list = [sprite_collection["knight_1_Idle"].image, sprite_collection["knight_2_Idle"].image]
+gKnightBattleDead_image_list = [sprite_collection["knight_1_dead"].image, sprite_collection["knight_2_dead"].image,
+                                sprite_collection["knight_3_dead"].image, sprite_collection["knight_4_dead"].image,
+                                sprite_collection["knight_5_dead"].image, sprite_collection["knight_6_dead"].image]
+
+gKnightBattle_image_list = [gKnightBattleIdle_image_list, gKnightBattleAttack_image_list, gKnightBattleHurt_image_list, gKnightBattleDead_image_list]
 
 
 

@@ -6,6 +6,7 @@ from src.Dependencies import *
 
 #make change
 from src.world.Player import *
+from src.world.Knight1 import Knight1
 from src.world.HealthBar import HealthBar
 
 class BattleState(BaseState):
@@ -24,10 +25,10 @@ class BattleState(BaseState):
         self.medium_font = pygame.font.Font('./fonts/font.ttf', 48)
 
         #make change later fighter
-        self.player = Player(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3 + 60, gRogueBattle_image_list, 30, 10)
+        self.player = Player(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3 + 70, gRogueBattle_image_list, 30, 10)
         self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30, self.player.hp, self.player.max_hp)
         #make change later enemy
-        self.player2 = Player(WIDTH / 2 - 96 + 400, HEIGHT - HEIGHT / 3 + 60, gKnightBattle_image_list, 30, 10)
+        self.player2 = Knight1(WIDTH / 2 - 96 + 400, HEIGHT - HEIGHT / 3 + 40)
         self.player2Health = (
             HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.player2.hp, self.player2.max_hp))
 
@@ -66,6 +67,10 @@ class BattleState(BaseState):
                 #test attack key(w)
                 if event.key == pygame.K_w:
                     self.player.attack(self.player2)
+                    self.check_dead(self.player.hp, self.player2.hp)
+                    if self.player2.alive == False:
+                        self.player2.death()
+                        self.player2.reset()
 
                 # test attack key(w)
                 if event.key == pygame.K_e:
@@ -79,6 +84,13 @@ class BattleState(BaseState):
                     gSounds['campfire_fireplace'].play(-1)
 
                     self.state_machine.Change('roll')
+
+    def check_dead(self, playerHP, enemyHP):
+        if playerHP <= 0 :
+            self.player.alive = False
+
+        if enemyHP <= 0:
+            self.player2.alive = False
 
     def render(self, screen):
         #make change

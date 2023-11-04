@@ -110,6 +110,9 @@ class SpriteManager:
                 "./sprite/RogueAnimationBattleSkill.json",
                 #knight enemy battle
                 "./sprite/KnightAnimationBattleAttack_level1.json",
+                "./sprite/KnightAnimationBattleHurt1.json",
+                "./sprite/KnightAnimationBattleidle.json",
+                "./sprite/KnightAnimationBattleDeath1.json"
             ]
         )
 
