@@ -1,7 +1,3 @@
-
-
-
-
 class GameObject:
     def __init__(self, conf, x, y):
         self.type = conf.type

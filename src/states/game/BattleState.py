@@ -54,17 +54,9 @@ class BattleState(BaseState):
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    if self.current_character == 1:
-                        self.unavailable_sound.play()
-                    else:
-                        self.available_sound.play()
-                        self.current_character -= 1
+                    pass
                 elif event.key == pygame.K_RIGHT:
-                    if self.current_character == 1:
-                        self.unavailable_sound.play()
-                    else:
-                        self.current_character += 1
-                        self.available_sound.play()
+                    pass
 
                 #test attack key(w)
                 if event.key == pygame.K_w:

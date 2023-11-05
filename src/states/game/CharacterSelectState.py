@@ -148,9 +148,5 @@ class CharacterSelectState(BaseState):
 
             self.frame_index += 1
 
-        """character_img = gRogue_image_list[self.current_character - 1]
-        rect = character_img.get_rect(midtop=(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3))
-        screen.blit(character_img, (WIDTH / 2 - 96, HEIGHT - HEIGHT / 3))"""
-
     def Exit(self):
         pass

@@ -19,21 +19,21 @@
         },
         {
             "name":"knight_3_BA",
-            "x":86,
+            "x":172,
             "y":0,
             "scalefactor":2,
             "colorKey":-1
         },
         {
             "name":"knight_4_BA",
-            "x":86,
+            "x":258,
             "y":0,
             "scalefactor":2,
             "colorKey":-1
         },
         {
             "name":"knight_5_BA",
-            "x":86,
+            "x":344,
             "y":0,
             "scalefactor":2,
             "colorKey":-1
