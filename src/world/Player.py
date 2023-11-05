@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
 class Player():
-    def __init__(self, x, y, name, max_hp, strength):
+    def __init__(self, name, max_hp, strength):
         self.name = name
         self.max_hp = max_hp
         self.hp = max_hp
@@ -20,7 +20,6 @@ class Player():
         self.add_animation_list(self.name)
         self.image = self.animation_list[self.action][self.frame_index]
         self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
 
     def add_animation_list(self, name):
         for animation in name:
@@ -66,7 +65,7 @@ class Player():
         self.update_time = pygame.time.get_ticks()
     #change
     def skill(self):
-        self.action = 4
+        self.action = 5
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
@@ -82,6 +81,7 @@ class Player():
         if not self.alive:
             self.action = 4
         else:
+            self.alive = False
             self.action = 3
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()

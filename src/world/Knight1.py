@@ -6,8 +6,9 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Knight1(Player):
-    def __init__(self):
-        super().__init__(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40, name=gKnightBattle_image_list, max_hp = 50, strength = 10)
+    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
+        super().__init__(name=gKnightBattle_image_list, max_hp = 50, strength = 10)
+        self.rect.center = (x, y)
 
     def update(self):
         super().update()

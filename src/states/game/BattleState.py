@@ -8,6 +8,7 @@ from src.Dependencies import *
 from src.world.Player import *
 from src.world.Knight1 import Knight1
 from src.world.HealthBar import HealthBar
+from src.world.Rogue import Rogue
 
 class BattleState(BaseState):
     def __init__(self, state_machine):
@@ -15,6 +16,8 @@ class BattleState(BaseState):
         self.bg_image = pygame.image.load("./graphics/background.png")
         self.bg_image = pygame.transform.scale(
             self.bg_image, (WIDTH + 5, HEIGHT + 5))
+        self.player_X = WIDTH / 2 - 96
+        self.player_Y = HEIGHT - HEIGHT / 3 + 70
 
         self.unavailable_sound = gSounds['no-select']
         self.available_sound = gSounds['select']
@@ -25,7 +28,7 @@ class BattleState(BaseState):
         self.medium_font = pygame.font.Font('./fonts/font.ttf', 48)
 
         #make change later fighter
-        self.player = Player(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3 + 70, gRogueBattle_image_list, 30, 10)
+        self.player = Rogue(self.player_X, self.player_Y)
         self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30, self.player.hp, self.player.max_hp)
         #make change later enemy
         self.player2 = Knight1()
@@ -66,17 +69,24 @@ class BattleState(BaseState):
                 #test attack key(w)
                 if event.key == pygame.K_w:
                     self.player.attack(self.player2)
-                    self.check_dead(self.player.hp, self.player2.hp)
-                
-                if self.player2.alive == False:
+                    if self.player2.hp <= 0:
                         self.player2.death()
+           
+                
+                #test player hurt
+                if event.key == pygame.K_r:
+                    self.player2.attack(self.player)
+                    if self.player.hp <= 0:
+                        self.player.death()
 
-                # test attack key(w)
+                # test skill key(e)
                 if event.key == pygame.K_e:
-                    self.player.skill(self.player2)
+                    self.player.skill()
 
                 if event.key == pygame.K_RETURN:
                     #sound
+                    self.player.reset()
+                    self.player2.reset()
                     self.confirm_sound.play()
                     gSounds['music'].stop()
                     gSounds['late-hours'].play(-1)
@@ -84,12 +94,6 @@ class BattleState(BaseState):
 
                     self.state_machine.Change('roll')
 
-    def check_dead(self, playerHP, enemyHP):
-        if playerHP <= 0 :
-            self.player.alive = False
-
-        if enemyHP <= 0:
-            self.player2.alive = False
 
     def render(self, screen):
         #make change

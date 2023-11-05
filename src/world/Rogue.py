@@ -1,12 +1,15 @@
 import pygame
 from .Player import Player
-from Dependencies import gRogueBattle_image_list
+from src.Dependencies import gRogueBattle_image_list
 
 class Rogue(Player):
     def __init__(self, x, y):
-        super().__init__(x, y, gRogueBattle_image_list, max_hp = 100, strength = 10)
+        super().__init__(gRogueBattle_image_list, max_hp = 100, strength = 10)
+        self.X = x
+        self.Y = y+15
         self.Class = "Rougue"
         self.evade = False
+        self.rect.center = (self.X, self.Y)
 
     def update(self):
         super().update()
@@ -14,21 +17,26 @@ class Rogue(Player):
 
     def idle(self):
         super().idle()
+        self.rect.center = (self.X, self.Y)
 
     def attack(self, target):
+        self.rect.center = (self.X, self.Y)
         super().attack(target)
+
     
-    def skill(self, target):
-        super().skill(target)
+    def skill(self):
+        self.rect.center = (self.X, self.Y)
+        super().skill()
         if self.evade == False:
             self.evade = True
         else:
             pass
-        while self.evade:
-            pass
 
     def hurt(self, damage):
         super().hurt(damage)
+    
+    def death(self):
+        super().death()
 
     def reset(self):
         super().reset()
