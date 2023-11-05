@@ -40,7 +40,9 @@ class Player():
             if self.action == 4:
                 self.frame_index = len(self.animation_list[self.action]) - 1
             elif not self.alive:
-                self.death()
+                self.action = 4
+                self.frame_index = 0
+                self.update_time = pygame.time.get_ticks()
             else:
                 self.idle()
 
@@ -52,16 +54,10 @@ class Player():
 
     def attack(self, target):
         # deal damage to enemy
-        rand = random.randint(-5, 5)
-        damage = self.strength + rand
-        target.hp -= damage
+        self.rand = random.randint(1, 5)
+        self.damage = self.strength + self.rand
         # run enemy hurt animation
-        target.hurt()
-        # check if target has died
-        if target.hp < 1:
-            target.hp = 0
-            target.alive = False
-            target.death()
+        target.hurt(self.damage)
         #damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         #damage_text_group.add(damage_text)
         #set variables to attack animation
@@ -69,27 +65,13 @@ class Player():
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
     #change
-    def skill(self, target):
-        # deal damage to enemy
-        rand = random.randint(-5, 5)
-        damage = self.strength + rand
-        target.hp -= damage
-        # run enemy hurt animation
-        target.hurt()
-        # check if target has died
-        if target.hp < 1:
-            target.hp = 0
-            target.alive = False
-            target.death()
-        # damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
-        # damage_text_group.add(damage_text)
-        # set variables to attack animation
+    def skill(self):
         self.action = 4
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
-    def hurt(self):
-        # self.hp -= damage
+    def hurt(self, damage):
+        self.hp -= damage
         # set variables to hurt animation
         self.action = 2
         self.frame_index = 0
@@ -97,7 +79,10 @@ class Player():
 
     def death(self):
         # set variables to death animation
-        self.action = 3
+        if not self.alive:
+            self.action = 4
+        else:
+            self.action = 3
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
