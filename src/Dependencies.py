@@ -40,6 +40,32 @@ gWitch2_image_list = [sprite_collection["witch_idle_1"].image, sprite_collection
 gDice_image_list = [sprite_collection["dice_face_1"].image, sprite_collection["dice_face_2"].image,
                     sprite_collection["dice_face_3"].image, sprite_collection["dice_face_4"].image,
                     sprite_collection["dice_face_5"].image,sprite_collection["dice_face_6"].image]
+
+#warrior battle sprite
+gWarriorBattleIdle_image_list = [sprite_collection["warrior_1_BI"].image, sprite_collection["warrior_2_BI"].image,
+                               sprite_collection["warrior_3_BI"].image, sprite_collection["warrior_4_BI"].image,
+                               sprite_collection["warrior_5_BI"].image, sprite_collection["warrior_6_BI"].image,
+                               sprite_collection["warrior_7_BI"].image, sprite_collection["warrior_8_BI"].image,
+                               sprite_collection["warrior_9_BI"].image, sprite_collection["warrior_10_BI"].image]
+
+gWarriorBattleAttack_image_list = [sprite_collection["warrior_1"].image, sprite_collection["warrior_2"].image,
+                                sprite_collection["warrior_3"].image, sprite_collection["warrior_4"].image,
+                                sprite_collection["warrior_5"].image,sprite_collection["warrior_6"].image,
+                                sprite_collection["warrior_7"].image]
+
+gWarriorBattleHurt_image_list = [sprite_collection["warrior_1_BH"].image, sprite_collection["warrior_2_BH"].image,
+                                sprite_collection["warrior_3_BH"].image]
+
+gWarriorBattleDead_image_list = [sprite_collection["warrior_1_BD"].image, sprite_collection["warrior_2_BD"].image,
+                                sprite_collection["warrior_3_BD"].image, sprite_collection["warrior_4_BD"].image,
+                                sprite_collection["warrior_5_BD"].image,sprite_collection["warrior_6_BD"].image,
+                                sprite_collection["warrior_7_BD"].image]
+
+gWarriorBattleDeadIdle_image_list = [sprite_collection["warrior_7_BD"].image, sprite_collection["warrior_7_BD"].image]
+
+gWarriorBattle_image_list = [gWarriorBattleIdle_image_list, gWarriorBattleAttack_image_list, gWarriorBattleHurt_image_list,
+                             gWarriorBattleDead_image_list, gWarriorBattleDeadIdle_image_list]
+
 #rogue battle sprite
 gRogueBattleIdle_image_list = [sprite_collection["rogue_1_BI"].image, sprite_collection["rogue_2_BI"].image,
                     sprite_collection["rogue_3_BI"].image, sprite_collection["rogue_4_BI"].image]
@@ -80,6 +106,7 @@ gKnightBattleDeadIdle_image_list = [sprite_collection["knight_1_deadidle"].image
 
 gKnightBattle_image_list = [gKnightBattleIdle_image_list, gKnightBattleAttack_image_list, gKnightBattleHurt_image_list, 
                             gKnightBattleDead_image_list, gKnightBattleDeadIdle_image_list]
+# end of knight1 battle sprite
 
 
 
