@@ -6,7 +6,7 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
-class Player():
+class Character():
     def __init__(self, name, max_hp, strength):
         self.name = name
         self.max_hp = max_hp

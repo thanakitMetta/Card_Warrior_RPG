@@ -108,6 +108,13 @@ gKnightBattle_image_list = [gKnightBattleIdle_image_list, gKnightBattleAttack_im
                             gKnightBattleDead_image_list, gKnightBattleDeadIdle_image_list]
 # end of knight1 battle sprite
 
+#card
+gCard_image_list=[sprite_collection["AS"].image, sprite_collection["2S"].image,
+                    sprite_collection["3S"].image, sprite_collection["4S"].image,
+                    sprite_collection["5S"].image, sprite_collection["6S"].image]
+gCardBack_image_list=[sprite_collection["cardBack"].image]
+#card end
+
 
 
 gSounds = {

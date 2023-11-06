@@ -1,8 +1,8 @@
 import pygame
-from .Player import Player
+from .Character import Character
 from src.Dependencies import gRogueBattle_image_list
 
-class Rogue(Player):
+class Rogue(Character):
     def __init__(self, x, y):
         super().__init__(gRogueBattle_image_list, max_hp = 100, strength = 10)
         self.X = x

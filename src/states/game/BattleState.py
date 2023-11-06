@@ -5,7 +5,7 @@ from src.constants import *
 from src.Dependencies import *
 
 #make change
-from src.world.Player import *
+from src.world.Character import *
 from src.world.Knight1 import Knight1
 from src.world.HealthBar import HealthBar
 from src.world.Rogue import Rogue

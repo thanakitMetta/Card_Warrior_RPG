@@ -21,8 +21,9 @@ class GameMain:
         states = {
             'start': StartState(self.g_state_manager),
             'select': CharacterSelectState(self.g_state_manager),
+            'card': CardState(self.g_state_manager),
             'roll': RollDiceState(self.g_state_manager),
-            'battle': BattleState(self.g_state_manager)
+            'battle': BattleState(self.g_state_manager),
         }
 
         self.g_state_manager.SetStates(states)
