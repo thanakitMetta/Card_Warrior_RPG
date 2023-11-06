@@ -145,4 +145,5 @@ from src.states.game.StartState import StartState
 from src.states.game.CharacterSelectState import CharacterSelectState
 from src.states.game.RollDiceState import RollDiceState
 from src.StateMachine import StateMachine
+from src.states.game.CardState import CardState
 from src.states.game.BattleState import BattleState

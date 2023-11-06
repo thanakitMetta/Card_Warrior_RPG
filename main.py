@@ -8,7 +8,6 @@ music_channel.set_volume(0.2)
 
 from src.Dependencies import *
 
-
 class GameMain:
     def __init__(self):
         self.max_frame_rate = 60

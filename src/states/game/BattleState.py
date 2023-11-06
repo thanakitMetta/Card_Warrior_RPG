@@ -9,16 +9,17 @@ from src.world.Character import *
 from src.world.Knight1 import Knight1
 from src.world.HealthBar import HealthBar
 from src.world.Rogue import Rogue
+from src.world.BattleMenu import BattleMenu
+from src.world.GenerateEnemy import Enemy
 
 class BattleState(BaseState):
     def __init__(self, state_machine):
         super(BattleState, self).__init__(state_machine)
+        self.map = 0
         self.bg_image = pygame.image.load("./graphics/background.png")
-        self.bg_image = pygame.transform.scale(
-            self.bg_image, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image = pygame.transform.scale(self.bg_image, (WIDTH + 5, HEIGHT + 5))
         self.player_X = WIDTH / 2 - 96
         self.player_Y = HEIGHT - HEIGHT / 3 + 70
-
         self.unavailable_sound = gSounds['no-select']
         self.available_sound = gSounds['select']
         self.confirm_sound = gSounds['confirm']
@@ -31,8 +32,11 @@ class BattleState(BaseState):
         self.player = Rogue(self.player_X, self.player_Y)
         self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30, self.player.hp, self.player.max_hp)
         #make change later enemy
-        self.player2 = Knight1()
-        self.player2Health = HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.player2.hp, self.player2.max_hp)
+        self.enemy = Enemy(self.map)
+        #make battle menu
+        self.battle_menu = BattleMenu(self.player.action_list)
+
+        #current map
 
     def Enter(self, params):
         #make change
@@ -53,21 +57,21 @@ class BattleState(BaseState):
                 clicked = False
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    pass
-                elif event.key == pygame.K_RIGHT:
-                    pass
+                if event.key == pygame.K_DOWN:
+                    self.battle_menu.pointer_index = (self.battle_menu.pointer_index + 1) % len(self.player.action_list)
+                elif event.key == pygame.K_UP:
+                    self.battle_menu.pointer_index = (self.battle_menu.pointer_index - 1) % len(self.player.action_list)
 
                 #test attack key(w)
                 if event.key == pygame.K_w:
-                    self.player.attack(self.player2)
-                    if self.player2.hp <= 0:
-                        self.player2.death()
+                    self.player.attack(self.enemy.Enemy1)
+                    if self.enemy.Enemy1.hp <= 0:
+                        self.enemy.Enemy1.death()
            
                 
                 #test player hurt
                 if event.key == pygame.K_r:
-                    self.player2.attack(self.player)
+                    self.enemy.Enemy1.attack(self.player)
                     if self.player.hp <= 0:
                         self.player.death()
 
@@ -78,7 +82,7 @@ class BattleState(BaseState):
                 if event.key == pygame.K_RETURN:
                     #sound
                     self.player.reset()
-                    self.player2.reset()
+                    self.enemy.Enemy1.reset()
                     self.confirm_sound.play()
                     gSounds['music'].stop()
                     gSounds['late-hours'].play(-1)
@@ -95,10 +99,11 @@ class BattleState(BaseState):
         self.playerHealth.draw(self.player.hp)
         self.player.update()
 
-        self.player2.draw()
-        self.player2Health.draw(self.player2.hp)
-        self.player2.update()
+        self.enemy.render_enemy()
+        self.enemy.draw_pointer_enemy()
 
+        #display battle menus
+        self.battle_menu.display_fighting_menu()
 
         #make change later
         # Update frame index for animation (for instance, every 5 frames)

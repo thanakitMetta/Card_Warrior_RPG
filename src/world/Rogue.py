@@ -8,6 +8,7 @@ class Rogue(Character):
         self.X = x
         self.Y = y+15
         self.Class = "Rougue"
+        self.action_list = ["W (Attack)", "Q (Evade)", "E (Slash)"]
         self.evade = False
         self.rect.center = (self.X, self.Y)
 
