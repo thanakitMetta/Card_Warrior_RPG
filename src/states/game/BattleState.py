@@ -57,21 +57,27 @@ class BattleState(BaseState):
                 clicked = False
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN:
-                    self.battle_menu.pointer_index = (self.battle_menu.pointer_index + 1) % len(self.player.action_list)
-                elif event.key == pygame.K_UP:
-                    self.battle_menu.pointer_index = (self.battle_menu.pointer_index - 1) % len(self.player.action_list)
+                if event.key == pygame.K_LEFT:
+                    if self.enemy.selected_enemy_index == 2:
+                        self.enemy.selected_enemy_index = 1
+                    else:
+                        pass
+                elif event.key == pygame.K_RIGHT:
+                    if self.enemy.selected_enemy_index == 1:
+                        self.enemy.selected_enemy_index = 2
+                    else:
+                        pass
 
                 #test attack key(w)
                 if event.key == pygame.K_w:
-                    self.player.attack(self.enemy.Enemy1)
-                    if self.enemy.Enemy1.hp <= 0:
-                        self.enemy.Enemy1.death()
+                    self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                    if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].hp <= 0:
+                        self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].death()
            
                 
                 #test player hurt
                 if event.key == pygame.K_r:
-                    self.enemy.Enemy1.attack(self.player)
+                    self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].attack(self.player)
                     if self.player.hp <= 0:
                         self.player.death()
 
@@ -82,7 +88,7 @@ class BattleState(BaseState):
                 if event.key == pygame.K_RETURN:
                     #sound
                     self.player.reset()
-                    self.enemy.Enemy1.reset()
+                    self.enemy.enemy_list[0].reset()
                     self.confirm_sound.play()
                     gSounds['music'].stop()
                     gSounds['late-hours'].play(-1)

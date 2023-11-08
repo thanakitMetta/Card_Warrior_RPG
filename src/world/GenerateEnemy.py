@@ -13,34 +13,53 @@ class Enemy():
 
     def generate_enemy(self):
         self.enemy_list = []
+        self.enemy_health_list = []
         if self.map_number == 0:
             #knight number 1
-            self.Enemy1 = Knight1(x = WIDTH / 2 - 96 + 500)
-            self.enemy_list.append("Enemy1")
-            self.Enemy1Health = HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.Enemy1.hp, self.Enemy1.max_hp)
-            self.Enemy1.draw()
-            self.Enemy1Health.draw(self.Enemy1.hp)
-            self.Enemy1.update()
+            # self.Enemy1 = Knight1(x = WIDTH / 2 - 96 + 300)
+            # self.enemy_list.append("Enemy1")
+            # self.Enemy1Health = HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.Enemy1.hp, self.Enemy1.max_hp)
+            # self.Enemy1.draw()
+            # self.Enemy1Health.draw(self.Enemy1.hp)
+            # self.Enemy1.update()
+            self.enemy_list.append(Knight1(x = WIDTH / 2 - 96 + 300))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             #knight number 2
-            self.Enemy2 = Knight1(x = WIDTH / 2 - 96 + 300)
-            self.enemy_list.append("Enemy2")
-            self.Enemy2Health = HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.Enemy2.hp, self.Enemy2.max_hp)
-            self.Enemy2.draw()
-            self.Enemy2Health.draw(self.Enemy2.hp)
-            self.Enemy2.update()
+            # self.Enemy2 = Knight1(x = WIDTH / 2 - 96 + 500)
+            # self.enemy_list.append("Enemy2")
+            # self.Enemy2Health = HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.Enemy2.hp, self.Enemy2.max_hp)
+            # self.Enemy2.draw()
+            # self.Enemy2Health.draw(self.Enemy2.hp)
+            # self.Enemy2.update()
+            self.enemy_list.append(Knight1(x = WIDTH / 2 - 96 + 500))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
     
     def render_enemy(self):
         if self.map_number == 0:
             #enemy1
-            self.Enemy1.draw()
-            self.Enemy1Health.draw(self.Enemy1.hp)
-            self.Enemy1.update()
+            # self.Enemy1.draw()
+            # self.Enemy1Health.draw(self.Enemy1.hp)
+            # self.Enemy1.update()
+            self.enemy_list[0].draw()
+            self.enemy_health_list[0].draw(self.enemy_list[0].hp)
+            self.enemy_list[0].update()
             #enemy2
-            self.Enemy2.draw()
-            self.Enemy2Health.draw(self.Enemy2.hp)
-            self.Enemy2.update()
+            # self.Enemy2.draw()
+            # self.Enemy2Health.draw(self.Enemy2.hp)
+            # self.Enemy2.update()
+            self.enemy_list[1].draw()
+            self.enemy_health_list[1].draw(self.enemy_list[1].hp)
+            self.enemy_list[1].update()
 
     def draw_pointer_enemy(self):
-        self.arrow_x = self.Enemy1.x
-        self.arrow_y = self.Enemy1.y + 120
-        pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)]) 
+        if self.selected_enemy_index > 0:
+            if self.selected_enemy_index == 1:
+                self.arrow_x = self.enemy_list[0].x
+                self.arrow_y = self.enemy_list[0].y + 120
+                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)])
+            if self.selected_enemy_index == 2:
+                self.arrow_x = self.enemy_list[1].x
+                self.arrow_y = self.enemy_list[1].y + 120
+                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)])
+
