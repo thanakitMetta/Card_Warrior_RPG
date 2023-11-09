@@ -6,6 +6,10 @@ from src.Dependencies import *
 
 # make change
 from src.text_generator import TextGenerator
+#chosen character
+from src.world.Rogue import Rogue
+from src.world.Warrior import Warrior
+from src.world.Wizard import Wizard
 #dice
 import random
 
@@ -37,7 +41,8 @@ class RollDiceState(BaseState):
         self.small_font = pygame.font.Font('./fonts/font.ttf', 24)
 
     def Enter(self, params):
-
+        #make change
+        self.player = params['chosen']
         pass
 
     def GetDice(self):
@@ -73,13 +78,18 @@ class RollDiceState(BaseState):
                     self.confirm_sound.play()
                     gSounds['campfire_fireplace'].stop()
                     gSounds['late-hours'].stop()
-                    gSounds['music'].play(-1)
+                    gSounds['burning_continue'].play(-1)
+                    #gSounds['music'].play(-1)
                     # shuffle
                     pygame.time.delay(1000)
-                    self.state_machine.Change('card')
+                    self.state_machine.Change('card', {
+                        'chosen': self.player
+                    })
 
     def render(self, screen):
         screen.blit(self.bg_image, (0, 0))
+        # chosen character
+        
         # witch
         if self.dice_stop:
             if self.current_sprite_witch >= len(gWitch2_image_list):
@@ -117,6 +127,9 @@ class RollDiceState(BaseState):
         if not self.generator.fully_displayed:
             self.generator.text_generation()
             #fully_displayed = self.generator.text_generation()
+        # chosen character
+        self.player.draw()
+        self.player.update()
 
         #dice
         if self.dice_stop:

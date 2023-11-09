@@ -1,14 +1,15 @@
 import pygame
 from .Character import Character
-from src.Dependencies import gRogueBattle_image_list
+from src.Dependencies import gWizardBattle_image_list
 
-class Rogue(Character):
+
+class Wizard(Character):
     def __init__(self, x, y):
-        super().__init__(gRogueBattle_image_list, max_hp = 100, strength = 3)
+        super().__init__(gWizardBattle_image_list, max_hp = 100, strength = 10)
         self.X = x
         self.Y = y+15
-        self.Class = "Rogue"
-        self.action_list = ["W (Attack)", "Q (Evade)", "E (Slash)"]
+        self.Class = "Wizard"
+        self.action_list = ["W (Attack)", "Q (______)", "E (_______)"]
         self.evade = False
         self.rect.center = (self.X, self.Y)
 

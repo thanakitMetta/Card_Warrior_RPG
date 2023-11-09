@@ -20,6 +20,7 @@ class Character():
         self.add_animation_list(self.name)
         self.image = self.animation_list[self.action][self.frame_index]
         self.rect = self.image.get_rect()
+        self.font = pygame.font.SysFont('Times New Roman', 26)
 
     def add_animation_list(self, name):
         for animation in name:
@@ -36,12 +37,8 @@ class Character():
             self.frame_index += 1
         # if the animation has run out then reset back to the start
         if self.frame_index >= len(self.animation_list[self.action]):
-            if self.action == 4:
+            if self.action == 3:
                 self.frame_index = len(self.animation_list[self.action]) - 1
-            elif not self.alive:
-                self.action = 4
-                self.frame_index = 0
-                self.update_time = pygame.time.get_ticks()
             else:
                 self.idle()
 
@@ -60,6 +57,10 @@ class Character():
         #damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         #damage_text_group.add(damage_text)
         #set variables to attack animation
+        if target.hp < 1:
+            target.hp = 0
+            target.alive = False
+            target.death()
         self.action = 1
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
@@ -78,11 +79,10 @@ class Character():
 
     def death(self):
         # set variables to death animation
-        if not self.alive:
-            self.action = 4
-        else:
-            self.alive = False
-            self.action = 3
+        # if not self.alive:
+        #     self.action = 4
+        # else:
+        self.action = 3
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 

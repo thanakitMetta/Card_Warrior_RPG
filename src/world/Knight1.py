@@ -7,10 +7,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Knight1(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
-        super().__init__(name = gKnightBattle_image_list, max_hp = 50, strength = 10)
+        super().__init__(name = gKnightBattle_image_list, max_hp = 50, strength = 2)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
+        self.enemy_type = "Normal"
 
     def update(self):
         super().update()

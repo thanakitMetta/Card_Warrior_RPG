@@ -5,6 +5,11 @@ from src.constants import *
 from src.Dependencies import *
 
 #make change
+#chosen character
+from src.world.Rogue import Rogue
+from src.world.Warrior import Warrior
+from src.world.Wizard import Wizard
+
 class CharacterSelectState(BaseState):
     def __init__(self, state_machine):
 
@@ -23,7 +28,7 @@ class CharacterSelectState(BaseState):
             self.bg_image_library, (WIDTH + 5, HEIGHT + 5))
         # change end
 
-        self.current_character = 1
+        self.current_character = 0
 
         self.unavailable_sound = gSounds['no-select']
         self.available_sound = gSounds['select']
@@ -40,6 +45,15 @@ class CharacterSelectState(BaseState):
         # Starting animation direction
         # Start with the first frame
 
+        #CHARACTER
+        self.player = 0
+        # chosen character for rogue
+        self.player_X = WIDTH / 2 - 150
+        self.player_Y = HEIGHT - HEIGHT / 3 - 20
+        # for wizard and warrior
+        self.playerW_X = WIDTH / 2 - 200
+        self.playerW_Y = HEIGHT - HEIGHT / 3 - 100
+
     def Enter(self, params):
         #make change
         pass
@@ -53,13 +67,13 @@ class CharacterSelectState(BaseState):
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    if self.current_character == 1:
+                    if self.current_character == 0:
                         self.unavailable_sound.play()
                     else:
                         self.available_sound.play()
                         self.current_character -= 1
                 elif event.key == pygame.K_RIGHT:
-                    if self.current_character == 3:
+                    if self.current_character == 2:
                         self.unavailable_sound.play()
                     else:
                         self.current_character += 1
@@ -72,14 +86,24 @@ class CharacterSelectState(BaseState):
                     gSounds['late-hours'].play(-1)
                     gSounds['campfire_fireplace'].play(-1)
 
-                    self.state_machine.Change('roll')
+                    #character change
+                    if self.current_character == 0:
+                        self.player = Rogue(self.player_X, self.player_Y)
+                    elif self.current_character == 1:
+                        self.player = Warrior(self.player_X, self.player_Y)
+                    elif self.current_character == 2:
+                        self.player = Wizard(self.playerW_X, self.playerW_Y)
+
+                    self.state_machine.Change('roll', {
+                        'chosen': self.player
+                    })
 
     def render(self, screen):
-        if self.current_character == 1:
+        if self.current_character == 0:
             screen.blit(self.bg_image, (0, 0))
-        elif self.current_character == 2:
+        elif self.current_character == 1:
             screen.blit(self.bg_image_winter, (0, 0))
-        elif self.current_character == 3:
+        elif self.current_character == 2:
             screen.blit(self.bg_image_library, (0, 0))
 
         t_instruct = self.medium_font.render("Select your character (left right)", False, (255, 255, 255))
@@ -88,7 +112,7 @@ class CharacterSelectState(BaseState):
 
         #make change later
         # Update frame index for animation (for instance, every 5 frames)
-        if self.current_character == 1:
+        if self.current_character == 0:
             t_enter = self.small_font.render("Rogue", False, (255, 255, 255))
             rect = t_enter.get_rect(center=(WIDTH / 2, HEIGHT / 3))
             screen.blit(t_enter, rect)
@@ -108,7 +132,7 @@ class CharacterSelectState(BaseState):
 
             self.frame_index += 1
 
-        elif self.current_character == 2:
+        elif self.current_character == 1:
             t_enter = self.small_font.render("Warrior", False, (255, 255, 255))
             rect = t_enter.get_rect(center=(WIDTH / 2, HEIGHT / 3))
             screen.blit(t_enter, rect)
@@ -128,7 +152,7 @@ class CharacterSelectState(BaseState):
 
             self.frame_index += 1
 
-        elif self.current_character == 3:
+        elif self.current_character == 2:
             t_enter = self.small_font.render("Wizard", False, (255, 255, 255))
             rect = t_enter.get_rect(center=(WIDTH / 2, HEIGHT / 3))
             screen.blit(t_enter, rect)
@@ -147,6 +171,11 @@ class CharacterSelectState(BaseState):
             screen.blit(character_img, (WIDTH / 2 - 250, HEIGHT - HEIGHT / 3 - 50))
 
             self.frame_index += 1
+
+
+        """character_img = gRogue_image_list[self.current_character - 1]
+        rect = character_img.get_rect(midtop=(WIDTH / 2 - 96, HEIGHT - HEIGHT / 3))
+        screen.blit(character_img, (WIDTH / 2 - 96, HEIGHT - HEIGHT / 3))"""
 
     def Exit(self):
         pass

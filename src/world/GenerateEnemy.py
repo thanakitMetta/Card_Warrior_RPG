@@ -1,3 +1,4 @@
+import time
 import pygame
 from src.constants import *
 from src.world.Knight1 import Knight1
@@ -22,17 +23,17 @@ class Enemy():
             self.enemy_list.append(Knight1(x = WIDTH / 2 - 96 + 500))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
-    
+                
     def render_enemy(self):
         if self.map_number == 0:
             #enemy1
+            self.enemy_list[0].update()
             self.enemy_list[0].draw()
             self.enemy_health_list[0].draw(self.enemy_list[0].hp)
-            self.enemy_list[0].update()
             #enemy2
+            self.enemy_list[1].update()
             self.enemy_list[1].draw()
             self.enemy_health_list[1].draw(self.enemy_list[1].hp)
-            self.enemy_list[1].update()
 
     def draw_pointer_enemy(self):
         if self.selected_enemy_index > 0:
@@ -40,7 +41,7 @@ class Enemy():
                 self.arrow_x = self.enemy_list[0].x
                 self.arrow_y = self.enemy_list[0].y + 120
                 pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)])
-            if self.selected_enemy_index == 2:
+            elif self.selected_enemy_index == 2:
                 self.arrow_x = self.enemy_list[1].x
                 self.arrow_y = self.enemy_list[1].y + 120
                 pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)])

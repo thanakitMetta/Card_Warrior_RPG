@@ -66,6 +66,35 @@ gWarriorBattleDeadIdle_image_list = [sprite_collection["warrior_7_BD"].image, sp
 gWarriorBattle_image_list = [gWarriorBattleIdle_image_list, gWarriorBattleAttack_image_list, gWarriorBattleHurt_image_list,
                              gWarriorBattleDead_image_list, gWarriorBattleDeadIdle_image_list]
 
+#wizard battle sprite
+gWizardBattleIdle_image_list = [sprite_collection["wizard_1_BI"].image, sprite_collection["wizard_2_BI"].image,
+                    sprite_collection["wizard_3_BI"].image, sprite_collection["wizard_4_BI"].image,
+                    sprite_collection["wizard_5_BI"].image, sprite_collection["wizard_6_BI"].image,
+                    sprite_collection["wizard_7_BI"].image, sprite_collection["wizard_8_BI"].image]
+
+gWizardBattleAttack_image_list = [sprite_collection["wizard_1_BA"].image, sprite_collection["wizard_2_BA"].image,
+                    sprite_collection["wizard_3_BA"].image, sprite_collection["wizard_4_BA"].image,
+                    sprite_collection["wizard_5_BA"].image, sprite_collection["wizard_6_BA"].image,
+                    sprite_collection["wizard_7_BA"].image, sprite_collection["wizard_8_BA"].image]
+
+gWizardBattleAttack_image_list = [sprite_collection["wizard_1_BS"].image, sprite_collection["wizard_2_BS"].image,
+                    sprite_collection["wizard_3_BS"].image, sprite_collection["wizard_4_BS"].image,
+                    sprite_collection["wizard_5_BS"].image, sprite_collection["wizard_6_BS"].image,
+                    sprite_collection["wizard_7_BS"].image, sprite_collection["wizard_8_BS"].image]
+
+gWizardBattleHurt_image_list = [sprite_collection["wizard_1_BH"].image, sprite_collection["wizard_2_BH"].image,
+                    sprite_collection["wizard_3_BH"].image]
+
+gWizardBattleDead_image_list = [sprite_collection["wizard_1_BD"].image, sprite_collection["wizard_2_BD"].image,
+                    sprite_collection["wizard_3_BD"].image, sprite_collection["wizard_4_BD"].image,
+                    sprite_collection["wizard_5_BD"].image, sprite_collection["wizard_6_BD"].image,
+                    sprite_collection["wizard_7_BD"].image]
+
+gWizardBattleDeadIdle_image_list = [sprite_collection["wizard_7_BD"].image, sprite_collection["wizard_7_BD"].image]
+
+gWizardBattle_image_list = [gWizardBattleIdle_image_list, gWizardBattleAttack_image_list, gWizardBattleHurt_image_list,
+                            gWizardBattleDead_image_list, gWizardBattleAttack_image_list]
+
 #rogue battle sprite
 gRogueBattleIdle_image_list = [sprite_collection["rogue_1_BI"].image, sprite_collection["rogue_2_BI"].image,
                     sprite_collection["rogue_3_BI"].image, sprite_collection["rogue_4_BI"].image]
@@ -115,7 +144,12 @@ gCard_image_list=[sprite_collection["AS"].image, sprite_collection["2S"].image,
 gCardBack_image_list=[sprite_collection["cardBack"].image]
 #card end
 
-
+#flame
+flame_image_list=[sprite_collection["flame_1"].image, sprite_collection["flame_2"].image,
+                    sprite_collection["flame_3"].image, sprite_collection["flame_4"].image,
+                    sprite_collection["flame_5"].image, sprite_collection["flame_6"].image,
+                    sprite_collection["flame_7"].image,sprite_collection["flame_8"].image,
+                    sprite_collection["flame_9"].image,]
 
 gSounds = {
     'music': pygame.mixer.Sound('sounds/music.wav'),
@@ -126,7 +160,9 @@ gSounds = {
     'no-select': pygame.mixer.Sound('sounds/no-select.wav'),
     'select': pygame.mixer.Sound('sounds/select.wav'),
     'confirm': pygame.mixer.Sound('sounds/confirm.wav'),
-    'wall_hit': pygame.mixer.Sound('sounds/wall_hit.wav')
+    'wall_hit': pygame.mixer.Sound('sounds/wall_hit.wav'),
+    'burning_card': pygame.mixer.Sound('sounds/fire-magic-6947.wav'),
+    'burning_continue': pygame.mixer.Sound('sounds/fire-winds-swoosh.wav')
 }
 
 gFonts = {

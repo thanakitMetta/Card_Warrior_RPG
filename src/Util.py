@@ -110,16 +110,25 @@ class SpriteManager:
                 "./sprite/RogueAnimationBattleSkill.json",
                 "./sprite/RogueAnimationBattleHurt.json",
                 #Warrior battle
+                "./sprite/WarriorAnimationBattleAttack.json",
                 "./sprite/WarriorAnimationBattleIdle.json",
                 "./sprite/WarriorAnimationBattleHurt.json",
                 "./sprite/WarriorAnimationBattleDead.json",
                 "./sprite/WarriorAnimationBattleSkill.json",
+                #Wizard battle
+                "./sprite/WizardAnimationBattleAttack.json",
+                "./sprite/WizardAnimationBattleIdle.json",
+                "./sprite/WizardAnimationBattleHurt.json",
+                "./sprite/WizardAnimationBattleDead.json",
+                "./sprite/WizardAnimationBattleSkill.json",
                 #knight enemy battle
                 "./sprite/KnightAnimationBattleAttack_level1.json",
                 "./sprite/KnightAnimationBattleHurt1.json",
                 "./sprite/KnightAnimationBattleidle.json",
                 "./sprite/KnightAnimationBattleDeath1.json",
                 "./sprite/KnightAnimationBattleDeathIdle1.json",
+                #flame
+                "./sprite/flame.json",
                 #card
                  "./sprite/cards.json"
             ]
