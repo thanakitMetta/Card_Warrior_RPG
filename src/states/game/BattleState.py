@@ -39,7 +39,7 @@ class BattleState(BaseState):
 
         #game variable
         self.current_fighter = 1
-        self.total_fighter = len(self.enemy.enemy_list)
+        self.total_fighter = 1 + len(self.enemy.enemy_list)
         self.action_cooldown = 0
         self.action_wait_time = 90
         self.attack = False
@@ -171,7 +171,11 @@ class BattleState(BaseState):
                         self.current_fighter += 1
                         self.action_cooldown = 0
                 else:
-                    self.current_fighter += 1            
+                    self.current_fighter += 1
+            else:
+                if self.current_fighter > self.total_fighter:
+                    self.current_fighter = 1 
+                    self.action_count = 3           
     
 
     def is_enemy_alive(self):
