@@ -17,8 +17,7 @@ class BattleState(BaseState):
         super(BattleState, self).__init__(state_machine)
         self.map = 0
         self.bg_image = pygame.image.load("./graphics/background.png")
-        self.bg_image = pygame.transform.scale(
-            self.bg_image, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image = pygame.transform.scale(self.bg_image, (WIDTH + 5, HEIGHT + 5))
         self.unavailable_sound = gSounds['no-select']
         self.available_sound = gSounds['select']
         self.confirm_sound = gSounds['confirm']
@@ -41,11 +40,12 @@ class BattleState(BaseState):
         self.current_fighter = 1
         self.total_fighter = 1 + len(self.enemy.enemy_list)
         self.action_cooldown = 0
-        self.action_wait_time = 90
+        self.action_wait_time = 80
         self.attack = False
         self.battle_over = 0
         self.action_count = 3
         self.enemy_alive = len(self.enemy.enemy_list)
+        self.total_turn = 0
 
 
 
@@ -109,25 +109,6 @@ class BattleState(BaseState):
                     # self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
                     else:
                         self.battle_over = -1
-           
-                
-                #test player hurt
-                # if event.key == pygame.K_r:
-                #     for index, enemy in enumerate(self.enemy.enemy_list):
-                #         print("pass loop")
-                #         if self.current_fighter == 2 + index:
-                #             print("pass check current fighter")
-                #             if enemy.alive == True:
-                #                 print("pass check enemy alive")
-                #                 self.action_cooldown += 90
-                #                 print(self.action_cooldown)
-                #                 if self.action_cooldown >= self.action_wait_time:
-                #                     print("pass check action coodown")
-                #                     enemy.attack(self.player)
-                #                     self.current_fighter += 1
-                #                     self.action_cooldown = 0
-                #             else:
-                #                 self.current_fighter += 1 
 
                 # test skill key(e)
                 if event.key == pygame.K_e:
@@ -192,9 +173,15 @@ class BattleState(BaseState):
         self.player.draw()
         self.playerHealth.draw(self.player.hp)
         self.player.update()
+        self.player.damage_text_group.update()
+        self.player.damage_text_group.draw(screen)
 
         self.enemy.render_enemy()
         self.enemy.draw_pointer_enemy()
+        for enemy in self.enemy.enemy_list:
+            enemy.damage_text_group.update()
+            enemy.damage_text_group.draw(screen)
+
 
         #display battle menus
         self.battle_menu.display_fighting_menu()

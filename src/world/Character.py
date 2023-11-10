@@ -2,6 +2,8 @@ import pygame
 import random
 from src.constants import *
 from src.Dependencies import *
+from src.world.DamageText import DamageText
+from pygame.sprite import Group
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -21,6 +23,7 @@ class Character():
         self.image = self.animation_list[self.action][self.frame_index]
         self.rect = self.image.get_rect()
         self.font = pygame.font.SysFont('Times New Roman', 26)
+        self.damage_text_group = Group()
 
     def add_animation_list(self, name):
         for animation in name:
@@ -41,7 +44,6 @@ class Character():
                 self.frame_index = len(self.animation_list[self.action]) - 1
             else:
                 self.idle()
-
     def idle(self):
         # set variables to idle animation
         self.action = 0
@@ -61,6 +63,8 @@ class Character():
             target.hp = 0
             target.alive = False
             target.death()
+        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(self.damage), (255, 255, 255))
+        self.damage_text_group.add(self.damage_text)
         self.action = 1
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
