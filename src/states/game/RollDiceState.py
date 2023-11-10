@@ -88,7 +88,6 @@ class RollDiceState(BaseState):
 
     def render(self, screen):
         screen.blit(self.bg_image, (0, 0))
-        # chosen character
         
         # witch
         if self.dice_stop:
@@ -120,10 +119,15 @@ class RollDiceState(BaseState):
 
             self.frame_index_witch += 1
 
-        #text generation
-        font = pygame.font.Font(None, 36)
-        text = "Oh...Great being... Please role this dice to accept the guidance of fate"
+        # #text generation
+        # if not self.generator.fully_displayed:
+        #     self.generator.text_generation()
+        #     #fully_displayed = self.generator.text_generation()
+        # # chosen character
+        # self.player.draw()
+        # self.player.update()
 
+        #text generation
         if not self.generator.fully_displayed:
             self.generator.text_generation()
             #fully_displayed = self.generator.text_generation()

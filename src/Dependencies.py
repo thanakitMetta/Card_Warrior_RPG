@@ -53,6 +53,11 @@ gWarriorBattleAttack_image_list = [sprite_collection["warrior_1"].image, sprite_
                                 sprite_collection["warrior_5"].image,sprite_collection["warrior_6"].image,
                                 sprite_collection["warrior_7"].image]
 
+gWarriorBattleSkill_image_list = [sprite_collection["warrior_1_BS"].image, sprite_collection["warrior_2_BS"].image,
+                                sprite_collection["warrior_3_BS"].image, sprite_collection["warrior_4_BS"].image,
+                                sprite_collection["warrior_5_BS"].image,sprite_collection["warrior_6_BS"].image,
+                                sprite_collection["warrior_7_BS"].image,sprite_collection["warrior_8_BS"].image]
+
 gWarriorBattleHurt_image_list = [sprite_collection["warrior_1_BH"].image, sprite_collection["warrior_2_BH"].image,
                                 sprite_collection["warrior_3_BH"].image]
 
@@ -64,7 +69,7 @@ gWarriorBattleDead_image_list = [sprite_collection["warrior_1_BD"].image, sprite
 gWarriorBattleDeadIdle_image_list = [sprite_collection["warrior_7_BD"].image, sprite_collection["warrior_7_BD"].image]
 
 gWarriorBattle_image_list = [gWarriorBattleIdle_image_list, gWarriorBattleAttack_image_list, gWarriorBattleHurt_image_list,
-                             gWarriorBattleDead_image_list, gWarriorBattleDeadIdle_image_list]
+                             gWarriorBattleDead_image_list, gWarriorBattleDeadIdle_image_list,gWarriorBattleSkill_image_list]
 
 #wizard battle sprite
 gWizardBattleIdle_image_list = [sprite_collection["wizard_1_BI"].image, sprite_collection["wizard_2_BI"].image,
@@ -77,7 +82,7 @@ gWizardBattleAttack_image_list = [sprite_collection["wizard_1_BA"].image, sprite
                     sprite_collection["wizard_5_BA"].image, sprite_collection["wizard_6_BA"].image,
                     sprite_collection["wizard_7_BA"].image, sprite_collection["wizard_8_BA"].image]
 
-gWizardBattleAttack_image_list = [sprite_collection["wizard_1_BS"].image, sprite_collection["wizard_2_BS"].image,
+gWizardBattleSkill_image_list = [sprite_collection["wizard_1_BS"].image, sprite_collection["wizard_2_BS"].image,
                     sprite_collection["wizard_3_BS"].image, sprite_collection["wizard_4_BS"].image,
                     sprite_collection["wizard_5_BS"].image, sprite_collection["wizard_6_BS"].image,
                     sprite_collection["wizard_7_BS"].image, sprite_collection["wizard_8_BS"].image]
@@ -93,7 +98,7 @@ gWizardBattleDead_image_list = [sprite_collection["wizard_1_BD"].image, sprite_c
 gWizardBattleDeadIdle_image_list = [sprite_collection["wizard_7_BD"].image, sprite_collection["wizard_7_BD"].image]
 
 gWizardBattle_image_list = [gWizardBattleIdle_image_list, gWizardBattleAttack_image_list, gWizardBattleHurt_image_list,
-                            gWizardBattleDead_image_list, gWizardBattleAttack_image_list]
+                            gWizardBattleDead_image_list, gWizardBattleSkill_image_list,gWizardBattleDeadIdle_image_list]
 
 #rogue battle sprite
 gRogueBattleIdle_image_list = [sprite_collection["rogue_1_BI"].image, sprite_collection["rogue_2_BI"].image,
@@ -140,7 +145,33 @@ gKnightBattle_image_list = [gKnightBattleIdle_image_list, gKnightBattleAttack_im
 #card
 gCard_image_list=[sprite_collection["AS"].image, sprite_collection["2S"].image,
                     sprite_collection["3S"].image, sprite_collection["4S"].image,
-                    sprite_collection["5S"].image, sprite_collection["6S"].image]
+                    sprite_collection["5S"].image, sprite_collection["6S"].image,
+                    sprite_collection["7S"].image, sprite_collection["8S"].image,
+                    sprite_collection["9S"].image, sprite_collection["10S"].image,
+                    sprite_collection["JS"].image, sprite_collection["QS"].image,
+                    sprite_collection["KS"].image,
+                    sprite_collection["AC"].image, sprite_collection["2C"].image,
+                    sprite_collection["3C"].image, sprite_collection["4C"].image,
+                    sprite_collection["5C"].image, sprite_collection["6C"].image,
+                    sprite_collection["7C"].image, sprite_collection["8C"].image,
+                    sprite_collection["9C"].image, sprite_collection["10C"].image,
+                    sprite_collection["JC"].image, sprite_collection["QC"].image,
+                    sprite_collection["KC"].image,
+                    sprite_collection["AH"].image, sprite_collection["2H"].image,
+                    sprite_collection["3H"].image, sprite_collection["4H"].image,
+                    sprite_collection["5H"].image, sprite_collection["6H"].image,
+                    sprite_collection["7H"].image, sprite_collection["8H"].image,
+                    sprite_collection["9H"].image, sprite_collection["10H"].image,
+                    sprite_collection["JH"].image, sprite_collection["QH"].image,
+                    sprite_collection["KH"].image,
+                    sprite_collection["AD"].image, sprite_collection["2D"].image,
+                    sprite_collection["3D"].image, sprite_collection["4D"].image,
+                    sprite_collection["5D"].image, sprite_collection["6D"].image,
+                    sprite_collection["7D"].image, sprite_collection["8D"].image,
+                    sprite_collection["9D"].image, sprite_collection["10D"].image,
+                    sprite_collection["JD"].image, sprite_collection["QD"].image,
+                    sprite_collection["KD"].image,
+                    ]
 gCardBack_image_list=[sprite_collection["cardBack"].image]
 #card end
 
@@ -150,6 +181,166 @@ flame_image_list=[sprite_collection["flame_1"].image, sprite_collection["flame_2
                     sprite_collection["flame_5"].image, sprite_collection["flame_6"].image,
                     sprite_collection["flame_7"].image,sprite_collection["flame_8"].image,
                     sprite_collection["flame_9"].image,]
+#water
+gWaterSplash_image_list = [sprite_collection["waterstart_1"].image, sprite_collection["waterstart_2"].image,
+                    sprite_collection["waterstart_3"].image, sprite_collection["waterstart_4"].image,
+                    sprite_collection["waterstart_5"].image, sprite_collection["waterstart_6"].image,
+                    sprite_collection["waterstart_7"].image, sprite_collection["waterstart_8"].image,
+                    sprite_collection["waterstart_9"].image, sprite_collection["waterstart_10"].image,
+                    sprite_collection["waterstart_11"].image, sprite_collection["watersplash_1"].image,
+                    sprite_collection["watersplash_2"].image, sprite_collection["watersplash_3"].image,
+                    sprite_collection["watersplash_4"].image, sprite_collection["watersplash_5"].image,
+                    sprite_collection["watersplash_6"].image, sprite_collection["watersplash_7"].image,
+                    sprite_collection["watersplash_8"].image]
+
+#Skeleton sprite
+gSkeletonBattleIdle_image_list = [sprite_collection["skeleton_1_BI"].image, sprite_collection["skeleton_2_BI"].image,
+                    sprite_collection["skeleton_3_BI"].image, sprite_collection["skeleton_4_BI"].image]
+
+gSkeletonBattleAttack_image_list = [sprite_collection["skeleton_1_BA"].image, sprite_collection["skeleton_2_BA"].image,
+                    sprite_collection["skeleton_3_BA"].image, sprite_collection["skeleton_4_BA"].image,
+                    sprite_collection["skeleton_5_BA"].image, sprite_collection["skeleton_6_BA"].image,
+                    sprite_collection["skeleton_7_BA"].image, sprite_collection["skeleton_8_BA"].image]
+
+gSkeletonBattleHurt_image_list = [sprite_collection["skeleton_1_BH"].image, sprite_collection["skeleton_2_BH"].image,
+                    sprite_collection["skeleton_3_BH"].image, sprite_collection["skeleton_4_BH"].image]
+
+gSkeletonBattleDead_image_list = [sprite_collection["skeleton_1_BD"].image, sprite_collection["skeleton_2_BD"].image,
+                    sprite_collection["skeleton_3_BD"].image, sprite_collection["skeleton_4_BD"].image,
+                    sprite_collection["skeleton_4_BD"].image,]
+
+gSkeletonBattleDeadIdle_image_list = [sprite_collection["skeleton_4_BD"].image, sprite_collection["skeleton_4_BD"].image]
+
+gSkeletonBattleSkill_image_list = [sprite_collection["skeleton_1_BS"].image, sprite_collection["skeleton_2_BS"].image,
+                    sprite_collection["skeleton_3_BS"].image, sprite_collection["skeleton_4_BS"].image]
+
+gSkeletonBattle_image_list = [gSkeletonBattleIdle_image_list, gSkeletonBattleAttack_image_list, gSkeletonBattleHurt_image_list,
+                              gSkeletonBattleDead_image_list, gSkeletonBattleSkill_image_list]
+
+
+#NightBorne sprite
+gNightBorneBattleIdle_image_list = [sprite_collection["nightborne_1_BI"].image, sprite_collection["nightborne_2_BI"].image,
+                    sprite_collection["nightborne_3_BI"].image, sprite_collection["nightborne_4_BI"].image,
+                    sprite_collection["nightborne_5_BI"].image, sprite_collection["nightborne_6_BI"].image,
+                    sprite_collection["nightborne_7_BI"].image, sprite_collection["nightborne_8_BI"].image,
+                    sprite_collection["nightborne_9_BI"].image]
+
+gNightBorneBattleAttack_image_list = [sprite_collection["nightborne_1_BA"].image, sprite_collection["nightborne_2_BA"].image,
+                    sprite_collection["nightborne_3_BA"].image, sprite_collection["nightborne_4_BA"].image,
+                    sprite_collection["nightborne_5_BA"].image, sprite_collection["nightborne_6_BA"].image,
+                    sprite_collection["nightborne_7_BA"].image, sprite_collection["nightborne_8_BA"].image,
+                    sprite_collection["nightborne_9_BA"].image, sprite_collection["nightborne_10_BA"].image,
+                    sprite_collection["nightborne_11_BA"].image, sprite_collection["nightborne_12_BA"].image]
+
+gNightBorneBattleHurt_image_list = [sprite_collection["nightborne_1_BH"].image, sprite_collection["nightborne_2_BH"].image,
+                    sprite_collection["nightborne_3_BH"].image, sprite_collection["nightborne_4_BH"].image,
+                    sprite_collection["nightborne_5_BH"].image]
+
+gNightBorneBattleDead_image_list = [sprite_collection["nightborne_1_BD"].image, sprite_collection["nightborne_2_BD"].image,
+                    sprite_collection["nightborne_3_BD"].image, sprite_collection["nightborne_4_BD"].image,
+                    sprite_collection["nightborne_5_BD"].image, sprite_collection["nightborne_6_BD"].image,
+                    sprite_collection["nightborne_7_BD"].image, sprite_collection["nightborne_8_BD"].image,
+                    sprite_collection["nightborne_9_BD"].image, sprite_collection["nightborne_10_BD"].image,
+                    sprite_collection["nightborne_11_BD"].image, sprite_collection["nightborne_12_BD"].image,
+                    sprite_collection["nightborne_13_BD"].image, sprite_collection["nightborne_14_BD"].image,
+                    sprite_collection["nightborne_15_BD"].image, sprite_collection["nightborne_16_BD"].image,
+                    sprite_collection["nightborne_17_BD"].image, sprite_collection["nightborne_18_BD"].image,
+                    sprite_collection["nightborne_19_BD"].image, sprite_collection["nightborne_20_BD"].image,
+                    sprite_collection["nightborne_21_BD"].image, sprite_collection["nightborne_22_BD"].image,
+                    sprite_collection["nightborne_23_BD"].image, sprite_collection["nightborne_24_BD"].image]
+
+gNightBorneBattleSkill_image_list = [sprite_collection["nightborne_1_BS"].image, sprite_collection["nightborne_2_BS"].image,
+                    sprite_collection["nightborne_3_BS"].image, sprite_collection["nightborne_4_BS"].image,
+                    sprite_collection["nightborne_5_BS"].image, sprite_collection["nightborne_6_BS"].image,
+                    sprite_collection["nightborne_1_BS"].image, sprite_collection["nightborne_2_BS"].image,
+                    sprite_collection["nightborne_3_BS"].image, sprite_collection["nightborne_4_BS"].image,
+                    sprite_collection["nightborne_5_BS"].image, sprite_collection["nightborne_6_BS"].image]
+
+gNightBorneBattleDeadIdle_image_list = [sprite_collection["nightborne_24_BD"].image, sprite_collection["nightborne_24_BD"].image]
+
+gNightBorneBattle_image_list = [gNightBorneBattleIdle_image_list, gNightBorneBattleAttack_image_list, gNightBorneBattleHurt_image_list,
+                              gNightBorneBattleDead_image_list, gNightBorneBattleSkill_image_list]
+
+#necSkeleton sprite
+gNecroSkeletonBattleIdle_image_list = [sprite_collection["necskeleton_1_BI"].image, sprite_collection["necskeleton_2_BI"].image,
+                    sprite_collection["necskeleton_3_BI"].image, sprite_collection["necskeleton_4_BI"].image]
+
+gNecroSkeletonBattleAttack_image_list = [sprite_collection["necskeleton_1_BA"].image, sprite_collection["necskeleton_2_BA"].image,
+                    sprite_collection["necskeleton_3_BA"].image, sprite_collection["necskeleton_4_BA"].image,
+                    sprite_collection["necskeleton_5_BA"].image, sprite_collection["necskeleton_6_BA"].image,
+                    sprite_collection["necskeleton_7_BA"].image, sprite_collection["necskeleton_8_BA"].image,
+                    sprite_collection["necskeleton_9_BA"].image, sprite_collection["necskeleton_10_BA"].image,
+                    sprite_collection["necskeleton_11_BA"].image, sprite_collection["necskeleton_12_BA"].image,
+                    sprite_collection["necskeleton_13_BA"].image]
+
+gNecroSkeletonBattleHurt_image_list = [sprite_collection["necskeleton_1_BH"].image, sprite_collection["necskeleton_1_BH"].image,
+                    sprite_collection["necskeleton_1_BH"].image]
+
+gNecroSkeletonBattleDead_image_list = [sprite_collection["necskeleton_1_BD"].image, sprite_collection["necskeleton_2_BD"].image,
+                    sprite_collection["necskeleton_3_BD"].image, sprite_collection["necskeleton_4_BD"].image,
+                    sprite_collection["necskeleton_5_BD"].image, sprite_collection["necskeleton_6_BD"].image,
+                    sprite_collection["necskeleton_7_BD"].image, sprite_collection["necskeleton_8_BD"].image,
+                    sprite_collection["necskeleton_9_BD"].image, sprite_collection["necskeleton_10_BD"].image,
+                    sprite_collection["necskeleton_11_BD"].image, sprite_collection["necskeleton_12_BD"].image,
+                    sprite_collection["necskeleton_13_BD"].image]
+
+gNecroSkeletonBattleDeadIdle_image_list = [sprite_collection["necskeleton_13_BD"].image, sprite_collection["necskeleton_13_BD"].image]
+
+gNecroSkeletonBattle_image_list = [gNecroSkeletonBattleIdle_image_list, gNecroSkeletonBattleAttack_image_list, gNecroSkeletonBattleHurt_image_list,
+                              gNecroSkeletonBattleDead_image_list, gNecroSkeletonBattleAttack_image_list]
+
+#Medieval King
+gMedKingBattleIdle_image_list = [sprite_collection["medking_1_BI"].image, sprite_collection["medking_2_BI"].image,
+                   sprite_collection["medking_3_BI"].image, sprite_collection["medking_4_BI"].image,
+                    sprite_collection["medking_5_BI"].image, sprite_collection["medking_6_BI"].image,
+                    sprite_collection["medking_7_BI"].image, sprite_collection["medking_8_BI"].image]
+
+gMedKingBattleAttack_image_list = [sprite_collection["medking_1_BA"].image, sprite_collection["medking_2_BA"].image,
+                    sprite_collection["medking_3_BA"].image, sprite_collection["medking_4_BA"].image]
+
+gMedKingBattleSkill_image_list = [sprite_collection["medking_1_BS"].image, sprite_collection["medking_2_BS"].image,
+                    sprite_collection["medking_3_BS"].image, sprite_collection["medking_4_BS"].image]
+
+gMedKingBattleHurt_image_list = [sprite_collection["medking_1_BH"].image, sprite_collection["medking_2_BH"].image,
+                    sprite_collection["medking_3_BH"].image]
+
+gMedKingBattleDead_image_list = [sprite_collection["medking_1_BD"].image, sprite_collection["medking_2_BD"].image,
+                    sprite_collection["medking_3_BD"].image, sprite_collection["medking_4_BD"].image,
+                    sprite_collection["medking_5_BD"].image, sprite_collection["medking_6_BD"].image]
+
+gMedKingBattleDeadIdle_image_list = [sprite_collection["medking_6_BD"].image, sprite_collection["medking_6_BD"].image]
+
+gMedKingBattle_image_list = [gMedKingBattleIdle_image_list, gMedKingBattleAttack_image_list, gMedKingBattleHurt_image_list,
+                             gMedKingBattleDead_image_list, gMedKingBattleSkill_image_list]
+
+#Huntress
+gHuntressBattleIdle_image_list = [sprite_collection["huntress_1_BI"].image, sprite_collection["huntress_2_BI"].image,
+                    sprite_collection["huntress_3_BI"].image, sprite_collection["huntress_4_BI"].image,
+                    sprite_collection["huntress_5_BI"].image, sprite_collection["huntress_6_BI"].image,
+                    sprite_collection["huntress_7_BI"].image, sprite_collection["huntress_8_BI"].image]
+
+gHuntressBattleAttack_image_list = [sprite_collection["huntress_1_BA"].image, sprite_collection["huntress_2_BA"].image,
+                    sprite_collection["huntress_3_BA"].image, sprite_collection["huntress_4_BA"].image,
+                    sprite_collection["huntress_5_BA"].image]
+
+gHuntressBattleSkill_image_list = [sprite_collection["huntress_1_BS"].image, sprite_collection["huntress_2_BS"].image,
+                    sprite_collection["huntress_3_BS"].image, sprite_collection["huntress_4_BS"].image,
+                    sprite_collection["huntress_5_BS"].image, sprite_collection["huntress_6_BS"].image,
+                    sprite_collection["huntress_7_BS"].image, sprite_collection["huntress_7_BS"].image,
+                    sprite_collection["huntress_1_BI"].image]
+
+gHuntressBattleHurt_image_list = [sprite_collection["huntress_1_BH"].image, sprite_collection["huntress_2_BH"].image,
+                    sprite_collection["huntress_3_BH"].image]
+
+gHuntressBattleDead_image_list = [sprite_collection["huntress_1_BD"].image, sprite_collection["huntress_2_BD"].image,
+                    sprite_collection["huntress_3_BD"].image, sprite_collection["huntress_4_BD"].image,
+                    sprite_collection["huntress_5_BD"].image, sprite_collection["huntress_6_BD"].image,
+                    sprite_collection["huntress_7_BD"].image, sprite_collection["huntress_8_BD"].image]
+
+gHuntressBattleDeadIdle_image_list = [sprite_collection["huntress_8_BD"].image, sprite_collection["huntress_8_BD"].image]
+
+gHuntressBattle_image_list = [gHuntressBattleIdle_image_list, gHuntressBattleAttack_image_list, gHuntressBattleHurt_image_list,
+                             gHuntressBattleDead_image_list, gHuntressBattleSkill_image_list]
 
 gSounds = {
     'music': pygame.mixer.Sound('sounds/music.wav'),
@@ -162,7 +353,9 @@ gSounds = {
     'confirm': pygame.mixer.Sound('sounds/confirm.wav'),
     'wall_hit': pygame.mixer.Sound('sounds/wall_hit.wav'),
     'burning_card': pygame.mixer.Sound('sounds/fire-magic-6947.wav'),
-    'burning_continue': pygame.mixer.Sound('sounds/fire-winds-swoosh.wav')
+    'burning_continue': pygame.mixer.Sound('sounds/fire-winds-swoosh.wav'),
+    'water_droplets': pygame.mixer.Sound('sounds/droplets-in-a-cave.wav'),
+    'weird-mysterious': pygame.mixer.Sound('sounds/weird-mysterious-motif.wav')
 }
 
 gFonts = {
@@ -183,3 +376,4 @@ from src.states.game.RollDiceState import RollDiceState
 from src.StateMachine import StateMachine
 from src.states.game.CardState import CardState
 from src.states.game.BattleState import BattleState
+from src.states.game.HealingState import HealingState

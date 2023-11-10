@@ -130,7 +130,10 @@ class SpriteManager:
                 #flame
                 "./sprite/flame.json",
                 #card
-                 "./sprite/cards.json"
+                "./sprite/cards.json",
+                #water
+                "./sprite/water_effect.json",
+                "./sprite/water_effect2.json"
             ]
         )
 

@@ -24,6 +24,7 @@ class Character():
         self.rect = self.image.get_rect()
         self.font = pygame.font.SysFont('Times New Roman', 26)
         self.damage_text_group = Group()
+        self.reset_pos = False
 
     def add_animation_list(self, name):
         for animation in name:
@@ -56,8 +57,6 @@ class Character():
         self.damage = self.strength + self.rand
         # run enemy hurt animation
         target.hurt(self.damage)
-        #damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
-        #damage_text_group.add(damage_text)
         #set variables to attack animation
         if target.hp < 1:
             target.hp = 0
@@ -82,10 +81,6 @@ class Character():
         self.update_time = pygame.time.get_ticks()
 
     def death(self):
-        # set variables to death animation
-        # if not self.alive:
-        #     self.action = 4
-        # else:
         self.action = 3
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
@@ -98,5 +93,8 @@ class Character():
         self.update_time = pygame.time.get_ticks()
 
     def draw(self):
-        screen.blit(self.image, self.rect)
+        if self.reset_pos == False:
+            screen.blit(self.image, self.rect)
+        else:
+            pass
 

@@ -6,7 +6,59 @@ from src.states.game.RollDiceState import *
 # make change
 #card
 import random
+
 class CardState(BaseState):
+    current_step = 0
+    level = 1
+    level1 = [2,3,15,16]
+    level2 = [4,5,17,18]
+    level3 = [5,6,19,20]
+    level4 = [7,8,21,22]
+    heart = [28,29,30,31,32,33,34,35]
+    diamond = [41,42,43,44,45,46,47,48]
+    current_list = level1
+    for i in range(2):
+        x = heart.pop()
+        y = diamond.pop()
+        level1.append(x)
+        level1.append(y)
+    for i in range(2):
+        x = heart.pop()
+        y = diamond.pop()
+        level2.append(x)
+        level2.append(y)
+    for i in range(2):
+        x = heart.pop()
+        y = diamond.pop()
+        level3.append(x)
+        level3.append(y)
+    for i in range(2):
+        x = heart.pop()
+        y = diamond.pop()
+        level4.append(x)
+        level4.append(y)
+    level1.extend((13,14))
+    level2.extend((39,40))
+    level3.extend((26,27))
+    level4.extend((0,1))
+    random.shuffle(level1)
+    random.shuffle(level2)
+    random.shuffle(level3)
+    random.shuffle(level4)
+    level1.extend(range(23,26))
+    level2.extend(range(49,52))
+    level3.extend(range(36,39))
+    level4.extend(range(10,13))
+    level1.insert(0,0)
+    level2.insert(0,0)
+    level3.insert(0,0)
+    level4.insert(0,0)
+    print(level1)
+    print(level2)
+    print(level3)
+    print(level4)
+
+
     def __init__(self, state_machine):
         super(CardState, self).__init__(state_machine)
         self.bg_image = pygame.image.load("./graphics/backgroundCozyTable.png")
@@ -15,12 +67,15 @@ class CardState(BaseState):
         self.current_sprite_flame = 0
         self.flameList = flame_image_list
         #make change
+        
+        #current step
+
         self.player_X = WIDTH / 2 - 96
         self.player_Y = HEIGHT - HEIGHT / 3 + 70
         #card
         self.flameCurrentFace = 0
         self.cardList = gCard_image_list
-        random.shuffle(self.cardList)
+        #random.shuffle(self.cardList)
         self.frame_index_flame = 0
         self.current_sprite_card = 0
         self.card_stop = False
@@ -29,6 +84,13 @@ class CardState(BaseState):
         self.confirm_sound2 = gSounds['confirm']
         #text above witch
         self.small_font = pygame.font.Font('./fonts/font.ttf', 24)
+        
+    def get_current_step(self):
+        CardState.current_step+=RollDiceState.GetDice(RollDiceState)
+        if CardState.current_step>len(self.level1):
+            CardState.current_step = len(self.level1)-1
+            return(CardState.current_step)
+        return CardState.current_step
 
     def Enter(self, params):
         self.player = params['chosen']
@@ -51,21 +113,37 @@ class CardState(BaseState):
             if event.type == pygame.KEYDOWN:
                 #press to down stop card
                 if event.key == pygame.K_DOWN and not self.card_stop:
+                    print("DA step")
+                    CardState.current_step = self.get_current_step()
+                    print(CardState.current_step)
+                    print(self.level1[CardState.current_step])
+
                     self.confirm_sound.play()
                     gSounds['burning_continue'].stop()
                     self.card_stop = True
-                    print(RollDiceState.GetDice(RollDiceState))
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
                 if event.key == pygame.K_RETURN and self.card_stop:
                     # self.state_machine.Change('play')
+                    self.player.reset_pos = True
                     self.card_stop = False
                     #music
                     self.confirm_sound2.play()
                     gSounds['music'].play(-1)
                     # shuffle
-                    random.shuffle(self.cardList)
+                    if CardState.current_step==len(self.level1)-1:
+                        CardState.level += 1
+                        CardState.current_step = 0
+                        if CardState.level == 2:
+                            CardState.current_list = CardState.level2
+                        elif CardState.level == 3:
+                            CardState.current_list = CardState.level3
+                        elif CardState.level == 4:
+                            CardState.current_list = CardState.level4
+                        print("step & lvl")
+                        print(CardState.level)
+                        print(CardState.current_step)
                     self.state_machine.Change('battle', {
                         'chosen': self.player
                     })
@@ -137,7 +215,7 @@ class CardState(BaseState):
         screen.blit(gCardBack_image_list[0],(card_xOpen,HEIGHT-HEIGHT/2-200))
 
         if self.card_stop:
-            screen.blit(self.cardList[RollDiceState.GetDice(RollDiceState)-1], (card_xOpen, HEIGHT - HEIGHT / 2 - 200))
+            screen.blit(self.cardList[self.current_list[CardState.current_step]], (card_xOpen, HEIGHT - HEIGHT / 2 - 200))
         else:
             t_enter = self.small_font.render("Press 'down' to burn the card of thy fate", False, (255, 255, 255))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 - 10))

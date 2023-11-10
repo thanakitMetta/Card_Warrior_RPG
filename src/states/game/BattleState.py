@@ -17,7 +17,13 @@ class BattleState(BaseState):
         super(BattleState, self).__init__(state_machine)
         self.map = 0
         self.bg_image = pygame.image.load("./graphics/background.png")
-        self.bg_image = pygame.transform.scale(self.bg_image, (WIDTH + 5, HEIGHT + 5))
+
+        #loading BG
+        self.bg_image = pygame.transform.scale(
+            self.bg_image, (WIDTH + 5, HEIGHT + 5))
+        self.loading_bg_img = pygame.image.load("./graphics/loading_1.png")
+        self.loading_bg_img = pygame.transform.scale(self.loading_bg_img, (WIDTH + 5, HEIGHT + 5))
+        
         self.unavailable_sound = gSounds['no-select']
         self.available_sound = gSounds['select']
         self.confirm_sound = gSounds['confirm']
@@ -31,7 +37,7 @@ class BattleState(BaseState):
         self.playerResetR_Y = HEIGHT - HEIGHT / 3 - 20
         # for wizard
         self.playerResetW_X = WIDTH / 2 - 200
-        self.playerResetW_Y = HEIGHT - HEIGHT / 3 - 100
+        self.playerResetW_Y = HEIGHT - HEIGHT / 3 - 30
 
         #make change later fighter
         self.enemy = Enemy(self.map)
@@ -40,12 +46,12 @@ class BattleState(BaseState):
         self.current_fighter = 1
         self.total_fighter = 1 + len(self.enemy.enemy_list)
         self.action_cooldown = 0
-        self.action_wait_time = 80
+        self.action_wait_time = 90
         self.attack = False
         self.battle_over = 0
         self.action_count = 3
         self.enemy_alive = len(self.enemy.enemy_list)
-        self.total_turn = 0
+        self.loading = 0
 
 
 
@@ -109,6 +115,7 @@ class BattleState(BaseState):
                     # self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
                     else:
                         self.battle_over = -1
+           
 
                 # test skill key(e)
                 if event.key == pygame.K_e:
@@ -128,26 +135,24 @@ class BattleState(BaseState):
 
                     #sound
                     #reset if want player to have full hp
-                    #self.player.reset()
+                    self.player.reset()
                     self.enemy.enemy_list[0].reset()
                     self.confirm_sound.play()
                     gSounds['music'].stop()
                     gSounds['late-hours'].play(-1)
                     gSounds['campfire_fireplace'].play(-1)
+                    self.loading = 0
+                    self.player.reset_pos = True
 
                     self.state_machine.Change('roll', {
                         'chosen': self.player
                     })
 
         for index, enemy in enumerate(self.enemy.enemy_list):
-            print("pass loop")
             if self.current_fighter == 2 + index:
-                print("pass check current fighter")
                 if enemy.alive == True:
-                    print("pass check enemy alive")
                     self.action_cooldown += 1
                     if self.action_cooldown >= self.action_wait_time:
-                        print("pass check action coodown")
                         enemy.attack(self.player)
                         self.current_fighter += 1
                         self.action_cooldown = 0
@@ -173,18 +178,24 @@ class BattleState(BaseState):
         self.player.draw()
         self.playerHealth.draw(self.player.hp)
         self.player.update()
-        self.player.damage_text_group.update()
-        self.player.damage_text_group.draw(screen)
 
         self.enemy.render_enemy()
         self.enemy.draw_pointer_enemy()
-        for enemy in self.enemy.enemy_list:
-            enemy.damage_text_group.update()
-            enemy.damage_text_group.draw(screen)
-
 
         #display battle menus
         self.battle_menu.display_fighting_menu()
+
+        #loading
+        if self.loading > 70:
+            self.player.reset_pos = False
+        elif self.loading > 70 and self.player.reset_pos == False:
+            pass
+        else:
+            font  = pygame.font.Font(None, 36)
+            text = font.render('Loading...', True, (255, 255, 255))
+            screen.blit(self.loading_bg_img, (0, 0))
+            screen.blit(text, (WIDTH - 170, HEIGHT - 70))
+            self.loading += 1
 
         #make change later
         # Update frame index for animation (for instance, every 5 frames)

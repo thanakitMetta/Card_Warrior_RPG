@@ -52,7 +52,7 @@ class CharacterSelectState(BaseState):
         self.player_Y = HEIGHT - HEIGHT / 3 - 20
         # for wizard and warrior
         self.playerW_X = WIDTH / 2 - 200
-        self.playerW_Y = HEIGHT - HEIGHT / 3 - 100
+        self.playerW_Y = HEIGHT - HEIGHT / 3 - 40
 
     def Enter(self, params):
         #make change

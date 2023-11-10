@@ -9,12 +9,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Function to display text character by character
 class TextGenerator:
-    def __init__(self, text, font, x, y, delay=0.1):
+    def __init__(self, text, font, x, y, delay=0.1, color=(255, 255, 255)):
         self.text = text
         self.font = font
         self.x = x
         self.y = y
         self.delay = delay
+        self.color = color
         self.text_index = 0
         self.fully_displayed = False
         self.typing_sound = gSounds['Retro_Single_v6']
@@ -26,7 +27,7 @@ class TextGenerator:
             #sound
             self.typing_sound.play()
             partial_text = self.text[:self.text_index]
-            text_surface = self.font.render(partial_text, True, (255, 255, 255))
+            text_surface = self.font.render(partial_text, True, self.color)
             screen.blit(text_surface, (self.x, self.y))
             pygame.display.update()
 
