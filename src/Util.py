@@ -133,7 +133,35 @@ class SpriteManager:
                 "./sprite/cards.json",
                 #water
                 "./sprite/water_effect.json",
-                "./sprite/water_effect2.json"
+                "./sprite/water_effect2.json",
+                #monsters
+                "./sprite/SkeletonAnimationBattleIdle.json",
+                "./sprite/SkeletonAnimationBattleAttack.json",
+                "./sprite/SkeletonAnimationBattleDead.json",
+                "./sprite/SkeletonAnimationBattleHurt.json",
+                "./sprite/SkeletonAnimationBattleSkill.json",
+                "./sprite/NightBorneAnimationBattleIdle.json",
+                "./sprite/NightBorneAnimationBattleAttack.json",
+                "./sprite/NightBorneAnimationBattleDead.json",
+                "./sprite/NightBorneAnimationBattleHurt.json",
+                "./sprite/NightBorneAnimationBattleSkill.json",
+                "./sprite/NightBorneAnimationBattleDeadIdle.json",
+                "./sprite/NecroSkeletonAnimationBattleIdle.json",
+                "./sprite/NecroSkeletonAnimationBattleAttack.json",
+                "./sprite/NecroSkeletonAnimationBattleHurt.json",
+                "./sprite/NecroSkeletonAnimationBattleDead.json",
+                "./sprite/MedKingAnimationBattleHurt.json",
+                "./sprite/MedKingAnimationBattleAttack.json",
+                "./sprite/MedKingAnimationBattleIdle.json",
+                "./sprite/MedKingAnimationBattleDeadIdle.json",
+                "./sprite/MedKingAnimationBattleSkill.json",
+                "./sprite/MedKingAnimationBattleDead.json",
+                "./sprite/HuntressAnimationBattleHurt.json",
+                "./sprite/HuntressAnimationBattleAttack.json",
+                "./sprite/HuntressAnimationBattleIdle.json",
+                "./sprite/HuntressAnimationBattleDeadIdle.json",
+                "./sprite/HuntressAnimationBattleSkill.json",
+                "./sprite/HuntressAnimationBattleDead.json"
             ]
         )
 
