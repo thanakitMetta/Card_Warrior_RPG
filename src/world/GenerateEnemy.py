@@ -23,6 +23,8 @@ class Enemy():
             self.enemy_list.append(Knight1(x = WIDTH / 2 - 96 + 500))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
+        elif self.map_number == 1:
+            pass
                 
     def render_enemy(self):
         if self.map_number == 0:

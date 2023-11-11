@@ -56,6 +56,12 @@ class HealingState(BaseState):
         text = " The ethereal river has been discovered. The vitality surges within you"
         self.generator = TextGenerator(text, font, 50, HEIGHT / 2 + 200, 0.1, (204, 204, 0))
 
+        #loading BG
+        self.loading = 0
+        self.loading_bg_img = pygame.image.load("./graphics/loading_4.png")
+        self.loading_bg_img = pygame.transform.scale(self.loading_bg_img, (WIDTH + 5, HEIGHT + 5))
+
+
     def Enter(self, params):
         self.player = params['chosen']
         if self.player.Class == "Rogue":
@@ -111,6 +117,7 @@ class HealingState(BaseState):
                     gSounds['late-hours'].play(-1)
                     gSounds['campfire_fireplace'].play(-1)
                     # shuffle
+                    self.loading = 0
                     self.state_machine.Change('roll', {
                         'chosen': self.player
                     })
@@ -181,6 +188,18 @@ class HealingState(BaseState):
         # chosen character
         self.player.draw()
         self.player.update()
+
+        #loading
+        if self.loading > 70:
+            self.player.reset_pos = False
+        elif self.loading > 70 and self.player.reset_pos == False:
+            pass
+        else:
+            font  = pygame.font.Font('./fonts/font.ttf', 28)
+            text = font.render('Loading...', True, (255, 255, 255))
+            screen.blit(self.loading_bg_img, (0, 0))
+            screen.blit(text, (WIDTH - 170, HEIGHT - 70))
+            self.loading += 1
 
     def Exit(self):
         pass

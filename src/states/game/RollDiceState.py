@@ -40,6 +40,11 @@ class RollDiceState(BaseState):
         #text above witch
         self.small_font = pygame.font.Font('./fonts/font.ttf', 24)
 
+        #loading BG
+        self.loading = 0
+        self.loading_bg_img = pygame.image.load("./graphics/loading_3.png")
+        self.loading_bg_img = pygame.transform.scale(self.loading_bg_img, (WIDTH + 5, HEIGHT + 5))
+
     def Enter(self, params):
         #make change
         self.player = params['chosen']
@@ -82,6 +87,7 @@ class RollDiceState(BaseState):
                     #gSounds['music'].play(-1)
                     # shuffle
                     pygame.time.delay(1000)
+                    self.loading = 0
                     self.state_machine.Change('card', {
                         'chosen': self.player
                     })
@@ -161,6 +167,18 @@ class RollDiceState(BaseState):
         #dice_img = pygame.transform.scale(self.diceList[self.current_sprite_dice], (100, 100))
             screen.blit(dice_img, (WIDTH / 2 - 80, HEIGHT - HEIGHT / 2 - 60))
         #self.frame_index_dice += 1
+
+        #loading
+        if self.loading > 70:
+            self.player.reset_pos = False
+        elif self.loading > 70 and self.player.reset_pos == False:
+            pass
+        else:
+            font  = pygame.font.Font('./fonts/font.ttf', 28)
+            text = font.render('Loading...', True, (255, 255, 255))
+            screen.blit(self.loading_bg_img, (0, 0))
+            screen.blit(text, (WIDTH - 170, HEIGHT - 70))
+            self.loading += 1
 
     def Exit(self):
         pass

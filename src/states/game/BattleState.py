@@ -17,10 +17,10 @@ class BattleState(BaseState):
         super(BattleState, self).__init__(state_machine)
         self.map = 0
         self.bg_image = pygame.image.load("./graphics/background.png")
-
-        #loading BG
         self.bg_image = pygame.transform.scale(
             self.bg_image, (WIDTH + 5, HEIGHT + 5))
+
+        #loading BG
         self.loading_bg_img = pygame.image.load("./graphics/loading_1.png")
         self.loading_bg_img = pygame.transform.scale(self.loading_bg_img, (WIDTH + 5, HEIGHT + 5))
         
@@ -135,8 +135,9 @@ class BattleState(BaseState):
 
                     #sound
                     #reset if want player to have full hp
-                    self.player.reset()
-                    self.enemy.enemy_list[0].reset()
+                    for e in self.enemy.enemy_list:
+                        e.reset()
+                    
                     self.confirm_sound.play()
                     gSounds['music'].stop()
                     gSounds['late-hours'].play(-1)
@@ -191,7 +192,7 @@ class BattleState(BaseState):
         elif self.loading > 70 and self.player.reset_pos == False:
             pass
         else:
-            font  = pygame.font.Font(None, 36)
+            font  = pygame.font.Font('./fonts/font.ttf', 28)
             text = font.render('Loading...', True, (255, 255, 255))
             screen.blit(self.loading_bg_img, (0, 0))
             screen.blit(text, (WIDTH - 170, HEIGHT - 70))
