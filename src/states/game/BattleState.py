@@ -61,6 +61,14 @@ class BattleState(BaseState):
         self.battle_menu = BattleMenu(self.player.action_list)
         #make change later fighter
         self.total_step = self.player.step_count
+        
+        if self.total_step > 6:
+            print(f"Total sttep = '{self.total_step}")  
+            self.map = 1
+            self.enemy.generate_enemy()
+        else:
+            print(f"Total sttep = '{self.total_step}")   
+
         self.enemy = Enemy(self.map)
 
         #game variable
@@ -76,13 +84,7 @@ class BattleState(BaseState):
         pass
 
     def update(self, dt, events):
-        #make change
-        if self.total_step > 6:
-            print(f"Total sttep = '{self.total_step}")  
-            self.map = 1
-            self.enemy = Enemy(self.map)
-        else:
-            print(f"Total sttep = '{self.total_step}")       
+        #make change    
 
         for event in events:
             if event.type == pygame.QUIT:
