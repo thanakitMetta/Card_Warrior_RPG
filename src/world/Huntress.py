@@ -6,7 +6,7 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Huntress(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
+    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 60):
         super().__init__(name = gHuntressBattle_image_list, max_hp = 60, strength = 4)
         self.x = x
         self.y = y
@@ -34,6 +34,6 @@ class Huntress(Character):
         self.update_time = pygame.time.get_ticks()
 
     def draw(self):
-        screen.blit(pygame.transform.flip(self.image, True, False), self.rect)
+        screen.blit(self.image, self.rect)
 
 

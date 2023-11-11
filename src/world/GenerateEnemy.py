@@ -47,7 +47,7 @@ class Enemy():
         for enemy in self.enemy_list:
             enemy.update()
             enemy.draw()
-        
+                    
         for i in range(0, len(self.enemy_health_list), 1):
             self.enemy_health_list[i].draw(self.enemy_list[i].hp)
 

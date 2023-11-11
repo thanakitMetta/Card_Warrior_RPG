@@ -11,20 +11,18 @@ from src.world.HealthBar import HealthBar
 from src.world.Rogue import Rogue
 from src.world.BattleMenu import BattleMenu
 from src.world.GenerateEnemy import Enemy
-from src.states.game.CardState import *
 
 class BattleState(BaseState):
     def __init__(self, state_machine):
         super(BattleState, self).__init__(state_machine)
-
-        if CardState.current_step > 6:
-            self.map = 1
-        else:
-            self.map = 0
-            
-        self.bg_image = pygame.image.load("./graphics/background.png")
-        self.bg_image = pygame.transform.scale(
-            self.bg_image, (WIDTH + 5, HEIGHT + 5))
+        #map image
+        self.map = 0
+        self.bg_image1 = pygame.image.load("./graphics/Battleground3.png")
+        self.bg_image1 = pygame.transform.scale(
+            self.bg_image1, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image2 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image2 = pygame.transform.scale(
+            self.bg_image2, (WIDTH + 5, HEIGHT + 5))
 
         #loading BG
         self.loading_bg_img = pygame.image.load("./graphics/loading_1.png")
@@ -45,19 +43,6 @@ class BattleState(BaseState):
         self.playerResetW_X = WIDTH / 2 - 200
         self.playerResetW_Y = HEIGHT - HEIGHT / 3 - 30
 
-        #make change later fighter
-        self.enemy = Enemy(self.map)
-
-        #game variable
-        self.current_fighter = 1
-        self.total_fighter = 1 + len(self.enemy.enemy_list)
-        self.action_cooldown = 0
-        self.action_wait_time = 90
-        self.attack = False
-        self.battle_over = 0
-        self.action_count = 3
-        self.enemy_alive = len(self.enemy.enemy_list)
-        self.loading = 0
 
 
 
@@ -74,10 +59,30 @@ class BattleState(BaseState):
             self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30,
                                           self.player.hp, self.player.max_hp)
         self.battle_menu = BattleMenu(self.player.action_list)
+        #make change later fighter
+        self.total_step = self.player.step_count
+        self.enemy = Enemy(self.map)
+
+        #game variable
+        self.current_fighter = 1
+        self.total_fighter = 1 + len(self.enemy.enemy_list)
+        self.action_cooldown = 0
+        self.action_wait_time = 90
+        self.attack = False
+        self.battle_over = 0
+        self.action_count = 3
+        self.enemy_alive = len(self.enemy.enemy_list)
+        self.loading = 0
         pass
 
     def update(self, dt, events):
         #make change
+        if self.total_step > 6:
+            print(f"Total sttep = '{self.total_step}")  
+            self.map = 1
+            self.enemy = Enemy(self.map)
+        else:
+            print(f"Total sttep = '{self.total_step}")       
 
         for event in events:
             if event.type == pygame.QUIT:
@@ -180,7 +185,10 @@ class BattleState(BaseState):
 
     def render(self, screen):
         #make change
-        screen.blit(self.bg_image, (0, 0))
+        if self.map == 0:
+            screen.blit(self.bg_image1, (0, 0))
+        elif self.map == 1:
+            screen.blit(self.bg_image2, (0, 0))
         #fighter & health
         self.player.draw()
         self.playerHealth.draw(self.player.hp)

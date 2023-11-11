@@ -66,6 +66,7 @@ class CardState(BaseState):
             self.bg_image, (WIDTH + 5, HEIGHT + 5))
         self.current_sprite_flame = 0
         self.flameList = flame_image_list
+        
         #make change
         
         #current step
@@ -115,6 +116,7 @@ class CardState(BaseState):
                 if event.key == pygame.K_DOWN and not self.card_stop:
                     print("DA step")
                     CardState.current_step = self.get_current_step()
+                    self.player.step_count = CardState.current_step
                     print(CardState.current_step)
                     print(self.level1[CardState.current_step])
 

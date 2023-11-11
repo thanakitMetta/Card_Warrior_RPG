@@ -14,6 +14,7 @@ class Character():
         self.max_hp = max_hp
         self.hp = max_hp
         self.strength = strength
+        self.step_count = 0
         self.alive = True
         self.animation_list = []
         self.frame_index = 0
@@ -97,4 +98,6 @@ class Character():
             screen.blit(self.image, self.rect)
         else:
             pass
+        self.damage_text_group.update()
+        self.damage_text_group.draw(screen)
 
