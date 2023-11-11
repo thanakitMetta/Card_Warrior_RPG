@@ -2,6 +2,7 @@ import time
 import pygame
 from src.constants import *
 from src.world.Knight1 import Knight1
+from src.world.Huntress import Huntress
 from src.world.HealthBar import HealthBar
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -24,18 +25,31 @@ class Enemy():
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         elif self.map_number == 1:
-            pass
+            #Huntress number 1
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 300))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            #Huntress number 2
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 500))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+            
                 
     def render_enemy(self):
-        if self.map_number == 0:
-            #enemy1
-            self.enemy_list[0].update()
-            self.enemy_list[0].draw()
-            self.enemy_health_list[0].draw(self.enemy_list[0].hp)
-            #enemy2
-            self.enemy_list[1].update()
-            self.enemy_list[1].draw()
-            self.enemy_health_list[1].draw(self.enemy_list[1].hp)
+        # if self.map_number == 0:
+        #     #enemy1
+        #     self.enemy_list[0].update()
+        #     self.enemy_list[0].draw()
+        #     self.enemy_health_list[0].draw(self.enemy_list[0].hp)
+        #     #enemy2
+        #     self.enemy_list[1].update()
+        #     self.enemy_list[1].draw()
+        #     self.enemy_health_list[1].draw(self.enemy_list[1].hp)
+        for enemy in self.enemy_list:
+            enemy.update()
+            enemy.draw()
+        
+        for i in range(0, len(self.enemy_health_list), 1):
+            self.enemy_health_list[i].draw(self.enemy_list[i].hp)
 
     def draw_pointer_enemy(self):
         if self.selected_enemy_index > 0:

@@ -11,11 +11,17 @@ from src.world.HealthBar import HealthBar
 from src.world.Rogue import Rogue
 from src.world.BattleMenu import BattleMenu
 from src.world.GenerateEnemy import Enemy
+from src.states.game.CardState import *
 
 class BattleState(BaseState):
     def __init__(self, state_machine):
         super(BattleState, self).__init__(state_machine)
-        self.map = 0
+
+        if CardState.current_step > 6:
+            self.map = 1
+        else:
+            self.map = 0
+            
         self.bg_image = pygame.image.load("./graphics/background.png")
         self.bg_image = pygame.transform.scale(
             self.bg_image, (WIDTH + 5, HEIGHT + 5))
