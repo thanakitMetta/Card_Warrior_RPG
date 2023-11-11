@@ -87,7 +87,6 @@ class RollDiceState(BaseState):
                     #gSounds['music'].play(-1)
                     # shuffle
                     pygame.time.delay(1000)
-                    #add loading parameter
                     self.loading = 0
                     self.state_machine.Change('card', {
                         'chosen': self.player

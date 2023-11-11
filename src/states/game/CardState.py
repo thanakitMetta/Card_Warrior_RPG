@@ -9,6 +9,7 @@ import random
 
 class CardState(BaseState):
     current_step = 0
+    current_card = 0
     level = 1
     level1 = [2,3,15,16]
     level2 = [4,5,17,18]
@@ -16,6 +17,8 @@ class CardState(BaseState):
     level4 = [7,8,21,22]
     heart = [28,29,30,31,32,33,34,35]
     diamond = [41,42,43,44,45,46,47,48]
+    random.shuffle(heart)
+    random.shuffle(diamond)
     current_list = level1
     for i in range(2):
         x = heart.pop()
@@ -57,7 +60,8 @@ class CardState(BaseState):
     print(level2)
     print(level3)
     print(level4)
-
+    heart = [28,29,30,31,32,33,34,35]
+    diamond = [41,42,43,44,45,46,47,48]
 
     def __init__(self, state_machine):
         super(CardState, self).__init__(state_machine)
@@ -66,11 +70,8 @@ class CardState(BaseState):
             self.bg_image, (WIDTH + 5, HEIGHT + 5))
         self.current_sprite_flame = 0
         self.flameList = flame_image_list
-        
         #make change
-        
         #current step
-
         self.player_X = WIDTH / 2 - 96
         self.player_Y = HEIGHT - HEIGHT / 3 + 70
         #card
@@ -85,11 +86,11 @@ class CardState(BaseState):
         self.confirm_sound2 = gSounds['confirm']
         #text above witch
         self.small_font = pygame.font.Font('./fonts/font.ttf', 24)
-        
+
     def get_current_step(self):
         CardState.current_step+=RollDiceState.GetDice(RollDiceState)
         if CardState.current_step>len(self.level1):
-            CardState.current_step = len(self.level1)-1
+            CardState.current_step = 13
             return(CardState.current_step)
         return CardState.current_step
 
@@ -106,6 +107,9 @@ class CardState(BaseState):
             self.player.Y = self.player_Y - 60
         pass
 
+    def get_current_card(self):
+        return(self.current_card)
+
     def update(self, dt, events):
         for event in events:
             if event.type == pygame.QUIT:
@@ -119,6 +123,8 @@ class CardState(BaseState):
                     self.player.step_count = CardState.current_step
                     print(CardState.current_step)
                     print(self.level1[CardState.current_step])
+                    print(self.current_list[CardState.current_step])
+                    CardState.current_card = self.current_list[CardState.current_step]
 
                     self.confirm_sound.play()
                     gSounds['burning_continue'].stop()
@@ -128,7 +134,6 @@ class CardState(BaseState):
                     sys.exit()
                 if event.key == pygame.K_RETURN and self.card_stop:
                     # self.state_machine.Change('play')
-                    self.player.reset_pos = True
                     self.card_stop = False
                     #music
                     self.confirm_sound2.play()
@@ -146,9 +151,18 @@ class CardState(BaseState):
                         print("step & lvl")
                         print(CardState.level)
                         print(CardState.current_step)
-                    self.state_machine.Change('battle', {
+                    if self.current_list[CardState.current_step] in self.heart:
+                        self.state_machine.Change('healing', {
                         'chosen': self.player
-                    })
+                        })
+                    elif self.current_list[CardState.current_step] in self.diamond:
+                        self.state_machine.Change('looting', {
+                        'chosen': self.player
+                        })
+                    else:
+                        self.state_machine.Change('battle', {
+                            'chosen': self.player
+                        })
 
     def render(self, screen):
         screen.blit(self.bg_image, (0, 0))

@@ -161,7 +161,12 @@ class SpriteManager:
                 "./sprite/HuntressAnimationBattleIdle.json",
                 "./sprite/HuntressAnimationBattleDeadIdle.json",
                 "./sprite/HuntressAnimationBattleSkill.json",
-                "./sprite/HuntressAnimationBattleDead.json"
+                "./sprite/HuntressAnimationBattleDead.json",
+                #item
+                "./sprite/item_sprite/Dark.json",
+                "./sprite/item_sprite/Gravity.json",
+                "./sprite/item_sprite/Holy.json",
+                "./sprite/item_sprite/Pistol.json"
             ]
         )
 

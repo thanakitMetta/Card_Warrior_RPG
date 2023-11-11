@@ -211,182 +211,182 @@
             "name":"AH",
             "x":0,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"2H",
             "x":65,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"3H",
             "x":130,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"4H",
             "x":195,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"5H",
             "x":260,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"6H",
             "x":325,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"7H",
             "x":390,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"8H",
             "x":455,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"9H",
             "x":520,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"10H",
             "x":585,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"JH",
             "x":650,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"QH",
             "x":715,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"KH",
-            "x":780,
+            "x":770,
             "y":65,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"AD",
             "x":0,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"2D",
             "x":65,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"3D",
             "x":130,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"4D",
             "x":195,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"5D",
             "x":260,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"6D",
             "x":325,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"7D",
             "x":390,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"8D",
             "x":455,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"9D",
             "x":520,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"10D",
             "x":585,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"JD",
             "x":650,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"QD",
             "x":715,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         },
         {
             "name":"KD",
-            "x":780,
+            "x":770,
             "y":195,
-            "scalefactor":2,
+            "scalefactor":3,
             "colorKey":-1
         }
     ]

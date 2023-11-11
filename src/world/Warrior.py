@@ -11,6 +11,10 @@ class Warrior(Character):
         self.action_list = ["W (Attack)", "Q (______)", "E (_______)"]
         self.evade = False
         self.rect.center = (self.X, self.Y)
+        self.action_count = 3
+        self.skill_cooldown_1 = 0
+        self.skill_cooldown_2 = 0
+        self.acquired_joker = False
 
     def update(self):
         super().update()
@@ -21,7 +25,7 @@ class Warrior(Character):
         self.rect.center = (self.X, self.Y)
 
     def attack(self, target):
-        self.rect.center = (self.X, self.Y)
+        self.rect.center = (self.X, self.Y+120)
         super().attack(target)
 
     
@@ -41,6 +45,7 @@ class Warrior(Character):
 
     def reset(self):
         super().reset()
+        self.action_count = 3
     
     def draw(self):
         super().draw()

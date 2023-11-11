@@ -128,6 +128,7 @@ gRogueBattle_image_list = [gRogueBattleIdle_image_list, gRogueBattleAttack_image
                            gRogueBattleDead_image_list, gRogueBattleSkill_image_list]
 # end of rogue battle sprite
 
+#knight1
 gKnightBattleAttack_image_list = [sprite_collection["knight_1_BA"].image, sprite_collection["knight_2_BA"].image, 
                                   sprite_collection["knight_3_BA"].image, sprite_collection["knight_4_BA"].image,
                                   sprite_collection["knight_5_BA"].image]
@@ -342,6 +343,44 @@ gHuntressBattleDeadIdle_image_list = [sprite_collection["huntress_8_BD"].image, 
 gHuntressBattle_image_list = [gHuntressBattleIdle_image_list, gHuntressBattleAttack_image_list, gHuntressBattleHurt_image_list,
                              gHuntressBattleDead_image_list, gHuntressBattleSkill_image_list]
 
+#items list
+#pistol
+gLwPistol_image_list = [sprite_collection["pistol_1"].image, sprite_collection["pistol_2"].image,
+                    sprite_collection["pistol_3"].image, sprite_collection["pistol_4"].image,
+                    sprite_collection["pistol_5"].image, sprite_collection["pistol_6"].image,
+                    sprite_collection["pistol_7"].image, sprite_collection["pistol_8"].image,
+                    sprite_collection["pistol_9"].image, sprite_collection["pistol_10"].image,
+                    sprite_collection["pistol_11"].image, sprite_collection["pistol_12"].image]
+#gravity
+gItemGravity_image_list = [sprite_collection["gravity_1"].image, sprite_collection["gravity_2"].image,
+                    sprite_collection["gravity_3"].image, sprite_collection["gravity_4"].image,
+                    sprite_collection["gravity_5"].image, sprite_collection["gravity_6"].image,
+                    sprite_collection["gravity_7"].image, sprite_collection["gravity_8"].image,
+                    sprite_collection["gravity_9"].image, sprite_collection["gravity_10"].image,
+                    sprite_collection["gravity_11"].image, sprite_collection["gravity_12"].image,
+                    sprite_collection["gravity_13"].image, sprite_collection["gravity_14"].image,
+                    sprite_collection["gravity_15"].image, sprite_collection["gravity_16"].image,
+                    sprite_collection["gravity_17"].image, sprite_collection["gravity_18"].image,
+                    sprite_collection["gravity_19"].image, sprite_collection["gravity_20"].image]
+#Holy
+gItemHoly_image_list = [sprite_collection["holy_1"].image, sprite_collection["holy_2"].image,
+                    sprite_collection["holy_3"].image, sprite_collection["holy_4"].image,
+                    sprite_collection["holy_5"].image, sprite_collection["holy_6"].image,
+                    sprite_collection["holy_7"].image, sprite_collection["holy_8"].image,
+                    sprite_collection["holy_9"].image, sprite_collection["holy_10"].image,
+                    sprite_collection["holy_11"].image, sprite_collection["holy_12"].image,
+                    sprite_collection["holy_13"].image, sprite_collection["holy_14"].image,
+                    sprite_collection["holy_15"].image, sprite_collection["holy_16"].image]
+#Dark
+gItemDark_image_list = [sprite_collection["dark_1"].image, sprite_collection["dark_2"].image,
+                    sprite_collection["dark_3"].image, sprite_collection["dark_4"].image,
+                    sprite_collection["dark_5"].image, sprite_collection["dark_6"].image,
+                    sprite_collection["dark_7"].image, sprite_collection["dark_8"].image,
+                    sprite_collection["dark_9"].image, sprite_collection["dark_10"].image,
+                    sprite_collection["dark_11"].image, sprite_collection["dark_12"].image,
+                    sprite_collection["dark_13"].image, sprite_collection["dark_14"].image,
+                    sprite_collection["dark_15"].image, sprite_collection["dark_16"].image]
+
 gSounds = {
     'music': pygame.mixer.Sound('sounds/music.wav'),
     #extra
@@ -355,7 +394,9 @@ gSounds = {
     'burning_card': pygame.mixer.Sound('sounds/fire-magic-6947.wav'),
     'burning_continue': pygame.mixer.Sound('sounds/fire-winds-swoosh.wav'),
     'water_droplets': pygame.mixer.Sound('sounds/droplets-in-a-cave.wav'),
-    'weird-mysterious': pygame.mixer.Sound('sounds/weird-mysterious-motif.wav')
+    'weird-mysterious': pygame.mixer.Sound('sounds/weird-mysterious-motif.wav'),
+    'door-creaking': pygame.mixer.Sound('sounds/door-creaking.wav'),
+    'mystery_unfold': pygame.mixer.Sound('sounds/mystery_unfold.wav')
 }
 
 gFonts = {
@@ -377,3 +418,4 @@ from src.StateMachine import StateMachine
 from src.states.game.CardState import CardState
 from src.states.game.BattleState import BattleState
 from src.states.game.HealingState import HealingState
+from src.states.game.LootingState import LootingState

@@ -55,10 +55,10 @@ class Enemy():
         if self.selected_enemy_index > 0:
             if self.selected_enemy_index == 1:
                 self.arrow_x = self.enemy_list[0].x
-                self.arrow_y = self.enemy_list[0].y + 120
-                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)])
+                self.arrow_y = self.enemy_list[0].y - 100
+                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
             elif self.selected_enemy_index == 2:
                 self.arrow_x = self.enemy_list[1].x
-                self.arrow_y = self.enemy_list[1].y + 120
-                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y + 20), (self.arrow_x - 10, self.arrow_y + 20)])
+                self.arrow_y = self.enemy_list[1].y - 100
+                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
 

@@ -61,15 +61,15 @@ class BattleState(BaseState):
         self.battle_menu = BattleMenu(self.player.action_list)
         #make change later fighter
         self.total_step = self.player.step_count
-        
-        if self.total_step > 6:
-            print(f"Total sttep = '{self.total_step}")  
-            self.map = 1
-            self.enemy.generate_enemy()
-        else:
-            print(f"Total sttep = '{self.total_step}")   
 
-        self.enemy = Enemy(self.map)
+        if self.total_step > 6:
+            print(f"Total sttep = {self.total_step}")  
+            self.map = 1
+            self.enemy = Enemy(self.map)
+        else:
+            self.enemy = Enemy(self.map)
+            print(f"Total sttep = {self.total_step}")   
+
 
         #game variable
         self.current_fighter = 1
@@ -77,8 +77,9 @@ class BattleState(BaseState):
         self.action_cooldown = 0
         self.action_wait_time = 90
         self.attack = False
+        self.skill_1 = False
+        self.skill_2 = False
         self.battle_over = 0
-        self.action_count = 3
         self.enemy_alive = len(self.enemy.enemy_list)
         self.loading = 0
         pass
@@ -110,31 +111,73 @@ class BattleState(BaseState):
                     if self.player.alive == True:
                         if self.current_fighter == 1:
                             self.action_cooldown += 1
-                            print(self.action_cooldown)
+                            print(f"Action cooldown = {self.action_cooldown}")
                             if self.attack == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
-                                if self.action_count > 1:
+                                if self.player.action_count > 1:
                                     self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
-                                    self.action_count -= 1
+                                    self.player.action_count -= 1
                                     self.action_cooldown = 0
                                 else:
                                     self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
-                                    self.action_count -= 1
+                                    self.player.action_count -= 1
                                     self.current_fighter += 1
                                     self.action_cooldown = 0
                             else:
                                 pass
-
-
-                    # self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                        else:
+                            pass
                     else:
                         self.battle_over = -1
            
 
-                # test skill key(e)
-                if event.key == pygame.K_e:
-                    self.player.skill()
+                # test skill key(q)
+                elif event.key == pygame.K_q:
+                    self.skill_1 = True
+                    if self.player.alive == True:
+                        if self.current_fighter == 1:
+                            self.action_cooldown += 1
+                            print(f"Action cooldown = {self.action_cooldown}")
+                            if self.skill_1 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_1 == 0:
+                                if self.player.action_count > 1:
+                                    self.player.skill_1()
+                                    self.player.action_count -= 1
+                                    self.action_cooldown = 0
+                                else:
+                                    self.player.skill_1()
+                                    self.player.action_count -= 1
+                                    self.current_fighter += 1
+                                    self.action_cooldown = 0
+                            else:
+                                pass
+                        else:
+                            pass
+                    else:
+                        self.battle_over = -1
+                #test skill key(e)
+                elif event.key == pygame.K_e:
+                    self.skill_2 = True
+                    if self.player.alive == True:
+                        if self.current_fighter == 1:
+                            self.action_cooldown += 1
+                            print(f"Action cooldown = {self.action_cooldown}")
+                            if self.skill_2 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_2 == 0:
+                                if self.player.action_count > 1:
+                                    self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                    self.player.action_count -= 1
+                                    self.action_cooldown = 0
+                                else:
+                                    self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                    self.player.action_count -= 1
+                                    self.current_fighter += 1
+                                    self.action_cooldown = 0
+                            else:
+                                pass
+                        else:
+                            pass
+                    else:
+                        self.battle_over = -1
 
-                if event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RETURN:
                     # update player position
                     if self.player.Class == "Rogue":
                         self.player.X = self.playerResetR_X
@@ -175,7 +218,13 @@ class BattleState(BaseState):
             else:
                 if self.current_fighter > self.total_fighter:
                     self.current_fighter = 1 
-                    self.action_count = 3           
+
+        if self.player.action_count == 0:
+            self.player.action_count = 3
+            if self.player.skill_cooldown_1 > 0:
+                self.player.skill_cooldown_1 -= 1
+            if self.player.skill_cooldown_2 > 0:
+                self.player.skill_cooldown_2 -= 1                
     
 
     def is_enemy_alive(self):
@@ -198,9 +247,21 @@ class BattleState(BaseState):
 
         self.enemy.render_enemy()
         self.enemy.draw_pointer_enemy()
-
+        font  = pygame.font.Font('./fonts/font.ttf', 30)
         #display battle menus
         self.battle_menu.display_fighting_menu()
+
+        #display skill cooldown
+        skill_1_cooldown = font.render(('CD: ('+str(self.player.skill_cooldown_1)+'turn)'), True, (255, 255, 255))
+        screen.blit(skill_1_cooldown, (210, 320))
+
+        skill_2_cooldown = font.render(('CD: ('+str(self.player.skill_cooldown_2)+'turn)'), True, (255, 255, 255))
+        screen.blit(skill_2_cooldown, (210, 360))
+
+
+        #display action count
+        total_turn_text = font.render(('Action: '+str(self.player.action_count)), True, (255, 255, 255))
+        screen.blit(total_turn_text, (WIDTH - 170, HEIGHT - 70))
 
         #loading
         if self.loading > 70:
@@ -213,6 +274,9 @@ class BattleState(BaseState):
             screen.blit(self.loading_bg_img, (0, 0))
             screen.blit(text, (WIDTH - 170, HEIGHT - 70))
             self.loading += 1
+
+        
+
 
         #make change later
         # Update frame index for animation (for instance, every 5 frames)

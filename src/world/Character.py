@@ -15,6 +15,7 @@ class Character():
         self.hp = max_hp
         self.strength = strength
         self.step_count = 0
+        self.current_map = 0
         self.alive = True
         self.animation_list = []
         self.frame_index = 0
@@ -26,6 +27,8 @@ class Character():
         self.font = pygame.font.SysFont('Times New Roman', 26)
         self.damage_text_group = Group()
         self.reset_pos = False
+        self.prev_strength = strength
+        self.evade = True
 
     def add_animation_list(self, name):
         for animation in name:
@@ -75,10 +78,13 @@ class Character():
         self.update_time = pygame.time.get_ticks()
 
     def hurt(self, damage):
+        if self.evade == True:
+            damage = 0
         self.hp -= damage
         # set variables to hurt animation
         self.action = 2
         self.frame_index = 0
+        self.evade = False
         self.update_time = pygame.time.get_ticks()
 
     def death(self):
