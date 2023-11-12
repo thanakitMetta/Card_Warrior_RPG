@@ -52,13 +52,19 @@ class Enemy():
             self.enemy_health_list[i].draw(self.enemy_list[i].hp)
 
     def draw_pointer_enemy(self):
-        if self.selected_enemy_index > 0:
-            if self.selected_enemy_index == 1:
-                self.arrow_x = self.enemy_list[0].x
-                self.arrow_y = self.enemy_list[0].y - 100
-                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
-            elif self.selected_enemy_index == 2:
-                self.arrow_x = self.enemy_list[1].x
-                self.arrow_y = self.enemy_list[1].y - 100
-                pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
+        if len(self.enemy_list) > 1:
+            if self.selected_enemy_index > 0:
+                if self.selected_enemy_index == 1:
+                    self.arrow_x = self.enemy_list[0].x
+                    self.arrow_y = self.enemy_list[0].y - 100
+                    pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
+                elif self.selected_enemy_index == 2:
+                    self.arrow_x = self.enemy_list[1].x
+                    self.arrow_y = self.enemy_list[1].y - 100
+                    pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
+        else:
+            self.arrow_x = self.enemy_list[0].x
+            self.arrow_y = self.enemy_list[0].y - 100
+            pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
+            
 
