@@ -172,11 +172,11 @@ class CardState(BaseState):
                         self.state_machine.Change('looting', {
                         'chosen': self.player
                         })
-                    # elif self.current_list[CardState.current_step] in self.A2_list:
-                    #     print(self.current_list[CardState.current_step])
-                    #     self.state_machine.Change('meeting', {
-                    #     'chosen': self.player
-                    #     })
+                    elif self.current_list[CardState.current_step] in self.A2_list:
+                        print(self.current_list[CardState.current_step])
+                        self.state_machine.Change('meeting', {
+                        'chosen': self.player
+                        })
                     else:
                         self.state_machine.Change('battle', {
                             'chosen': self.player

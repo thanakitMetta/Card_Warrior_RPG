@@ -168,7 +168,17 @@ class SpriteManager:
                 "./sprite/item_sprite/Dark.json",
                 "./sprite/item_sprite/Gravity.json",
                 "./sprite/item_sprite/Holy.json",
-                "./sprite/item_sprite/Pistol.json"
+                "./sprite/item_sprite/Pistol.json",
+                "./sprite/item_sprite/ice.json",
+                "./sprite/item_sprite/Thunder.json",
+                "./sprite/item_sprite/Water.json",
+                "./sprite/item_sprite/Joker.json",
+                "./sprite/item_sprite/Sword.json",
+                "./sprite/item_sprite/Scorpion.json",
+                "./sprite/item_sprite/Worm.json",
+                "./sprite/item_sprite/Spider.json",
+                #demon hunter
+                "./sprite/DhunterAnimationIdle.json"
             ]
         )
 

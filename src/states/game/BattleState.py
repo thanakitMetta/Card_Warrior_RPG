@@ -77,6 +77,11 @@ class BattleState(BaseState):
 
 
     def Enter(self, params):
+        #sounds
+        self.music_list = [gSounds['battle1'], gSounds['battle2'], gSounds['battle3'], gSounds['battle4'], gSounds['battle5']]
+        random.shuffle(self.music_list)
+        self.music_selected = self.music_list[0]
+        self.music_selected.play(-1)
         #make change
         self.player = params['chosen']
         if self.player.Class == "Rogue":
@@ -91,8 +96,8 @@ class BattleState(BaseState):
         self.battle_menu = BattleMenu(self.player.action_list)
         #make change later fighter
         self.total_step = self.player.step_count
-        self.ATK_increase = math.ceil(self.player.strength*0.05)
-        self.HP_increase = math.ceil(self.player.max_hp*0.05)
+        self.ATK_increase = int(math.ceil(self.player.strength*0.05))
+        self.HP_increase = int(math.ceil(self.player.max_hp*0.05))
 
         if CardState.get_current_card(CardState) == 25:
             self.map = 25
@@ -179,11 +184,17 @@ class BattleState(BaseState):
                             print(f"Action cooldown = {self.action_cooldown}")
                             if self.attack == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
                                 if self.player.action_count > 1:
-                                    self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                    if self.player.Class == "Wizard":
+                                        self.player.attack(self.enemy.enemy_list)
+                                    else:
+                                        self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
                                     self.player.action_count -= 1
                                     self.action_cooldown = 0
                                 else:
-                                    self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                    if self.player.Class == "Wizard":
+                                        self.player.attack(self.enemy.enemy_list)
+                                    else:
+                                        self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
                                     self.player.action_count -= 1
                                     self.current_fighter += 1
                                     self.action_cooldown = 0
@@ -206,7 +217,7 @@ class BattleState(BaseState):
                                 if self.player.action_count > 1:
                                     if self.player.Class == "Rogue":
                                         self.player.skill_1()
-                                    elif self.player.Class == "Warrior":
+                                    elif self.player.Class == "Warrior" or self.player.Class == "Wizard":
                                         if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
                                             self.player.skill_1(self.enemy.enemy_list)
                                     self.player.action_count -= 1
@@ -232,11 +243,17 @@ class BattleState(BaseState):
                             print(f"Action cooldown = {self.action_cooldown}")
                             if self.skill_2 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_2 == 0:
                                 if self.player.action_count > 1:
-                                    self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                    if self.player.Class == "Wizard":
+                                        self.player.skill_2()
+                                    else:
+                                        self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
                                     self.player.action_count -= 1
                                     self.action_cooldown = 0
                                 else:
-                                    self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                    if self.player.Class == "Wizard":
+                                        self.player.skill_2()
+                                    else:
+                                        self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
                                     self.player.action_count -= 1
                                     self.current_fighter += 1
                                     self.action_cooldown = 0
@@ -249,6 +266,8 @@ class BattleState(BaseState):
 
                 elif event.key == pygame.K_RETURN:
                     # update player position
+                    if self.player.Class == "Wizard":
+                        self.player.strength = self.player.original_str
                     self.player.strength+=self.ATK_increase
                     self.player.max_hp+=self.HP_increase
                     if self.player.Class == "Rogue":
@@ -267,15 +286,13 @@ class BattleState(BaseState):
                         e.reset()
                     
                     self.confirm_sound.play()
-                    gSounds['music'].stop()
-                    gSounds['late-hours'].play(-1)
-                    gSounds['campfire_fireplace'].play(-1)
                     self.loading = 0
                     self.player.reset_pos = True
                     self.player.action_count = 3
                     self.player.skill_cooldown_1 = 0
                     self.player.skill_cooldown_2 = 0
-
+                    #stop music
+                    self.music_selected.stop()
                     self.state_machine.Change('roll', {
                         'chosen': self.player
                     })
@@ -293,6 +310,7 @@ class BattleState(BaseState):
             else:
                 if self.current_fighter > self.total_fighter:
                     self.current_fighter = 1 
+                    self.player.turn_count += 1
 
         if self.player.action_count == 0:
             self.player.action_count = 3
@@ -300,17 +318,25 @@ class BattleState(BaseState):
                 self.player.skill_cooldown_1 -= 1
             if self.player.skill_cooldown_2 > 0:
                 self.player.skill_cooldown_2 -= 1
+        
+        if self.player.Class == "Wizard":
+            if self.player.turn_count == 2:
+                self.player.strength = self.player.original_str
+            elif self.player.skill_cooldown_2 == 0:
+                self.player.turn_count = 0 
 
         self.is_enemy_alive()
     
 
     def is_enemy_alive(self):
         self.enemy_alive = len(self.enemy.enemy_list)
-        for enemy in self.enemy.enemy_list:
-            if enemy.alive == False:
-                self.enemy_alive -= 1
-        if self.enemy_alive == 0:
-            self.battle_over = 1
+        self.action_cooldown += 1
+        if self.action_cooldown >= self.action_wait_time:
+            for enemy in self.enemy.enemy_list:
+                if enemy.alive == False:
+                    self.enemy_alive -= 1
+            if self.enemy_alive == 0:
+                self.battle_over = 1
 
     def render(self, screen):
         #make change
@@ -354,10 +380,7 @@ class BattleState(BaseState):
             self.loading += 1
 
         if self.battle_over == 1:
-            if self.map == 0:
-                screen.blit(self.bg_image1, (0, 0))
-            elif self.map == 1:
-                screen.blit(self.bg_image2, (0, 0))
+            screen.blit(self.bg_image, (0, 0))
             t_enter = gFonts['zelda'].render("Victory"
                                              , False, (175, 53, 42))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 - 10))

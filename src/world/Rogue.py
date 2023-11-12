@@ -46,15 +46,15 @@ class Rogue(Character):
     
     def skill_2(self, target):
         # deal damage to enemy
-        self.damage = math.ceil(self.strength * 1.5)
+        damage = int(math.ceil(self.strength * 2))
         # run enemy hurt animation
-        target.hurt(self.damage)
+        target.hurt(damage)
         #set variables to attack animation
         if target.hp < 1:
             target.hp = 0
             target.alive = False
             target.death()
-        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(self.damage), (255, 255, 255))
+        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
         self.damage_text_group.add(self.damage_text)
         self.action = 6
         self.frame_index = 0

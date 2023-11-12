@@ -27,9 +27,10 @@ class Character():
         self.font = pygame.font.SysFont('Times New Roman', 26)
         self.damage_text_group = Group()
         self.reset_pos = False
-        self.prev_strength = strength
         self.evade = False
         self.block = False
+        self.turn_count = 0
+        self.display_dmg = 0
 
     def add_animation_list(self, name):
         for animation in name:
@@ -58,15 +59,15 @@ class Character():
 
     def attack(self, target):
         # deal damage to enemy
-        self.damage = self.strength
+        damage = self.strength
         # run enemy hurt animation
-        target.hurt(self.damage)
+        target.hurt(damage)
         #set variables to attack animation
         if target.hp < 1:
             target.hp = 0
             target.alive = False
             target.death()
-        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(self.damage), (255, 255, 255))
+        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
         self.damage_text_group.add(self.damage_text)
         self.action = 1
         self.frame_index = 0
@@ -76,9 +77,9 @@ class Character():
     def hurt(self, damage):
         if self.evade == True:
             damage = 0
-        self.hp -= damage
         if self.block == True:
             damage = 0.5*damage
+        self.hp -= damage
         # set variables to hurt animation
         self.action = 2
         self.frame_index = 0

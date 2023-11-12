@@ -8,7 +8,7 @@ import math
 
 class Warrior(Character):
     def __init__(self, x, y):
-        super().__init__(gWarriorBattle_image_list, max_hp = 100, strength = 10)
+        super().__init__(gWarriorBattle_image_list, max_hp = 120, strength = 8)
         self.X = x
         self.Y = y+15
         self.Class = "Warrior"
@@ -37,7 +37,7 @@ class Warrior(Character):
     def skill_1(self, target):
         self.rect.center = (self.X, self.Y)
         # deal damage to enemy
-        damage = math.ceil(self.strength)
+        damage = int(math.ceil(self.strength))
         for enemy in target:
             # run enemy hurt animation
             enemy.hurt(damage)
@@ -61,15 +61,15 @@ class Warrior(Character):
         if self.skill_cooldown_2 == 0:
             self.rect.center = (self.X, self.Y)
             # deal damage to enemy
-            self.damage = math.ceil(self.strength * 1.2)
+            damage = int(math.ceil(self.strength + (0.2*self.strength)))
             # run enemy hurt animation
-            target.hurt(self.damage)
+            target.hurt(damage)
             #set variables to attack animation
             if target.hp < 1:
                 target.hp = 0
                 target.alive = False
                 target.death()
-            self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(self.damage), (255, 255, 255))
+            self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
             self.damage_text_group.add(self.damage_text)
             self.action = 6
             heal_point = self.hp + 0.1*self.max_hp
