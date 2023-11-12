@@ -24,7 +24,7 @@ class BattleState(BaseState):
         self.bg_image1 = pygame.transform.scale(
             self.bg_image1, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image1)
-        self.bg_image2 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image2 = pygame.image.load("./graphics/Battle_BG_3.png")
         self.bg_image2 = pygame.transform.scale(
             self.bg_image2, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image2)
@@ -36,19 +36,19 @@ class BattleState(BaseState):
         self.bg_image4 = pygame.transform.scale(
             self.bg_image4, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image4)
-        self.bg_image5 = pygame.image.load("./graphics/Battle_BG_1.jpg")
+        self.bg_image5 = pygame.image.load("./graphics/Battle_BG_2.png")
         self.bg_image5 = pygame.transform.scale(
             self.bg_image5, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image5)
-        self.bg_image6 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image6 = pygame.image.load("./graphics/Battle_BG_4.png")
         self.bg_image6 = pygame.transform.scale(
             self.bg_image6, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image6)
-        self.bg_image7 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image7 = pygame.image.load("./graphics/Battle_BG_5.png")
         self.bg_image7 = pygame.transform.scale(
             self.bg_image7, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image7)
-        self.bg_image8 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image8 = pygame.image.load("./graphics/Battle_BG_6.png")
         self.bg_image8 = pygame.transform.scale(
             self.bg_image8, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image8)
@@ -105,11 +105,36 @@ class BattleState(BaseState):
             self.bg_image = self.bg_image_list[6]
         elif CardState.get_current_card(CardState) == 12:
             self.map = 12
-            self.bg_image = self.bg_image_list[7]    
+            self.bg_image = self.bg_image_list[7]
+        elif CardState.get_current_card(CardState) == 24:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]
+        elif CardState.get_current_card(CardState) == 50:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
+        elif CardState.get_current_card(CardState) == 37:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
+        elif CardState.get_current_card(CardState) == 11:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]
+        elif CardState.get_current_card(CardState) == 23:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
+        elif CardState.get_current_card(CardState) == 49:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
+        elif CardState.get_current_card(CardState) == 36:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
+        elif CardState.get_current_card(CardState) == 10:
+            self.map = 12
+            self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]       
         else:
             self.map = CardState.get_level(CardState)
-            self.enemy = Enemy(self.map)
             self.bg_image = self.bg_image_list[self.map - 1]
+        
+        self.enemy = Enemy(self.map)
 
         #game variable
         self.current_fighter = 1
