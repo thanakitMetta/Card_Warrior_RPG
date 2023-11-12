@@ -28,7 +28,8 @@ class Character():
         self.damage_text_group = Group()
         self.reset_pos = False
         self.prev_strength = strength
-        self.evade = True
+        self.evade = False
+        self.block = False
 
     def add_animation_list(self, name):
         for animation in name:
@@ -57,8 +58,7 @@ class Character():
 
     def attack(self, target):
         # deal damage to enemy
-        self.rand = random.randint(1, 5)
-        self.damage = self.strength + self.rand
+        self.damage = self.strength
         # run enemy hurt animation
         target.hurt(self.damage)
         #set variables to attack animation
@@ -72,18 +72,17 @@ class Character():
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
     #change
-    def skill(self):
-        self.action = 5
-        self.frame_index = 0
-        self.update_time = pygame.time.get_ticks()
 
     def hurt(self, damage):
         if self.evade == True:
             damage = 0
         self.hp -= damage
+        if self.block == True:
+            damage = 0.5*damage
         # set variables to hurt animation
         self.action = 2
         self.frame_index = 0
+        self.block = False
         self.evade = False
         self.update_time = pygame.time.get_ticks()
 

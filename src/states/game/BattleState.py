@@ -11,18 +11,48 @@ from src.world.HealthBar import HealthBar
 from src.world.Rogue import Rogue
 from src.world.BattleMenu import BattleMenu
 from src.world.GenerateEnemy import Enemy
+from src.states.game.CardState import CardState
 
 class BattleState(BaseState):
     def __init__(self, state_machine):
         super(BattleState, self).__init__(state_machine)
         #map image
+        self.bg_image = None
+        self.bg_image_list = []
         self.map = 0
         self.bg_image1 = pygame.image.load("./graphics/Battleground3.png")
         self.bg_image1 = pygame.transform.scale(
             self.bg_image1, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image1)
         self.bg_image2 = pygame.image.load("./graphics/Battleground1.png")
         self.bg_image2 = pygame.transform.scale(
             self.bg_image2, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image2)
+        self.bg_image3 = pygame.image.load("./graphics/Battle_BG_1.jpg")
+        self.bg_image3 = pygame.transform.scale(
+            self.bg_image3, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image3)
+        self.bg_image4 = pygame.image.load("./graphics/Battleground2.png")
+        self.bg_image4 = pygame.transform.scale(
+            self.bg_image4, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image4)
+        self.bg_image5 = pygame.image.load("./graphics/Battle_BG_1.jpg")
+        self.bg_image5 = pygame.transform.scale(
+            self.bg_image5, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image5)
+        self.bg_image6 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image6 = pygame.transform.scale(
+            self.bg_image6, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image6)
+        self.bg_image7 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image7 = pygame.transform.scale(
+            self.bg_image7, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image7)
+        self.bg_image8 = pygame.image.load("./graphics/Battleground1.png")
+        self.bg_image8 = pygame.transform.scale(
+            self.bg_image8, (WIDTH + 5, HEIGHT + 5))
+        self.bg_image_list.append(self.bg_image8)
+        self.bg_image = None
 
         #loading BG
         self.loading_bg_img = pygame.image.load("./graphics/loading_1.png")
@@ -61,15 +91,25 @@ class BattleState(BaseState):
         self.battle_menu = BattleMenu(self.player.action_list)
         #make change later fighter
         self.total_step = self.player.step_count
+        self.ATK_increase = math.ceil(self.player.strength*0.05)
+        self.HP_increase = math.ceil(self.player.max_hp*0.05)
 
-        if self.total_step > 6:
-            print(f"Total sttep = {self.total_step}")  
-            self.map = 1
-            self.enemy = Enemy(self.map)
+        if CardState.get_current_card(CardState) == 25:
+            self.map = 25
+            self.bg_image = self.bg_image_list[4]
+        elif CardState.get_current_card(CardState) == 51:
+            self.map = 51
+            self.bg_image = self.bg_image_list[5]
+        elif CardState.get_current_card(CardState) == 38:
+            self.map = 38
+            self.bg_image = self.bg_image_list[6]
+        elif CardState.get_current_card(CardState) == 12:
+            self.map = 12
+            self.bg_image = self.bg_image_list[7]    
         else:
+            self.map = CardState.get_level(CardState)
             self.enemy = Enemy(self.map)
-            print(f"Total sttep = {self.total_step}")   
-
+            self.bg_image = self.bg_image_list[self.map - 1]
 
         #game variable
         self.current_fighter = 1
@@ -137,16 +177,21 @@ class BattleState(BaseState):
                         if self.current_fighter == 1:
                             self.action_cooldown += 1
                             print(f"Action cooldown = {self.action_cooldown}")
-                            if self.skill_1 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_1 == 0:
+                            if self.skill_1 == True and self.player.skill_cooldown_1 == 0:
                                 if self.player.action_count > 1:
-                                    self.player.skill_1()
+                                    if self.player.Class == "Rogue":
+                                        self.player.skill_1()
+                                    elif self.player.Class == "Warrior":
+                                        if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
+                                            self.player.skill_1(self.enemy.enemy_list)
                                     self.player.action_count -= 1
                                     self.action_cooldown = 0
                                 else:
-                                    self.player.skill_1()
-                                    self.player.action_count -= 1
-                                    self.current_fighter += 1
-                                    self.action_cooldown = 0
+                                    if self.player.Class == "Rogue":
+                                        self.player.skill_1()
+                                        self.player.action_count -= 1
+                                        self.current_fighter += 1
+                                        self.action_cooldown = 0
                             else:
                                 pass
                         else:
@@ -179,6 +224,8 @@ class BattleState(BaseState):
 
                 elif event.key == pygame.K_RETURN:
                     # update player position
+                    self.player.strength+=self.ATK_increase
+                    self.player.max_hp+=self.HP_increase
                     if self.player.Class == "Rogue":
                         self.player.X = self.playerResetR_X
                         self.player.Y = self.playerResetR_X
@@ -188,7 +235,7 @@ class BattleState(BaseState):
                     elif self.player.Class == "Wizard":
                         self.player.X = self.playerResetW_X
                         self.player.Y = self.playerResetW_Y
-
+                    print(self.player.max_hp)
                     #sound
                     #reset if want player to have full hp
                     for e in self.enemy.enemy_list:
@@ -242,10 +289,9 @@ class BattleState(BaseState):
 
     def render(self, screen):
         #make change
-        if self.map == 0:
-            screen.blit(self.bg_image1, (0, 0))
-        elif self.map == 1:
-            screen.blit(self.bg_image2, (0, 0))
+        print(CardState.get_level(CardState))
+
+        screen.blit(self.bg_image, (0, 0))
         #fighter & health
         self.player.draw()
         self.playerHealth.draw(self.player.hp)
@@ -283,9 +329,25 @@ class BattleState(BaseState):
             self.loading += 1
 
         if self.battle_over == 1:
-            t_enter = self.small_font.render("Victory"
-                                             , False, (255, 255, 255))
+            if self.map == 0:
+                screen.blit(self.bg_image1, (0, 0))
+            elif self.map == 1:
+                screen.blit(self.bg_image2, (0, 0))
+            t_enter = gFonts['zelda'].render("Victory"
+                                             , False, (175, 53, 42))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 - 10))
+            screen.blit(t_enter, rect)
+            t_enter = self.small_font.render("The card grant you"
+                                             , False, (255, 255, 0))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 40))
+            screen.blit(t_enter, rect)
+            t_enter = self.small_font.render("%d ATK and %d HP" %(self.ATK_increase,self.HP_increase)
+                                             , False, (255, 255, 0))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 80))
+            screen.blit(t_enter, rect)
+            t_enter = self.small_font.render("Press 'Enter' to continue your journey"
+                                             , False, (255, 255, 0))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 120))
             screen.blit(t_enter, rect)
 
         

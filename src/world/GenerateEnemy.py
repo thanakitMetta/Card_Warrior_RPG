@@ -16,7 +16,7 @@ class Enemy():
     def generate_enemy(self):
         self.enemy_list = []
         self.enemy_health_list = []
-        if self.map_number == 0:
+        if self.map_number == 1:
             #knight number 1
             self.enemy_list.append(Knight1(x = WIDTH / 2 - 96 + 300))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
@@ -24,7 +24,8 @@ class Enemy():
             self.enemy_list.append(Knight1(x = WIDTH / 2 - 96 + 500))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
-        elif self.map_number == 1:
+
+        elif self.map_number == 2:
             #Huntress number 1
             self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 300))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
@@ -32,18 +33,52 @@ class Enemy():
             self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 500))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
+
+        elif self.map_number == 3:
+            #Level 3 monster number 1
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 300))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            #Level 3 monster number 2
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 500))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+
+        elif self.map_number == 4:
+            #Level 4 monster number 1
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 300))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            #Level 4 monster number 2
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 500))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 500, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[1].hp, self.enemy_list[1].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+        
+        elif self.map_number == 25:
+            #King of Club
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 400))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+        
+        elif self.map_number == 51:
+            #King of Diamond
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 400))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+
+        elif self.map_number == 38:
+            #King of Heart
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 400))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+        
+        elif self.map_number == 12:
+            #King of Spade
+            self.enemy_list.append(Huntress(x = WIDTH / 2 - 96 + 400))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+            
             
                 
     def render_enemy(self):
-        # if self.map_number == 0:
-        #     #enemy1
-        #     self.enemy_list[0].update()
-        #     self.enemy_list[0].draw()
-        #     self.enemy_health_list[0].draw(self.enemy_list[0].hp)
-        #     #enemy2
-        #     self.enemy_list[1].update()
-        #     self.enemy_list[1].draw()
-        #     self.enemy_health_list[1].draw(self.enemy_list[1].hp)
         for enemy in self.enemy_list:
             enemy.update()
             enemy.draw()

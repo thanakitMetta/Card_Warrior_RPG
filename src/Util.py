@@ -109,12 +109,14 @@ class SpriteManager:
                 "./sprite/RogueAnimationBattleIdle.json",
                 "./sprite/RogueAnimationBattleSkill.json",
                 "./sprite/RogueAnimationBattleHurt.json",
+                "./sprite/RogueAnimationBattleSkill2.json",
                 #Warrior battle
                 "./sprite/WarriorAnimationBattleAttack.json",
                 "./sprite/WarriorAnimationBattleIdle.json",
                 "./sprite/WarriorAnimationBattleHurt.json",
                 "./sprite/WarriorAnimationBattleDead.json",
                 "./sprite/WarriorAnimationBattleSkill.json",
+                "./sprite/WarriorAnimationBattleSkill2.json",
                 #Wizard battle
                 "./sprite/WizardAnimationBattleAttack.json",
                 "./sprite/WizardAnimationBattleIdle.json",

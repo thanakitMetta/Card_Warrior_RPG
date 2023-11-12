@@ -66,10 +66,16 @@ gWarriorBattleDead_image_list = [sprite_collection["warrior_1_BD"].image, sprite
                                 sprite_collection["warrior_5_BD"].image,sprite_collection["warrior_6_BD"].image,
                                 sprite_collection["warrior_7_BD"].image]
 
+gWarriorBattleSkill2_image_list = [sprite_collection["warrior_1_BS2"].image, sprite_collection["warrior_2_BS2"].image,
+                                sprite_collection["warrior_3_BS2"].image, sprite_collection["warrior_4_BS2"].image,
+                                sprite_collection["warrior_5_BS2"].image,sprite_collection["warrior_6_BS2"].image,
+                                sprite_collection["warrior_7_BS2"].image]
+
 gWarriorBattleDeadIdle_image_list = [sprite_collection["warrior_7_BD"].image, sprite_collection["warrior_7_BD"].image]
 
 gWarriorBattle_image_list = [gWarriorBattleIdle_image_list, gWarriorBattleAttack_image_list, gWarriorBattleHurt_image_list,
-                             gWarriorBattleDead_image_list, gWarriorBattleDeadIdle_image_list,gWarriorBattleSkill_image_list]
+                             gWarriorBattleDead_image_list, gWarriorBattleDeadIdle_image_list,gWarriorBattleSkill_image_list, 
+                             gWarriorBattleSkill2_image_list]
 
 #wizard battle sprite
 gWizardBattleIdle_image_list = [sprite_collection["wizard_1_BI"].image, sprite_collection["wizard_2_BI"].image,
@@ -124,8 +130,14 @@ gRogueBattleHurt_image_list = [sprite_collection["rogue_1_Hurt"].image, sprite_c
                     sprite_collection["rogue_3_Hurt"].image, sprite_collection["rogue_4_Hurt"].image,
                     sprite_collection["rogue_5_Hurt"].image]
 
+gRogueBattleSkill2_image_list = [sprite_collection["rogue_1_BS2"].image, sprite_collection["rogue_2_BS2"].image,
+                    sprite_collection["rogue_3_BS2"].image, sprite_collection["rogue_4_BS2"].image,
+                    sprite_collection["rogue_5_BS2"].image, sprite_collection["rogue_6_BS2"].image,
+                    sprite_collection["rogue_7_BS2"].image, sprite_collection["rogue_8_BS2"].image,
+                    sprite_collection["rogue_9_BS2"].image, sprite_collection["rogue_10_BS2"].image]
+
 gRogueBattle_image_list = [gRogueBattleIdle_image_list, gRogueBattleAttack_image_list, gRogueBattleHurt_image_list, gRogueBattleDead_image_list,
-                           gRogueBattleDead_image_list, gRogueBattleSkill_image_list]
+                           gRogueBattleDead_image_list, gRogueBattleSkill_image_list, gRogueBattleSkill2_image_list]
 # end of rogue battle sprite
 
 #knight1
