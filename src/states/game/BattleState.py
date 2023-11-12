@@ -227,15 +227,18 @@ class BattleState(BaseState):
             if self.player.skill_cooldown_1 > 0:
                 self.player.skill_cooldown_1 -= 1
             if self.player.skill_cooldown_2 > 0:
-                self.player.skill_cooldown_2 -= 1                
+                self.player.skill_cooldown_2 -= 1
+
+        self.is_enemy_alive()
     
 
     def is_enemy_alive(self):
+        self.enemy_alive = len(self.enemy.enemy_list)
         for enemy in self.enemy.enemy_list:
-            if enemy.alive == True:
+            if enemy.alive == False:
                 self.enemy_alive -= 1
         if self.enemy_alive == 0:
-            self.game_over = 1
+            self.battle_over = 1
 
     def render(self, screen):
         #make change
@@ -278,6 +281,12 @@ class BattleState(BaseState):
             screen.blit(self.loading_bg_img, (0, 0))
             screen.blit(text, (WIDTH - 170, HEIGHT - 70))
             self.loading += 1
+
+        if self.battle_over == 1:
+            t_enter = self.small_font.render("Victory"
+                                             , False, (255, 255, 255))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 - 10))
+            screen.blit(t_enter, rect)
 
         
 
