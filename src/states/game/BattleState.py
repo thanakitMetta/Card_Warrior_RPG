@@ -200,6 +200,9 @@ class BattleState(BaseState):
                     gSounds['campfire_fireplace'].play(-1)
                     self.loading = 0
                     self.player.reset_pos = True
+                    self.player.action_count = 3
+                    self.player.skill_cooldown_1 = 0
+                    self.player.skill_cooldown_2 = 0
 
                     self.state_machine.Change('roll', {
                         'chosen': self.player
@@ -257,6 +260,7 @@ class BattleState(BaseState):
 
         skill_2_cooldown = font.render(('CD: ('+str(self.player.skill_cooldown_2)+'turn)'), True, (255, 255, 255))
         screen.blit(skill_2_cooldown, (210, 360))
+
 
 
         #display action count

@@ -30,13 +30,21 @@ class Wizard(Character):
         super().attack(target)
 
     
-    def skill(self):
+    def skill_1(self):
         self.rect.center = (self.X, self.Y)
         super().skill()
         if self.evade == False:
             self.evade = True
+            self.skill_cooldown_1 = 3
         else:
             pass
+    
+    def skill_2(self, target):
+        if self.skill_cooldown_2 == 0:
+            self.rect.center = (self.X, self.Y)
+            self.new_strength = self.strength * 1.5
+            self.attack(target)
+            self.skill_cooldown_2 = 2
 
     def hurt(self, damage):
         super().hurt(damage)
