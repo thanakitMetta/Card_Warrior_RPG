@@ -180,6 +180,15 @@ class SpriteManager:
                 "./sprite/WaterPriestessAnimationBattleIdle.json",
                 "./sprite/WaterPriestessAnimationBattleSkill.json",
                 "./sprite/WaterPriestessAnimationBattleSkill2.json",
+                #King of Diamond
+                "./sprite/HashashinAnimationBattleAttack.json",
+                "./sprite/HashashinAnimationBattleDead.json",
+                "./sprite/HashashinAnimationBattleDeadIdle.json",
+                "./sprite/HashashinAnimationBattleHurt.json",
+                "./sprite/HashashinAnimationBattleIdle.json",
+                "./sprite/HashashinAnimationBattleSkill.json",
+                "./sprite/HashashinAnimationBattleSkill2.json",
+
                 #item
                 "./sprite/item_sprite/Dark.json",
                 "./sprite/item_sprite/Gravity.json",

@@ -20,6 +20,7 @@ class Wizard(Character):
         self.skill_cooldown_1 = 0
         self.skill_cooldown_2 = 0
         self.acquired_joker = False
+        self.original_str = 0
 
     def update(self):
         super().update()
