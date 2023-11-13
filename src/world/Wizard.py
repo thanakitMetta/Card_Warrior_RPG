@@ -63,6 +63,7 @@ class Wizard(Character):
                 enemy.death()
             self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 255, 255))
             self.damage_text_group.add(self.damage_text)
+        self.skill_cooldown_2 = 3    
         self.action = 5
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()

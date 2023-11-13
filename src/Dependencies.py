@@ -430,20 +430,10 @@ gHashashinBattleDead_image_list = [sprite_collection["hashashin_1_BD"].image, sp
 
 gHashashinBattleDeadIdle_image_list = [sprite_collection["hashashin_19_BD"].image, sprite_collection["hashashin_19_BD"].image]
 
-# gHashashinBattleSkill_image_list = [sprite_collection["hashashin_1_BS"].image, sprite_collection["hashashin_2_BS"].image,
-#                     sprite_collection["hashashin_3_BS"].image, sprite_collection["hashashin_4_BS"].image,
-#                     sprite_collection["hashashin_5_BS"].image, sprite_collection["hashashin_6_BS"].image,
-#                     sprite_collection["hashashin_7_BS"].image, sprite_collection["hashashin_8_BS"].image,
-#                     sprite_collection["hashashin_9_BS"].image, sprite_collection["hashashin_10_BS"].image,
-#                     sprite_collection["hashashin_11_BS"].image, sprite_collection["hashashin_12_BS"].image,
-#                     sprite_collection["hashashin_13_BS"].image, sprite_collection["hashashin_14_BS"].image,
-#                     sprite_collection["hashashin_15_BS"].image, sprite_collection["hashashin_16_BS"].image,
-#                     sprite_collection["hashashin_17_BS"].image, sprite_collection["hashashin_18_BS"].image,
-#                     sprite_collection["hashashin_19_BS"].image,sprite_collection["hashashin_20_BS"].image,
-#                     sprite_collection["hashashin_21_BS"].image,sprite_collection["hashashin_22_BS"].image,
-#                     sprite_collection["hashashin_23_BS"].image,sprite_collection["hashashin_24_BS"].image,
-#                     sprite_collection["hashashin_25_BS"].image,sprite_collection["hashashin_26_BS"].image,
-#                     sprite_collection["hashashin_27_BS"].image,sprite_collection["hashashin_28_BS"].image]
+gHashashinBattleSkill_image_list = [sprite_collection["hashashin_1_BS"].image, sprite_collection["hashashin_2_BS"].image,
+                    sprite_collection["hashashin_3_BS"].image, sprite_collection["hashashin_4_BS"].image,
+                    sprite_collection["hashashin_5_BS"].image, sprite_collection["hashashin_6_BS"].image,
+                    sprite_collection["hashashin_7_BS"].image]
 
 gHashashinBattleSkill2_image_list = [sprite_collection["hashashin_1_BS2"].image, sprite_collection["hashashin_2_BS2"].image,
                     sprite_collection["hashashin_3_BS2"].image, sprite_collection["hashashin_4_BS2"].image,
@@ -464,7 +454,7 @@ gHashashinBattleHurt_image_list = [sprite_collection["hashashin_1_BH"].image, sp
                     sprite_collection["hashashin_5_BH"].image, sprite_collection["hashashin_6_BH"].image]
 
 gHashashinBattle_image_list = [gHashashinBattleIdle_image_list, gHashashinBattleAttack_image_list, gHashashinBattleHurt_image_list,
-                              gHashashinBattleDead_image_list, gHashashinBattleDeadIdle_image_list, 
+                              gHashashinBattleDead_image_list, gHashashinBattleDeadIdle_image_list, gHashashinBattleSkill_image_list, 
                               gHashashinBattleSkill2_image_list]
 
 
