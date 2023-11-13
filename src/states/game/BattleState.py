@@ -387,17 +387,17 @@ class BattleState(BaseState):
 
         if self.enemy.enemy_list[0].evade == True:
             enemy_evade = self.small_font.render(('Enemy: Evade'), True, (0, 255, 0))
-            screen.blit(enemy_evade, (self.enemy.enemy_list[0].x - 100, self.enemy.enemy_list[0].y + 50))
+            screen.blit(enemy_evade, (self.enemy.enemy_list[0].x - 100, self.player.Y + 70))
         elif self.enemy.enemy_list[0].block == True:
             enemy_block = self.small_font.render(('Enemy: Block'), True, (0, 255, 0))
-            screen.blit(enemy_block, (self.enemy.enemy_list[0].x - 100, self.enemy.enemy_list[0].y + 50))
+            screen.blit(enemy_block, (self.enemy.enemy_list[0].x - 100, self.player.Y + 70))
 
         if self.player.evade == True:
             player_evade = self.small_font.render(('Player: Evade'), True, (0, 255, 0))
-            screen.blit(player_evade, (self.player.X - 100, self.player.Y + 50))
+            screen.blit(player_evade, (self.player.X - 100, self.player.Y + 70))
         elif self.player.block == True:
             player_block = self.small_font.render(('Player: Block'), True, (0, 255, 0))
-            screen.blit(player_block, (self.player.X - 100, self.player.Y + 50))
+            screen.blit(player_block, (self.player.X - 100, self.player.Y + 70))
 
         #display action count
         total_turn_text = font.render(('Action: '+str(self.player.action_count)), True, (255, 255, 255))
