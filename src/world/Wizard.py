@@ -31,7 +31,7 @@ class Wizard(Character):
         self.rect.center = (self.X, self.Y)
 
     def attack(self, target):
-        self.rect.center = (self.X, self.Y)
+        self.rect.center = (self.X, self.Y - 120)
         # deal damage to enemy
         damage = int(math.ceil(self.strength * 0.9))
         for enemy in target:
@@ -50,7 +50,7 @@ class Wizard(Character):
 
     
     def skill_1(self, target):
-        self.rect.center = (self.X, self.Y)
+        self.rect.center = (self.X, self.Y - 120)
         # deal damage to enemy
         damage = int(math.ceil(self.strength * 1.7))
         for enemy in target:
@@ -63,7 +63,7 @@ class Wizard(Character):
                 enemy.death()
             self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 255, 255))
             self.damage_text_group.add(self.damage_text)
-        self.skill_cooldown_2 = 3    
+        self.skill_cooldown_1 = 3    
         self.action = 5
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
@@ -85,6 +85,7 @@ class Wizard(Character):
             
 
     def hurt(self, damage):
+        self.rect.center = (self.X, self.Y - 120)
         super().hurt(damage)
         damage_text = DamageText(self.rect.centerx, self.rect.y, str(damage), (255, 255,255))
         self.damage_text_group.add(damage_text)

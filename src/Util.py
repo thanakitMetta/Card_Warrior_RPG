@@ -229,7 +229,13 @@ class SpriteManager:
                 "./sprite/FireKnightAnimationBattleIdle.json",
                 "./sprite/FireKnightAnimationBattleSkill.json",
                 "./sprite/FireKnightAnimationBattleSkill2.json",
-
+                #undead
+                "./sprite/UndeadAnimationBattleHurt.json",
+                "./sprite/UndeadAnimationBattleAttack.json",
+                "./sprite/UndeadAnimationBattleIdle.json",
+                "./sprite/UndeadAnimationBattleDeadIdle.json",
+                "./sprite/UndeadAnimationBattleSkill.json",
+                "./sprite/UndeadAnimationBattleDead.json",
                 #item
                 "./sprite/item_sprite/Dark.json",
                 "./sprite/item_sprite/Gravity.json",
@@ -245,6 +251,7 @@ class SpriteManager:
                 "./sprite/item_sprite/Spider.json",
                 #demon hunter
                 "./sprite/DhunterAnimationIdle.json"
+                
             ]
         )
 

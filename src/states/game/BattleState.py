@@ -303,7 +303,7 @@ class BattleState(BaseState):
 
         for index, enemy in enumerate(self.enemy.enemy_list):
             if self.current_fighter == 2 + index:
-                if enemy.alive == True:
+                if enemy.alive == True and self.player.alive == True:
                     self.action_cooldown += 1
                     if self.action_cooldown >= self.action_wait_time:
                         enemy.attack(self.player)
