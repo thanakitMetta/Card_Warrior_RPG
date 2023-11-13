@@ -11,7 +11,7 @@ class QueenOfClub(Character):
         self.x = x
         self.y = y
         self.rect.center = (x, y)
-        self.enemy_type = "Normal"
+        self.enemy_type = "Boss"
 
     def update(self):
         super().update()

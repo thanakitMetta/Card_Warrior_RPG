@@ -164,6 +164,22 @@ class SpriteManager:
                 "./sprite/HuntressAnimationBattleDeadIdle.json",
                 "./sprite/HuntressAnimationBattleSkill.json",
                 "./sprite/HuntressAnimationBattleDead.json",
+                #Queen of Diamond
+                "./sprite/BladekeeperAnimationBattleAttack.json",
+                "./sprite/BladekeeperAnimationBattleDead.json",
+                "./sprite/BladekeeperAnimationBattleDeadIdle.json",
+                "./sprite/BladekeeperAnimationBattleHurt.json",
+                "./sprite/BladekeeperAnimationBattleIdle.json",
+                "./sprite/BladekeeperAnimationBattleSkill.json",
+                "./sprite/BladekeeperAnimationBattleSkill2.json",
+                #Queen of Spade
+                "./sprite/WaterPriestessAnimationBattleAttack.json",
+                "./sprite/WaterPriestessAnimationBattleDead.json",
+                "./sprite/WaterPriestessAnimationBattleDeadIdle.json",
+                "./sprite/WaterPriestessAnimationBattleHurt.json",
+                "./sprite/WaterPriestessAnimationBattleIdle.json",
+                "./sprite/WaterPriestessAnimationBattleSkill.json",
+                "./sprite/WaterPriestessAnimationBattleSkill2.json",
                 #item
                 "./sprite/item_sprite/Dark.json",
                 "./sprite/item_sprite/Gravity.json",

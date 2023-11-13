@@ -7,11 +7,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class QueenOfDiamond(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
-        super().__init__(name = gKnightBattle_image_list, max_hp = 50, strength = 2)
+        super().__init__(name = gBladekeeperBattle_image_list, max_hp = 150, strength = 20)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
-        self.enemy_type = "Normal"
+        self.enemy_type = "Boss"
 
     def update(self):
         super().update()
