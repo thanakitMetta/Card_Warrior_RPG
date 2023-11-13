@@ -93,6 +93,7 @@ class BattleState(BaseState):
         elif self.player.Class == "Wizard":
             self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30,
                                           self.player.hp, self.player.max_hp)
+            self.player.is_use_skill2 = False
         self.battle_menu = BattleMenu(self.player.action_list)
         #make change later fighter
         self.total_step = self.player.step_count
@@ -225,9 +226,12 @@ class BattleState(BaseState):
                                 else:
                                     if self.player.Class == "Rogue":
                                         self.player.skill_1()
-                                        self.player.action_count -= 1
-                                        self.current_fighter += 1
-                                        self.action_cooldown = 0
+                                    elif self.player.Class == "Warrior" or self.player.Class == "Wizard":
+                                        if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
+                                            self.player.skill_1(self.enemy.enemy_list)
+                                    self.player.action_count -= 1
+                                    self.current_fighter += 1
+                                    self.action_cooldown = 0
                             else:
                                 pass
                         else:
@@ -266,7 +270,7 @@ class BattleState(BaseState):
 
                 elif event.key == pygame.K_RETURN:
                     # update player position
-                    if self.player.Class == "Wizard":
+                    if self.player.Class == "Wizard" and self.player.is_use_skill2 == True:
                         self.player.strength = self.player.original_str
                     self.player.strength+=self.ATK_increase
                     self.player.max_hp+=self.HP_increase
@@ -320,7 +324,7 @@ class BattleState(BaseState):
                 self.player.skill_cooldown_2 -= 1
         
         if self.player.Class == "Wizard":
-            if self.player.turn_count == 2:
+            if self.player.turn_count == 2 and self.player.is_use_skill2 == True:
                 self.player.strength = self.player.original_str
             elif self.player.skill_cooldown_2 == 0:
                 self.player.turn_count = 0 

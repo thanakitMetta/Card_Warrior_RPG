@@ -214,29 +214,6 @@ gWaterSplash_image_list = [sprite_collection["waterstart_1"].image, sprite_colle
 gDhunter_image_list = [sprite_collection["dhunter_1_BI"].image, sprite_collection["dhunter_2_BI"].image,
                     sprite_collection["dhunter_3_BI"].image, sprite_collection["dhunter_4_BI"].image]
 
-#Skeleton sprite
-gSkeletonBattleIdle_image_list = [sprite_collection["skeleton_1_BI"].image, sprite_collection["skeleton_2_BI"].image,
-                    sprite_collection["skeleton_3_BI"].image, sprite_collection["skeleton_4_BI"].image]
-
-gSkeletonBattleAttack_image_list = [sprite_collection["skeleton_1_BA"].image, sprite_collection["skeleton_2_BA"].image,
-                    sprite_collection["skeleton_3_BA"].image, sprite_collection["skeleton_4_BA"].image,
-                    sprite_collection["skeleton_5_BA"].image, sprite_collection["skeleton_6_BA"].image,
-                    sprite_collection["skeleton_7_BA"].image, sprite_collection["skeleton_8_BA"].image]
-
-gSkeletonBattleHurt_image_list = [sprite_collection["skeleton_1_BH"].image, sprite_collection["skeleton_2_BH"].image,
-                    sprite_collection["skeleton_3_BH"].image, sprite_collection["skeleton_4_BH"].image]
-
-gSkeletonBattleDead_image_list = [sprite_collection["skeleton_1_BD"].image, sprite_collection["skeleton_2_BD"].image,
-                    sprite_collection["skeleton_3_BD"].image, sprite_collection["skeleton_4_BD"].image,
-                    sprite_collection["skeleton_4_BD"].image,]
-
-gSkeletonBattleDeadIdle_image_list = [sprite_collection["skeleton_4_BD"].image, sprite_collection["skeleton_4_BD"].image]
-
-gSkeletonBattleSkill_image_list = [sprite_collection["skeleton_1_BS"].image, sprite_collection["skeleton_2_BS"].image,
-                    sprite_collection["skeleton_3_BS"].image, sprite_collection["skeleton_4_BS"].image]
-
-gSkeletonBattle_image_list = [gSkeletonBattleIdle_image_list, gSkeletonBattleAttack_image_list, gSkeletonBattleHurt_image_list,
-                              gSkeletonBattleDead_image_list, gSkeletonBattleSkill_image_list]
 
 
 #NightBorne sprite
@@ -282,33 +259,7 @@ gNightBorneBattleDeadIdle_image_list = [sprite_collection["nightborne_24_BD"].im
 gNightBorneBattle_image_list = [gNightBorneBattleIdle_image_list, gNightBorneBattleAttack_image_list, gNightBorneBattleHurt_image_list,
                               gNightBorneBattleDead_image_list, gNightBorneBattleSkill_image_list]
 
-#necSkeleton sprite
-gNecroSkeletonBattleIdle_image_list = [sprite_collection["necskeleton_1_BI"].image, sprite_collection["necskeleton_2_BI"].image,
-                    sprite_collection["necskeleton_3_BI"].image, sprite_collection["necskeleton_4_BI"].image]
 
-gNecroSkeletonBattleAttack_image_list = [sprite_collection["necskeleton_1_BA"].image, sprite_collection["necskeleton_2_BA"].image,
-                    sprite_collection["necskeleton_3_BA"].image, sprite_collection["necskeleton_4_BA"].image,
-                    sprite_collection["necskeleton_5_BA"].image, sprite_collection["necskeleton_6_BA"].image,
-                    sprite_collection["necskeleton_7_BA"].image, sprite_collection["necskeleton_8_BA"].image,
-                    sprite_collection["necskeleton_9_BA"].image, sprite_collection["necskeleton_10_BA"].image,
-                    sprite_collection["necskeleton_11_BA"].image, sprite_collection["necskeleton_12_BA"].image,
-                    sprite_collection["necskeleton_13_BA"].image]
-
-gNecroSkeletonBattleHurt_image_list = [sprite_collection["necskeleton_1_BH"].image, sprite_collection["necskeleton_1_BH"].image,
-                    sprite_collection["necskeleton_1_BH"].image]
-
-gNecroSkeletonBattleDead_image_list = [sprite_collection["necskeleton_1_BD"].image, sprite_collection["necskeleton_2_BD"].image,
-                    sprite_collection["necskeleton_3_BD"].image, sprite_collection["necskeleton_4_BD"].image,
-                    sprite_collection["necskeleton_5_BD"].image, sprite_collection["necskeleton_6_BD"].image,
-                    sprite_collection["necskeleton_7_BD"].image, sprite_collection["necskeleton_8_BD"].image,
-                    sprite_collection["necskeleton_9_BD"].image, sprite_collection["necskeleton_10_BD"].image,
-                    sprite_collection["necskeleton_11_BD"].image, sprite_collection["necskeleton_12_BD"].image,
-                    sprite_collection["necskeleton_13_BD"].image]
-
-gNecroSkeletonBattleDeadIdle_image_list = [sprite_collection["necskeleton_13_BD"].image, sprite_collection["necskeleton_13_BD"].image]
-
-gNecroSkeletonBattle_image_list = [gNecroSkeletonBattleIdle_image_list, gNecroSkeletonBattleAttack_image_list, gNecroSkeletonBattleHurt_image_list,
-                              gNecroSkeletonBattleDead_image_list, gNecroSkeletonBattleAttack_image_list]
 
 #Medieval King
 gMedKingBattleIdle_image_list = [sprite_collection["medking_1_BI"].image, sprite_collection["medking_2_BI"].image,

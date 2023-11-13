@@ -20,7 +20,7 @@ class Wizard(Character):
         self.skill_cooldown_1 = 0
         self.skill_cooldown_2 = 0
         self.acquired_joker = False
-        self.original_str = 0
+        self.is_use_skill2 = False
 
     def update(self):
         super().update()
@@ -69,6 +69,7 @@ class Wizard(Character):
     
     def skill_2(self): 
         if self.skill_cooldown_2 == 0:
+            self.is_use_skill2 = True
             self.original_str = self.strength
             self.strength = int(math.ceil(self.strength * 1.3))
             hp_down = int(math.ceil(10 + 0.15*self.max_hp))
