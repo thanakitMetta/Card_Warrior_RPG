@@ -44,7 +44,7 @@ class KingOfSpade(Character):
         self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
         self.hp += int(0.05*(self.max_hp - self.hp))
-        rand = random.randint(1, 3)
+        rand = random.randint(1, 4)
         if rand == 1:
             self.evade = True
         elif rand == 2:
