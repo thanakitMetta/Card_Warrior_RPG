@@ -152,6 +152,7 @@ class SpriteManager:
                 "./sprite/MedKingAnimationBattleSkill.json",
                 "./sprite/MedKingAnimationBattleDead.json",
                 "./sprite/MedKingAnimationBattleHurt.json",
+                "./sprite/MedKingAnimationBattleSkill2.json",
 
                 #Club mob
                 "./sprite/HuntressAnimationBattleHurt.json",
@@ -182,6 +183,7 @@ class SpriteManager:
                 "./sprite/GroundMonkAnimationBattleHurt.json",
                 "./sprite/GroundMonkAnimationBattleIdle.json",
                 "./sprite/GroundMonkAnimationBattleSkill.json",
+                "./sprite/GroundMonkAnimationBattleSkill2.json",
                 #Queen of Diamond
                 "./sprite/BladekeeperAnimationBattleAttack.json",
                 "./sprite/BladekeeperAnimationBattleDead.json",
@@ -213,6 +215,7 @@ class SpriteManager:
                 "./sprite/RangerAnimationBattleHurt.json",
                 "./sprite/RangerAnimationBattleIdle.json",
                 "./sprite/RangerAnimationBattleSkill.json",
+                "./sprite/RangerAnimationBattleSkill2.json",
                 #King of Diamond
                 "./sprite/HashashinAnimationBattleAttack.json",
                 "./sprite/HashashinAnimationBattleDead.json",

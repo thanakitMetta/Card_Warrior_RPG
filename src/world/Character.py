@@ -67,7 +67,7 @@ class Character():
             target.hp = 0
             target.alive = False
             target.death()
-        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
+        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
         self.action = 1
         self.frame_index = 0

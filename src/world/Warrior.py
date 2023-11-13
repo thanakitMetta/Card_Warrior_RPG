@@ -8,9 +8,9 @@ import math
 
 class Warrior(Character):
     def __init__(self, x, y):
-        super().__init__(gWarriorBattle_image_list, max_hp = 120, strength = 8)
+        super().__init__(gWarriorBattle_image_list, max_hp = 120, strength = 10)
         self.X = x
-        self.Y = y+15
+        self.Y = y+20
         self.Class = "Warrior"
         self.action_list = ["Q (Attack)", "W (Skill 1)", "E (Skill 2)"]
         self.evade = False
@@ -46,7 +46,7 @@ class Warrior(Character):
                 enemy.hp = 0
                 enemy.alive = False
                 enemy.death()
-            self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 255, 255))
+            self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 0, 0))
             self.damage_text_group.add(self.damage_text)
         self.action = 5
         self.frame_index = 0
@@ -69,7 +69,7 @@ class Warrior(Character):
                 target.hp = 0
                 target.alive = False
                 target.death()
-            self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
+            self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
             self.damage_text_group.add(self.damage_text)
             self.action = 6
             heal_point = int(math.ceil(self.hp + 0.1*self.max_hp))

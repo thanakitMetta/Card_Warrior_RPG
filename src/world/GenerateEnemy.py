@@ -63,74 +63,74 @@ class Enemy():
         
         elif self.map_number == 25:
             #King of Club
-            self.enemy_list.append(KingOfClub(x = WIDTH / 2 - 96 + 400))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 20, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(KingOfClub(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 35))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 45, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
         elif self.map_number == 51:
             #King of Diamond
-            self.enemy_list.append(KingOfDiamond(x = WIDTH / 2 - 96 + 400))
+            self.enemy_list.append(QueenOfDiamond(x = WIDTH / 2 - 96 + 400))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
 
         elif self.map_number == 38:
             #King of Heart
-            self.enemy_list.append(KingOfHeart(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 10))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 10, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(KingOfHeart(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 35))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
         elif self.map_number == 12:
             #King of Spade
-            self.enemy_list.append(KingOfSpade(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 10))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 10, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(KingOfSpade(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 10))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 45, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         #Queen
         elif self.map_number == 24:
             #Queen of Club
-            self.enemy_list.append(QueenOfClub(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 10))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 10, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(QueenOfClub(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 35))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 45, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
         elif self.map_number == 50:
             #Queen of Diamond
-            self.enemy_list.append(QueenOfDiamond(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 10))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 10, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(QueenOfDiamond(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 35))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 45, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
 
         elif self.map_number == 37:
             #Queen of Heart
-            self.enemy_list.append(QueenOfHeart(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 10))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 10, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(QueenOfHeart(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 35))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 45, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
         elif self.map_number == 11:
             #Queen of Spade
-            self.enemy_list.append(QueenOfSpade(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 10))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 10, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(QueenOfSpade(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 35))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 45, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         #Jack
         elif self.map_number == 23:
             #Jack of Club
-            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 , self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 10))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 -15, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
         elif self.map_number == 49:
             #Jack of Diamond
-            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 , self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400 + 10, y = HEIGHT - HEIGHT / 3 + 10))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30 , self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
 
         elif self.map_number == 36:
             #Jack of Heart
-            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 , self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 10))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
         elif self.map_number == 10:
             #Jack of Spade
-            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400))
-            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 , self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(Jack(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 10))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 30, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
             
             
@@ -155,8 +155,9 @@ class Enemy():
                     self.arrow_y = self.enemy_list[1].y - 100
                     pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
         else:
-            self.arrow_x = self.enemy_list[0].x
-            self.arrow_y = self.enemy_list[0].y - 50
-            pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
+            # self.arrow_x = self.enemy_list[0].x
+            # self.arrow_y = self.enemy_list[0].y - 50
+            # pygame.draw.polygon(screen, (255, 0, 0), [(self.arrow_x, self.arrow_y), (self.arrow_x + 10, self.arrow_y - 20), (self.arrow_x - 10, self.arrow_y - 20)])
+            pass
             
 

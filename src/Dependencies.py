@@ -282,8 +282,12 @@ gMedKingBattleDead_image_list = [sprite_collection["medking_1_BD"].image, sprite
 
 gMedKingBattleDeadIdle_image_list = [sprite_collection["medking_6_BD"].image, sprite_collection["medking_6_BD"].image]
 
+gMedKingBattleSkill2_image_list = [sprite_collection["medking_1_BS2"].image, sprite_collection["medking_2_BS2"].image,
+                    sprite_collection["medking_3_BS2"].image, sprite_collection["medking_4_BS2"].image]
+
 gMedKingBattle_image_list = [gMedKingBattleIdle_image_list, gMedKingBattleAttack_image_list, gMedKingBattleHurt_image_list,
-                             gMedKingBattleDead_image_list, gMedKingBattleSkill_image_list]
+                             gMedKingBattleDead_image_list, gMedKingBattleDeadIdle_image_list, gMedKingBattleSkill_image_list, 
+                             gMedKingBattleSkill2_image_list]
 
 #Huntress Stage1 mob
 gHuntressBattleIdle_image_list = [sprite_collection["huntress_1_BI"].image, sprite_collection["huntress_2_BI"].image,
@@ -427,8 +431,23 @@ gGroundMonkBattleHurt_image_list = [sprite_collection["groundmonk_1_BH"].image, 
                     sprite_collection["groundmonk_3_BH"].image, sprite_collection["groundmonk_4_BH"].image,
                     sprite_collection["groundmonk_5_BH"].image, sprite_collection["groundmonk_6_BH"].image]
 
+gGroundMonkBattleSkill2_image_list = [sprite_collection["groundmonk_1_BS"].image, sprite_collection["groundmonk_2_BS2"].image,
+                    sprite_collection["groundmonk_3_BS2"].image, sprite_collection["groundmonk_4_BS2"].image,
+                    sprite_collection["groundmonk_5_BS2"].image, sprite_collection["groundmonk_6_BS2"].image,
+                    sprite_collection["groundmonk_7_BS2"].image, sprite_collection["groundmonk_8_BS2"].image,
+                    sprite_collection["groundmonk_9_BS2"].image, sprite_collection["groundmonk_10_BS2"].image,
+                    sprite_collection["groundmonk_11_BS2"].image, sprite_collection["groundmonk_12_BS2"].image,
+                    sprite_collection["groundmonk_13_BS2"].image, sprite_collection["groundmonk_14_BS2"].image,
+                    sprite_collection["groundmonk_15_BS2"].image, sprite_collection["groundmonk_16_BS2"].image,
+                    sprite_collection["groundmonk_17_BS2"].image, sprite_collection["groundmonk_18_BS2"].image,
+                    sprite_collection["groundmonk_19_BS2"].image, sprite_collection["groundmonk_20_BS2"].image,
+                    sprite_collection["groundmonk_21_BS2"].image, sprite_collection["groundmonk_22_BS2"].image,
+                    sprite_collection["groundmonk_23_BS2"].image, sprite_collection["groundmonk_24_BS2"].image,
+                    sprite_collection["groundmonk_25_BS2"].image]
+
 gGroundMonkBattle_image_list = [gGroundMonkBattleIdle_image_list, gGroundMonkBattleAttack_image_list, gGroundMonkBattleHurt_image_list,
-                            gGroundMonkBattleDead_image_list, gGroundMonkBattleSkill_image_list]
+                            gGroundMonkBattleDead_image_list, gGroundMonkBattleDeadIdle_image_list, gGroundMonkBattleSkill_image_list, 
+                            gGroundMonkBattleSkill2_image_list]
 
 #Bladekeeper Queen of Diamond sprite
 gBladekeeperBattleIdle_image_list = [sprite_collection["bladekeeper_1_BI"].image, sprite_collection["bladekeeper_2_BI"].image,
@@ -610,8 +629,15 @@ gRangerBattleHurt_image_list = [sprite_collection["ranger_1_BH"].image, sprite_c
                     sprite_collection["ranger_3_BH"].image, sprite_collection["ranger_4_BH"].image,
                     sprite_collection["ranger_5_BH"].image, sprite_collection["ranger_6_BH"].image]
 
+gRangerBattleSkill2_image_list = [sprite_collection["ranger_1_BS2"].image, sprite_collection["ranger_2_BS2"].image,
+                    sprite_collection["ranger_3_BS2"].image, sprite_collection["ranger_4_BS2"].image,
+                    sprite_collection["ranger_5_BS2"].image, sprite_collection["ranger_6_BS2"].image,
+                    sprite_collection["ranger_7_BS2"].image, sprite_collection["ranger_8_BS2"].image,
+                    sprite_collection["ranger_9_BS2"].image, sprite_collection["ranger_10_BS2"].image]
+
 gRangerBattle_image_list = [gRangerBattleIdle_image_list, gRangerBattleAttack_image_list, gRangerBattleHurt_image_list,
-                              gRangerBattleDead_image_list, gRangerBattleSkill_image_list]
+                            gRangerBattleDead_image_list, gRangerBattleDeadIdle_image_list, gRangerBattleSkill_image_list, 
+                            gRangerBattleSkill2_image_list]
 
 #Hashashin King of Diamond sprite
 gHashashinBattleIdle_image_list = [sprite_collection["hashashin_1_BI"].image, sprite_collection["hashashin_2_BI"].image,
@@ -661,8 +687,8 @@ gHashashinBattleHurt_image_list = [sprite_collection["hashashin_1_BH"].image, sp
                     sprite_collection["hashashin_5_BH"].image, sprite_collection["hashashin_6_BH"].image]
 
 gHashashinBattle_image_list = [gHashashinBattleIdle_image_list, gHashashinBattleAttack_image_list, gHashashinBattleHurt_image_list,
-                              gHashashinBattleDead_image_list, gHashashinBattleDeadIdle_image_list, 
-                              gHashashinBattleSkill2_image_list]
+                            gHashashinBattleDead_image_list, gHashashinBattleDeadIdle_image_list, gHashashinBattleSkill_image_list,
+                            gHashashinBattleSkill2_image_list]
 
 #FireKnight King of Heart sprite
 gFireKnightBattleIdle_image_list = [sprite_collection["fireknight_1_BI"].image, sprite_collection["fireknight_2_BI"].image,
@@ -854,3 +880,5 @@ from src.states.game.BattleState import BattleState
 from src.states.game.HealingState import HealingState
 from src.states.game.LootingState import LootingState
 from src.states.game.MeetingState import MeetingState
+from src.states.game.EndingCutState import EndingCutState
+from src.states.game.GameEndingState import GameEndingState

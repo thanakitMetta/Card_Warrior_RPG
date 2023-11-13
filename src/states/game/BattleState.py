@@ -28,7 +28,7 @@ class BattleState(BaseState):
         self.bg_image2 = pygame.transform.scale(
             self.bg_image2, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image2)
-        self.bg_image3 = pygame.image.load("./graphics/Battle_BG_1.jpg")
+        self.bg_image3 = pygame.image.load("./graphics/Battle_BG_1.png")
         self.bg_image3 = pygame.transform.scale(
             self.bg_image3, (WIDTH + 5, HEIGHT + 5))
         self.bg_image_list.append(self.bg_image3)
@@ -85,20 +85,27 @@ class BattleState(BaseState):
         #make change
         self.player = params['chosen']
         if self.player.Class == "Rogue":
-            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30,
+            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 70, HEIGHT - HEIGHT / 3 - 30,
                                           self.player.hp, self.player.max_hp)
+            self.player.X = self.player.X-20
+            self.player.Y = self.player.Y+5
         elif self.player.Class == "Warrior":
-            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30,
+            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 70, HEIGHT - HEIGHT / 3 - 30,
                                           self.player.hp, self.player.max_hp)
+            self.player.X = self.player.X-20
+            self.player.Y = self.player.Y+5
         elif self.player.Class == "Wizard":
-            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 50, HEIGHT - HEIGHT / 3 - 30,
+            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 70, HEIGHT - HEIGHT / 3 - 30,
                                           self.player.hp, self.player.max_hp)
+            self.player.X = self.player.X-20
+            self.player.Y = self.player.Y+50
             self.player.is_use_skill2 = False
         self.battle_menu = BattleMenu(self.player.action_list)
         #make change later fighter
         self.total_step = self.player.step_count
-        self.ATK_increase = int(math.ceil(self.player.strength*0.05))
-        self.HP_increase = int(math.ceil(self.player.max_hp*0.05))
+        self.ATK_increase = int(math.ceil(1 + self.player.strength*0.05))
+        self.HP_increase = int(math.ceil(5 + self.player.max_hp*0.05))
+        
 
         if CardState.get_current_card(CardState) == 25:
             self.map = 25
@@ -157,156 +164,169 @@ class BattleState(BaseState):
 
     def update(self, dt, events):
         #make change    
-
         for event in events:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if self.loading > 80:
+                #select enemies to hit
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        if self.enemy.selected_enemy_index == 2:
+                            self.enemy.selected_enemy_index = 1
+                        else:
+                            pass
+                    elif event.key == pygame.K_RIGHT:
+                        if self.enemy.selected_enemy_index == 1:
+                            self.enemy.selected_enemy_index = 2
+                        else:
+                            pass
+                            
+                    #test attack key(q)
+                    if event.key == pygame.K_q:
+                        self.attack = True
+                        if self.player.alive == True:
+                            if self.current_fighter == 1:
+                                self.action_cooldown += 1
+                                print(f"Action cooldown = {self.action_cooldown}")
+                                if self.attack == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
+                                    if self.player.action_count > 1:
+                                        if self.player.Class == "Wizard":
+                                            self.player.attack(self.enemy.enemy_list)
+                                        else:
+                                            self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                        self.player.action_count -= 1
+                                        self.action_cooldown = 0
+                                    else:
+                                        if self.player.Class == "Wizard":
+                                            self.player.attack(self.enemy.enemy_list)
+                                        else:
+                                            self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                        self.player.action_count -= 1
+                                        self.current_fighter += 1
+                                        self.action_cooldown = 0
+                                else:
+                                    pass
+                            else:
+                                pass
+                        else:
+                            self.battle_over = -1
+            
 
-            #select enemies to hit
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    if self.enemy.selected_enemy_index == 2:
-                        self.enemy.selected_enemy_index = 1
-                    else:
-                        pass
-                elif event.key == pygame.K_RIGHT:
-                    if self.enemy.selected_enemy_index == 1:
-                        self.enemy.selected_enemy_index = 2
-                    else:
-                        pass
+                    # test skill key(w)
+                    elif event.key == pygame.K_w:
+                        self.skill_1 = True
+                        if self.player.alive == True:
+                            if self.current_fighter == 1:
+                                self.action_cooldown += 1
+                                print(f"Action cooldown = {self.action_cooldown}")
+                                if self.skill_1 == True and self.player.skill_cooldown_1 == 0:
+                                    if self.player.action_count > 1:
+                                        if self.player.Class == "Rogue":
+                                            self.player.skill_1()
+                                        elif self.player.Class == "Warrior" or self.player.Class == "Wizard":
+                                            if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
+                                                self.player.skill_1(self.enemy.enemy_list)
+                                        self.player.action_count -= 1
+                                        self.action_cooldown = 0
+                                    else:
+                                        if self.player.Class == "Rogue":
+                                            self.player.skill_1()
+                                        elif self.player.Class == "Warrior" or self.player.Class == "Wizard":
+                                            if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
+                                                self.player.skill_1(self.enemy.enemy_list)
+                                        self.player.action_count -= 1
+                                        self.current_fighter += 1
+                                        self.action_cooldown = 0
+                                else:
+                                    pass
+                            else:
+                                pass
+                        else:
+                            self.battle_over = -1
+                    #test skill key(e)
+                    elif event.key == pygame.K_e:
+                        self.skill_2 = True
+                        if self.player.alive == True:
+                            if self.current_fighter == 1:
+                                self.action_cooldown += 1
+                                print(f"Action cooldown = {self.action_cooldown}")
+                                if self.skill_2 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_2 == 0:
+                                    if self.player.action_count > 1:
+                                        if self.player.Class == "Wizard":
+                                            self.player.skill_2()
+                                        else:
+                                            self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                        self.player.action_count -= 1
+                                        self.action_cooldown = 0
+                                    else:
+                                        if self.player.Class == "Wizard":
+                                            self.player.skill_2()
+                                        else:
+                                            self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
+                                        self.player.action_count -= 1
+                                        self.current_fighter += 1
+                                        self.action_cooldown = 0
+                                else:
+                                    pass
+                            else:
+                                pass
+                        else:
+                            self.battle_over = -1
+
+                    elif event.key == pygame.K_RETURN:
+                        # update player position
+                        if self.player.Class == "Wizard" and self.player.is_use_skill2 == True:
+                            self.player.strength = self.player.original_str
+                        self.player.strength+=self.ATK_increase
+                        self.player.max_hp+=self.HP_increase
+                        if self.player.Class == "Rogue":
+                            self.player.X = self.playerResetR_X
+                            self.player.Y = self.playerResetR_X
+                        elif self.player.Class == "Warrior":
+                            self.player.X = self.playerResetR_X
+                            self.player.Y = self.playerResetR_Y
+                        elif self.player.Class == "Wizard":
+                            self.player.X = self.playerResetW_X
+                            self.player.Y = self.playerResetW_Y
+                        print(self.player.max_hp)
+                        #sound
+                        #reset if want player to have full hp
+                        for e in self.enemy.enemy_list:
+                            if e.enemy_type == "Boss":
+                                self.player.hp = self.player.max_hp
+                            e.reset()
                         
-                #test attack key(q)
-                if event.key == pygame.K_q:
-                    self.attack = True
-                    if self.player.alive == True:
-                        if self.current_fighter == 1:
-                            self.action_cooldown += 1
-                            print(f"Action cooldown = {self.action_cooldown}")
-                            if self.attack == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
-                                if self.player.action_count > 1:
-                                    if self.player.Class == "Wizard":
-                                        self.player.attack(self.enemy.enemy_list)
-                                    else:
-                                        self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
-                                    self.player.action_count -= 1
-                                    self.action_cooldown = 0
-                                else:
-                                    if self.player.Class == "Wizard":
-                                        self.player.attack(self.enemy.enemy_list)
-                                    else:
-                                        self.player.attack(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
-                                    self.player.action_count -= 1
-                                    self.current_fighter += 1
-                                    self.action_cooldown = 0
-                            else:
-                                pass
-                        else:
-                            pass
-                    else:
-                        self.battle_over = -1
-           
-
-                # test skill key(w)
-                elif event.key == pygame.K_w:
-                    self.skill_1 = True
-                    if self.player.alive == True:
-                        if self.current_fighter == 1:
-                            self.action_cooldown += 1
-                            print(f"Action cooldown = {self.action_cooldown}")
-                            if self.skill_1 == True and self.player.skill_cooldown_1 == 0:
-                                if self.player.action_count > 1:
-                                    if self.player.Class == "Rogue":
-                                        self.player.skill_1()
-                                    elif self.player.Class == "Warrior" or self.player.Class == "Wizard":
-                                        if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
-                                            self.player.skill_1(self.enemy.enemy_list)
-                                    self.player.action_count -= 1
-                                    self.action_cooldown = 0
-                                else:
-                                    if self.player.Class == "Rogue":
-                                        self.player.skill_1()
-                                    elif self.player.Class == "Warrior" or self.player.Class == "Wizard":
-                                        if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
-                                            self.player.skill_1(self.enemy.enemy_list)
-                                    self.player.action_count -= 1
-                                    self.current_fighter += 1
-                                    self.action_cooldown = 0
-                            else:
-                                pass
-                        else:
-                            pass
-                    else:
-                        self.battle_over = -1
-                #test skill key(e)
-                elif event.key == pygame.K_e:
-                    self.skill_2 = True
-                    if self.player.alive == True:
-                        if self.current_fighter == 1:
-                            self.action_cooldown += 1
-                            print(f"Action cooldown = {self.action_cooldown}")
-                            if self.skill_2 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_2 == 0:
-                                if self.player.action_count > 1:
-                                    if self.player.Class == "Wizard":
-                                        self.player.skill_2()
-                                    else:
-                                        self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
-                                    self.player.action_count -= 1
-                                    self.action_cooldown = 0
-                                else:
-                                    if self.player.Class == "Wizard":
-                                        self.player.skill_2()
-                                    else:
-                                        self.player.skill_2(self.enemy.enemy_list[self.enemy.selected_enemy_index - 1])
-                                    self.player.action_count -= 1
-                                    self.current_fighter += 1
-                                    self.action_cooldown = 0
-                            else:
-                                pass
-                        else:
-                            pass
-                    else:
-                        self.battle_over = -1
-
-                elif event.key == pygame.K_RETURN:
-                    # update player position
-                    if self.player.Class == "Wizard" and self.player.is_use_skill2 == True:
-                        self.player.strength = self.player.original_str
-                    self.player.strength+=self.ATK_increase
-                    self.player.max_hp+=self.HP_increase
-                    if self.player.Class == "Rogue":
-                        self.player.X = self.playerResetR_X
-                        self.player.Y = self.playerResetR_X
-                    elif self.player.Class == "Warrior":
-                        self.player.X = self.playerResetR_X
-                        self.player.Y = self.playerResetR_Y
-                    elif self.player.Class == "Wizard":
-                        self.player.X = self.playerResetW_X
-                        self.player.Y = self.playerResetW_Y
-                    print(self.player.max_hp)
-                    #sound
-                    #reset if want player to have full hp
-                    for e in self.enemy.enemy_list:
-                        e.reset()
-                    
-                    self.confirm_sound.play()
-                    self.loading = 0
-                    self.player.reset_pos = True
-                    self.player.action_count = 3
-                    self.player.skill_cooldown_1 = 0
-                    self.player.skill_cooldown_2 = 0
-                    #stop music
-                    self.music_selected.stop()
-                    self.state_machine.Change('roll', {
-                        'chosen': self.player
-                    })
+                        self.confirm_sound.play()
+                        self.loading = 0
+                        self.player.reset_pos = True
+                        self.player.action_count = 3
+                        self.player.skill_cooldown_1 = 0
+                        self.player.skill_cooldown_2 = 0
+                        #stop music
+                        self.music_selected.stop()
+                        self.state_machine.Change('roll', {
+                            'chosen': self.player
+                        })
 
         for index, enemy in enumerate(self.enemy.enemy_list):
             if self.current_fighter == 2 + index:
                 if enemy.alive == True and self.player.alive == True:
                     self.action_cooldown += 1
                     if self.action_cooldown >= self.action_wait_time:
-                        enemy.attack(self.player)
+                        if enemy.enemy_type == "Normal":
+                            enemy.attack(self.player)
+                        elif enemy.enemy_type == "Boss":
+                            if enemy.hp > int(enemy.max_hp*0.6):
+                                print("Normal pass")
+                                enemy.attack(self.player)
+                            else:
+                                print("Skill pass")
+                                if enemy.is_skill2_use == False:
+                                    enemy.skill_2(self.player)
+                                    enemy.is_skill2_use = True
+                                else:
+                                    enemy.skill_1(self.player)
                         self.current_fighter += 1
                         self.action_cooldown = 0
                 else:
@@ -322,7 +342,7 @@ class BattleState(BaseState):
                 self.player.skill_cooldown_1 -= 1
             if self.player.skill_cooldown_2 > 0:
                 self.player.skill_cooldown_2 -= 1
-        
+            
         if self.player.Class == "Wizard":
             if self.player.turn_count == 2 and self.player.is_use_skill2 == True:
                 self.player.strength = self.player.original_str
@@ -365,7 +385,19 @@ class BattleState(BaseState):
         skill_2_cooldown = font.render(('CD: ('+str(self.player.skill_cooldown_2)+'turn)'), True, (255, 255, 255))
         screen.blit(skill_2_cooldown, (210, 360))
 
+        if self.enemy.enemy_list[0].evade == True:
+            enemy_evade = self.small_font.render(('Enemy: Evade'), True, (0, 255, 0))
+            screen.blit(enemy_evade, (self.enemy.enemy_list[0].x - 100, self.enemy.enemy_list[0].y + 50))
+        elif self.enemy.enemy_list[0].block == True:
+            enemy_block = self.small_font.render(('Enemy: Block'), True, (0, 255, 0))
+            screen.blit(enemy_block, (self.enemy.enemy_list[0].x - 100, self.enemy.enemy_list[0].y + 50))
 
+        if self.player.evade == True:
+            player_evade = self.small_font.render(('Player: Evade'), True, (0, 255, 0))
+            screen.blit(player_evade, (self.player.X - 100, self.player.Y + 50))
+        elif self.player.block == True:
+            player_block = self.small_font.render(('Player: Block'), True, (0, 255, 0))
+            screen.blit(player_block, (self.player.X - 100, self.player.Y + 50))
 
         #display action count
         total_turn_text = font.render(('Action: '+str(self.player.action_count)), True, (255, 255, 255))
@@ -374,8 +406,10 @@ class BattleState(BaseState):
         #loading
         if self.loading > 70:
             self.player.reset_pos = False
-        elif self.loading > 70 and self.player.reset_pos == False:
-            pass
+            if self.loading > 80:
+                print(f"loading = {self.loading}")
+            else:
+                self.loading+=1
         else:
             font  = pygame.font.Font('./fonts/font.ttf', 28)
             text = font.render('Loading...', True, (255, 255, 255))

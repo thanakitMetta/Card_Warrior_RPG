@@ -9,9 +9,9 @@ import math
 
 class Wizard(Character):
     def __init__(self, x, y):
-        super().__init__(gWizardBattle_image_list, max_hp = 80, strength = 13)
+        super().__init__(gWizardBattle_image_list, max_hp = 90, strength = 15)
         self.X = x
-        self.Y = y+15
+        self.Y = y+20
         self.Class = "Wizard"
         self.action_list = ["Q (Attack)", "W (______)", "E (_______)"]
         self.evade = False
@@ -33,7 +33,7 @@ class Wizard(Character):
     def attack(self, target):
         self.rect.center = (self.X, self.Y - 120)
         # deal damage to enemy
-        damage = int(math.ceil(self.strength * 0.9))
+        damage = int(math.ceil(self.strength * 0.9) + ((self.max_hp - self.hp)*self.strength/100)*0.5)
         for enemy in target:
             # run enemy hurt animation
             enemy.hurt(damage)
@@ -42,7 +42,7 @@ class Wizard(Character):
                 enemy.hp = 0
                 enemy.alive = False
                 enemy.death()
-            self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 255, 255))
+            self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 0, 0))
             self.damage_text_group.add(self.damage_text)
         self.action = 1
         self.frame_index = 0
@@ -61,7 +61,7 @@ class Wizard(Character):
                 enemy.hp = 0
                 enemy.alive = False
                 enemy.death()
-            self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 255, 255))
+            self.damage_text = DamageText(enemy.rect.centerx, enemy.rect.y, str(damage), (255, 0, 0))
             self.damage_text_group.add(self.damage_text)
         self.skill_cooldown_1 = 3    
         self.action = 5
@@ -72,12 +72,13 @@ class Wizard(Character):
         if self.skill_cooldown_2 == 0:
             self.is_use_skill2 = True
             self.original_str = self.strength
-            self.strength = int(math.ceil(self.strength * 1.3))
-            hp_down = int(math.ceil(10 + 0.15*self.max_hp))
+            self.strength = int(math.ceil(self.strength * 1.5))
+            hp_down = int(math.ceil(0.1*self.max_hp))
             if self.hp < hp_down:
                 self.hp = 1
             else:
                 self.hp -= hp_down
+            self.evade = True
             self.skill_cooldown_2 = 4
             self.action = 1
             self.frame_index = 6

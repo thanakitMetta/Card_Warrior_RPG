@@ -11,11 +11,12 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class KingOfDiamond(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 350, y = HEIGHT - HEIGHT / 3 - 20):
-        super().__init__(name = gHashashinBattle_image_list, max_hp = 120, strength = 18)
+        super().__init__(name = gHashashinBattle_image_list, max_hp = 1000, strength = 18)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
         self.enemy_type = "Boss"
+        self.is_skill2_use = False
 
     def update(self):
         super().update()
@@ -30,10 +31,9 @@ class KingOfDiamond(Character):
         super().hurt(damage)
     
     def skill_1(self, target):
-        self.rect.center = (self.X, self.Y)
+        self.rect.center = (self.x, self.y)
         # deal damage to enemy
-        self.strength += 5
-        damage = int(math.ceil(self.strength)*1.3)
+        damage = int(math.ceil(self.strength)*1.2)
         # run enemy hurt animation
         target.hurt(damage)
         #set variables to attack animation
@@ -41,14 +41,15 @@ class KingOfDiamond(Character):
             target.hp = 0
             target.alive = False
             target.death()
-        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
+        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
+        self.strength += 5
         self.action = 5
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
     def skill_2(self, target):
-        self.rect.center = (self.X, self.Y)
+        self.rect.center = (self.x, self.y)
         # deal damage to enemy
         damage = int(math.ceil(self.strength)*1.3)
         # run enemy hurt animation
@@ -58,14 +59,12 @@ class KingOfDiamond(Character):
             target.hp = 0
             target.alive = False
             target.death()
-        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
+        self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
-        self.hp += 20
-        self.action = 5
+        self.evade = True
+        self.action = 6
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
-
-
     
     def reset(self):
         self.alive = True
