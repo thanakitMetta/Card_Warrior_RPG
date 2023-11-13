@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Jack(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
-        super().__init__(name = gKnightBattle_image_list, max_hp = 50, strength = 2)
+        super().__init__(name = gNightBorneBattle_image_list, max_hp = 50, strength = 2)
         self.x = x
         self.y = y
         self.rect.center = (x, y)

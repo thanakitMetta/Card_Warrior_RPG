@@ -257,7 +257,7 @@ gNightBorneBattleSkill_image_list = [sprite_collection["nightborne_1_BS"].image,
 gNightBorneBattleDeadIdle_image_list = [sprite_collection["nightborne_24_BD"].image, sprite_collection["nightborne_24_BD"].image]
 
 gNightBorneBattle_image_list = [gNightBorneBattleIdle_image_list, gNightBorneBattleAttack_image_list, gNightBorneBattleHurt_image_list,
-                              gNightBorneBattleDead_image_list, gNightBorneBattleSkill_image_list]
+                              gNightBorneBattleDead_image_list, gNightBorneBattleDeadIdle_image_list, gNightBorneBattleSkill_image_list]
 
 
 
@@ -717,7 +717,8 @@ gFireKnightBattleHurt_image_list = [sprite_collection["fireknight_1_BH"].image, 
                     sprite_collection["fireknight_5_BH"].image, sprite_collection["fireknight_6_BH"].image]
 
 gFireKnightBattle_image_list = [gFireKnightBattleIdle_image_list, gFireKnightBattleAttack_image_list, gFireKnightBattleHurt_image_list,
-                              gFireKnightBattleDead_image_list, gFireKnightBattleSkill_image_list, gFireKnightBattleSkill2_image_list]
+                              gFireKnightBattleDead_image_list, gFireKnightBattleDeadIdle_image_list, 
+                              gFireKnightBattleSkill_image_list, gFireKnightBattleSkill2_image_list]
 
 
 

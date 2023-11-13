@@ -10,7 +10,7 @@ import math
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class KingOfDiamond(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 350, y = HEIGHT - HEIGHT / 3 + 40):
+    def __init__(self, x = WIDTH / 2 - 96 + 350, y = HEIGHT - HEIGHT / 3 + 60):
         super().__init__(name = gHashashinBattle_image_list, max_hp = 120, strength = 18)
         self.x = x
         self.y = y

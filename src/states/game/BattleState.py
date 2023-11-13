@@ -113,28 +113,28 @@ class BattleState(BaseState):
             self.map = 12
             self.bg_image = self.bg_image_list[7]
         elif CardState.get_current_card(CardState) == 24:
-            self.map = 12
+            self.map = 24
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]
         elif CardState.get_current_card(CardState) == 50:
-            self.map = 12
+            self.map = 50
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
         elif CardState.get_current_card(CardState) == 37:
-            self.map = 12
+            self.map = 37
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
         elif CardState.get_current_card(CardState) == 11:
-            self.map = 12
+            self.map = 11
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]
         elif CardState.get_current_card(CardState) == 23:
-            self.map = 12
+            self.map = 23
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
         elif CardState.get_current_card(CardState) == 49:
-            self.map = 12
+            self.map = 49
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
         elif CardState.get_current_card(CardState) == 36:
-            self.map = 12
+            self.map = 36
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1] 
         elif CardState.get_current_card(CardState) == 10:
-            self.map = 12
+            self.map = 10
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]       
         else:
             self.map = CardState.get_level(CardState)
