@@ -176,8 +176,8 @@ class BattleState(BaseState):
                     else:
                         pass
                         
-                #test attack key(w)
-                if event.key == pygame.K_w:
+                #test attack key(q)
+                if event.key == pygame.K_q:
                     self.attack = True
                     if self.player.alive == True:
                         if self.current_fighter == 1:
@@ -207,8 +207,8 @@ class BattleState(BaseState):
                         self.battle_over = -1
            
 
-                # test skill key(q)
-                elif event.key == pygame.K_q:
+                # test skill key(w)
+                elif event.key == pygame.K_w:
                     self.skill_1 = True
                     if self.player.alive == True:
                         if self.current_fighter == 1:

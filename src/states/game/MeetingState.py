@@ -166,7 +166,7 @@ class MeetingState(BaseState):
                     if self.current_meeting == 0:
                         gSounds['epic-orchestra'].stop()
                     else:
-                        gSounds['sad-violin'].play(-1)
+                        gSounds['sad-violin'].stop()
 
                     # demon hunter blessing
                     if self.demonhunter.selected_choice == 0:

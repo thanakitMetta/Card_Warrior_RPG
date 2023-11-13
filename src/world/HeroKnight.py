@@ -5,13 +5,13 @@ from src.Dependencies import *
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
-class JackOfHeart(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
-        super().__init__(name = gKnightBattle_image_list, max_hp = 50, strength = 2)
+class HeroKnight(Character):
+    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 60):
+        super().__init__(name = gHeroknightBattle_image_list, max_hp = 120, strength = 12)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
-        self.enemy_type = "Mini_Boss"
+        self.enemy_type = "Normal"
 
     def update(self):
         super().update()
@@ -24,7 +24,6 @@ class JackOfHeart(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
-        self.hp -= damage
 
     def reset(self):
         self.alive = True
@@ -34,6 +33,4 @@ class JackOfHeart(Character):
         self.update_time = pygame.time.get_ticks()
 
     def draw(self):
-        screen.blit(pygame.transform.flip(self.image, True, False), self.rect)
-
-
+        screen.blit(pygame.transform.flip(self.image, self.rect))
