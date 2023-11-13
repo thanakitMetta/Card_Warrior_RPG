@@ -63,6 +63,8 @@ class Rogue(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
+        damage_text = DamageText(self.rect.centerx, self.rect.y, str(damage), (255, 255,255))
+        self.damage_text_group.add(damage_text)
     
     def death(self):
         super().death()
