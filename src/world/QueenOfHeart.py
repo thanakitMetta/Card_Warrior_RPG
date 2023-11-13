@@ -6,8 +6,8 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class QueenOfHeart(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
-        super().__init__(name = gKnightBattle_image_list, max_hp = 50, strength = 2)
+    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 20):
+        super().__init__(name = gKnightBattle_image_list, max_hp = 200, strength = 2)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
@@ -24,7 +24,6 @@ class QueenOfHeart(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
-        self.hp -= damage
 
     def reset(self):
         self.alive = True

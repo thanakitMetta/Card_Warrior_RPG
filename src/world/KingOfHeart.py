@@ -6,7 +6,7 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class KingOfHeart(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 350, y = HEIGHT - HEIGHT / 3 + 40):
+    def __init__(self, x = WIDTH / 2 - 96 + 350, y = HEIGHT - HEIGHT / 3 - 20):
         super().__init__(name = gFireKnightBattle_image_list, max_hp = 50, strength = 2)
         self.x = x
         self.y = y
@@ -24,7 +24,6 @@ class KingOfHeart(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
-        self.hp -= damage
 
     def reset(self):
         self.alive = True

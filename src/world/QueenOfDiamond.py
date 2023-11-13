@@ -6,7 +6,7 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class QueenOfDiamond(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
+    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 20):
         super().__init__(name = gBladekeeperBattle_image_list, max_hp = 150, strength = 20)
         self.x = x
         self.y = y
@@ -24,7 +24,6 @@ class QueenOfDiamond(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
-        self.hp -= damage
 
     def reset(self):
         self.alive = True

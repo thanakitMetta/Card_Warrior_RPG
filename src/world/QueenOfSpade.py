@@ -6,7 +6,7 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class QueenOfSpade(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 40):
+    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3):
         super().__init__(name = gWaterPriestessBattle_image_list, max_hp = 200, strength = 25)
         self.x = x
         self.y = y
@@ -24,7 +24,6 @@ class QueenOfSpade(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
-        self.hp -= damage
 
     def reset(self):
         self.alive = True

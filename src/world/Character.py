@@ -78,7 +78,7 @@ class Character():
         if self.evade == True:
             damage = 0
         if self.block == True:
-            damage = 0.5*damage
+            damage = int(0.5*damage)
         self.hp -= damage
         # set variables to hurt animation
         self.action = 2

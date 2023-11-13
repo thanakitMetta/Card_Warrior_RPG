@@ -72,7 +72,7 @@ class Warrior(Character):
             self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 255, 255))
             self.damage_text_group.add(self.damage_text)
             self.action = 6
-            heal_point = self.hp + 0.1*self.max_hp
+            heal_point = int(math.ceil(self.hp + 0.1*self.max_hp))
             if heal_point > self.max_hp:
                 self.hp = self.max_hp
             else:
