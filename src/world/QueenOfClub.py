@@ -42,7 +42,10 @@ class QueenOfClub(Character):
         # deal damage to enemy
         if self.hp < 0.5*self.max_hp:
             self.strength += 3
-            self.hp -= 20
+            if self.hp - 20 > 1:
+                self.hp -= 20
+            else:
+                self.hp = 1
         else:
             self.strength += 1
         damage = int(math.ceil(self.strength)*1.2)

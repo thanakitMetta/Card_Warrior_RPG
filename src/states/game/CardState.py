@@ -227,7 +227,6 @@ class CardState(BaseState):
                         'chosen': self.player
                         })
                     else:
-                        self.player.acquired_joker = True
                         self.state_machine.Change('battle', {
                             'chosen': self.player
                         })

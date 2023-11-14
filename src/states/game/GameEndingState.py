@@ -46,7 +46,7 @@ class GameEndingState(BaseState):
         self.generator2 = TextGenerator(self.opening_text2, self.opening_font, 100, HEIGHT / 2 - 100, 0.1, (220, 20, 60))
         self.generator3 = TextGenerator(self.opening_text3, self.opening_font, 100, HEIGHT / 2, 0.1, (220, 20, 60))
         self.generator4 = TextGenerator(self.opening_text, self.opening_font, 100, HEIGHT / 2 + 100, 0.1, (220, 20, 60))
-        
+
         self.generator.skip_able = False
         self.generator2.skip_able = False
         self.generator3.skip_able = False
@@ -62,13 +62,13 @@ class GameEndingState(BaseState):
         # make change
         self.player = params['chosen']
         if self.player.Class == "Rogue":
-            self.player.Y += 40
+            self.player.Y += 50
             self.player.X -= 20
             self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 40,
                                           self.player.hp, self.player.max_hp)
         elif self.player.Class == "Warrior":
-            self.player.Y += 40
-            self.player.X -= 20
+            self.player.Y += 30
+            self.player.X -= 30
             self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 40,
                                           self.player.hp, self.player.max_hp)
         elif self.player.Class == "Wizard":
@@ -129,7 +129,6 @@ class GameEndingState(BaseState):
                         if self.player.alive == True:
                             if self.current_fighter == 1:
                                 self.action_cooldown += 1
-                                print(f"Action cooldown = {self.action_cooldown}")
                                 if self.attack == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
                                     if self.player.action_count > 1:
                                         if self.player.Class == "Wizard":
@@ -164,7 +163,6 @@ class GameEndingState(BaseState):
                         if self.player.alive == True:
                             if self.current_fighter == 1:
                                 self.action_cooldown += 1
-                                print(f"Action cooldown = {self.action_cooldown}")
                                 if self.skill_1 == True and self.player.skill_cooldown_1 == 0:
                                     if self.player.action_count > 1:
                                         if self.player.Class == "Rogue":
@@ -199,7 +197,6 @@ class GameEndingState(BaseState):
                         if self.player.alive == True:
                             if self.current_fighter == 1:
                                 self.action_cooldown += 1
-                                print(f"Action cooldown = {self.action_cooldown}")
                                 if self.skill_2 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_2 == 0:
                                     if self.player.action_count > 1:
                                         if self.player.Class == "Wizard":
@@ -233,7 +230,6 @@ class GameEndingState(BaseState):
                             self.player.strength = self.player.original_str
                         self.player.strength+=self.ATK_increase
                         self.player.max_hp+=self.HP_increase
-                        print(self.player.max_hp)
                         #sound
                         #reset if want player to have full hp
                         for e in self.enemy.enemy_list:
@@ -279,10 +275,8 @@ class GameEndingState(BaseState):
                                     self.battle_over = -1
                         elif enemy.enemy_type == "Boss":
                             if enemy.hp > int(enemy.max_hp*0.6):
-                                print("Normal pass")
                                 enemy.attack(self.player)
                             else:
-                                print("Skill pass")
                                 if enemy.is_skill2_use == False:
                                     enemy.skill_2(self.player)
                                     enemy.is_skill2_use = True
@@ -425,7 +419,7 @@ class GameEndingState(BaseState):
         if self.loading > 70:
             self.player.reset_pos = False
             if self.loading > 80:
-                print(f"loading = {self.loading}")
+                pass
             else:
                 self.loading+=1
         else:
