@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class HeroKnight(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 60):
-        super().__init__(name = gHeroknightBattle_image_list, max_hp = 400, strength = 15)
+        super().__init__(name = gHeroknightBattle_image_list, max_hp = 600, strength = 20)
         self.x = x
         self.y = y
         self.rect.center = (x, y)

@@ -15,6 +15,8 @@ from src.world.QueenOfClub import QueenOfClub
 from src.world.Jack import Jack
 from src.world.HeroKnight import HeroKnight
 from src.world.Skeleton import Skeleton
+from src.world.Cthulu import Cthulu
+from src.world.Witch import Witch
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -134,6 +136,18 @@ class Enemy():
             #Jack of Spade
             self.enemy_list.append(Jack(hp = 800, strength = 17, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 10))
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 50, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+        
+        elif self.map_number == 33:
+            #Cthulu
+            self.enemy_list.append(Cthulu(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 20))
+            self.enemy_health_list.append(Cthulu(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 70, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.selected_enemy_index = len(self.enemy_list) - 1
+        
+        elif self.map_number == 32:
+            #Witch
+            self.enemy_list.append(Witch(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 20))
+            self.enemy_health_list.append(Witch(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 20, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
             
             

@@ -261,7 +261,22 @@ class SpriteManager:
                 "./sprite/SkeletonAnimationBattleHurt.json",
                 "./sprite/SkeletonAnimationBattleIdle.json",
                 "./sprite/SkeletonAnimationBattleSkill.json",
-                
+                #cthulu
+                "./sprite/CthuluAnimationBattleHurt.json",
+                "./sprite/CthuluAnimationBattleAttack.json",
+                "./sprite/CthuluAnimationBattleIdle.json",
+                "./sprite/CthuluAnimationBattleDeadIdle.json",
+                "./sprite/CthuluAnimationBattleSkill.json",
+                "./sprite/CthuluAnimationBattleSkill2.json",
+                "./sprite/CthuluAnimationBattleDead.json",
+                #witch
+                "./sprite/WitchAnimationBattleHurt.json",
+                "./sprite/WitchAnimationBattleAttack.json",
+                "./sprite/WitchAnimationBattleIdle.json",
+                "./sprite/WitchAnimationBattleDeadIdle.json",
+                "./sprite/WitchAnimationBattleSkill.json",
+                "./sprite/WitchAnimationBattleDead1.json",
+                "./sprite/WitchAnimationBattleDead2.json"    
             ]
         )
 

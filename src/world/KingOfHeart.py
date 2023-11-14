@@ -17,6 +17,7 @@ class KingOfHeart(Character):
         self.rect.center = (x, y)
         self.enemy_type = "Boss"
         self.is_skill2_use = False
+        self.dam_receive = 0
 
     def update(self):
         super().update()
@@ -29,6 +30,10 @@ class KingOfHeart(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
+        self.dam_receive += 1
+        if self.dam_receive == 3 and self.strength < 30:
+            self.strength += 1
+            self.dam_receive = 0
     
     def skill_1(self, target):
         self.rect.center = (self.x, self.y)

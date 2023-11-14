@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Skeleton(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 60):
-        super().__init__(name = gSkeletonBattle_image_list, max_hp = 150, strength = 9)
+        super().__init__(name = gSkeletonBattle_image_list, max_hp = 200, strength = 9)
         self.x = x
         self.y = y
         self.rect.center = (x, y)

@@ -392,6 +392,85 @@ gUndeadBattleHurt_image_list = [sprite_collection["undead_1_BH"].image, sprite_c
 gUndeadBattle_image_list = [gUndeadBattleIdle_image_list, gUndeadBattleAttack_image_list, gUndeadBattleHurt_image_list,
                               gUndeadBattleDead_image_list, gUndeadBattleSkill_image_list]
 
+#Cthulu sprite Secret boss
+gCthuluBattleIdle_image_list = [sprite_collection["cthulu_1_BI"].image, sprite_collection["cthulu_2_BI"].image,
+                    sprite_collection["cthulu_3_BI"].image, sprite_collection["cthulu_4_BI"].image,
+                    sprite_collection["cthulu_5_BI"].image, sprite_collection["cthulu_6_BI"].image,
+                    sprite_collection["cthulu_7_BI"].image, sprite_collection["cthulu_8_BI"].image,
+                    sprite_collection["cthulu_9_BI"].image, sprite_collection["cthulu_10_BI"].image,
+                    sprite_collection["cthulu_11_BI"].image, sprite_collection["cthulu_12_BI"].image,
+                    sprite_collection["cthulu_13_BI"].image, sprite_collection["cthulu_14_BI"].image,
+                    sprite_collection["cthulu_15_BI"].image]
+
+gCthuluBattleAttack_image_list = [sprite_collection["cthulu_1_BA"].image, sprite_collection["cthulu_2_BA"].image,
+                    sprite_collection["cthulu_3_BA"].image, sprite_collection["cthulu_4_BA"].image,
+                    sprite_collection["cthulu_5_BA"].image, sprite_collection["cthulu_6_BA"].image,
+                    sprite_collection["cthulu_7_BA"].image]
+
+gCthuluBattleDead_image_list = [sprite_collection["cthulu_1_BD"].image, sprite_collection["cthulu_2_BD"].image,
+                    sprite_collection["cthulu_3_BD"].image, sprite_collection["cthulu_4_BD"].image,
+                    sprite_collection["cthulu_5_BD"].image, sprite_collection["cthulu_6_BD"].image,
+                    sprite_collection["cthulu_7_BD"].image, sprite_collection["cthulu_8_BD"].image,
+                    sprite_collection["cthulu_9_BD"].image, sprite_collection["cthulu_10_BD"].image,
+                    sprite_collection["cthulu_11_BD"].image]
+
+gCthuluBattleDeadIdle_image_list = [sprite_collection["cthulu_11_BD"].image, sprite_collection["cthulu_11_BD"].image]
+
+gCthuluBattleSkill_image_list = [sprite_collection["cthulu_1_BS"].image, sprite_collection["cthulu_2_BS"].image,
+                    sprite_collection["cthulu_3_BS"].image, sprite_collection["cthulu_4_BS"].image,
+                    sprite_collection["cthulu_5_BS"].image, sprite_collection["cthulu_6_BS"].image,
+                    sprite_collection["cthulu_7_BS"].image, sprite_collection["cthulu_8_BS"].image,
+                    sprite_collection["cthulu_9_BS"].image]
+
+gCthuluBattleSkill2_image_list = [sprite_collection["cthulu_1_BS2"].image, sprite_collection["cthulu_2_BS2"].image,
+                    sprite_collection["cthulu_3_BS2"].image, sprite_collection["cthulu_4_BS2"].image,
+                    sprite_collection["cthulu_5_BS2"].image, sprite_collection["cthulu_6_BS2"].image]
+
+gCthuluBattleHurt_image_list = [sprite_collection["cthulu_1_BH"].image, sprite_collection["cthulu_2_BH"].image,
+                    sprite_collection["cthulu_3_BH"].image, sprite_collection["cthulu_4_BH"].image,
+                    sprite_collection["cthulu_5_BH"].image]
+
+gCthuluBattle_image_list = [gCthuluBattleIdle_image_list, gCthuluBattleAttack_image_list, gCthuluBattleHurt_image_list,
+                            gCthuluBattleDead_image_list, gCthuluBattleDeadIdle_image_list, gCthuluBattleSkill_image_list, gCthuluBattleSkill2_image_list]
+
+#Witch sprite
+gWitchBattleIdle_image_list = [sprite_collection["witch_1_BI"].image, sprite_collection["witch_1_BI"].image,
+                    sprite_collection["witch_3_BI"].image, sprite_collection["witch_4_BI"].image,
+                    sprite_collection["witch_5_BI"].image, sprite_collection["witch_6_BI"].image]
+
+gWitchBattleAttack_image_list = [sprite_collection["witch_1_BA"].image, sprite_collection["witch_1_BA"].image,
+                    sprite_collection["witch_3_BA"].image, sprite_collection["witch_4_BA"].image,
+                    sprite_collection["witch_5_BA"].image, sprite_collection["witch_6_BA"].image,
+                    sprite_collection["witch_7_BA"].image, sprite_collection["witch_8_BA"].image,
+                    sprite_collection["witch_9_BA"].image]
+
+gWitchBattleDead_image_list = [sprite_collection["witch_1_BD"].image, sprite_collection["witch_2_BD"].image,
+                    sprite_collection["witch_3_BD"].image, sprite_collection["witch_4_BD"].image,
+                    sprite_collection["witch_5_BD"].image, sprite_collection["witch_6_BD"].image,
+                    sprite_collection["witch_7_BD"].image, sprite_collection["witch_8_BD"].image,
+                    sprite_collection["witch_9_BD"].image, sprite_collection["witch_10_BD"].image,
+                    sprite_collection["witch_11_BD"].image, sprite_collection["witch_12_BD"].image]
+
+gWitchBattleDeadIdle_image_list = [sprite_collection["witch_12_BD"].image, sprite_collection["witch_12_BD"].image]
+
+gWitchBattleSkill_image_list = [sprite_collection["witch_1_BS"].image, sprite_collection["witch_1_BS"].image,
+                    sprite_collection["witch_3_BS"].image, sprite_collection["witch_4_BS"].image,
+                    sprite_collection["witch_5_BS"].image]
+
+gWitchBattleHurt_image_list = [sprite_collection["witch_1_BH"].image, sprite_collection["witch_1_BH"].image,
+                    sprite_collection["witch_3_BH"].image]
+
+gWitchBattleSkill2_image_list = [sprite_collection["witch_1_BS"].image, sprite_collection["witch_1_BS"].image,
+                    sprite_collection["witch_3_BS"].image, sprite_collection["witch_4_BS"].image,
+                    sprite_collection["witch_5_BS"].image,sprite_collection["witch_1_BA"].image, sprite_collection["witch_1_BA"].image,
+                    sprite_collection["witch_3_BA"].image, sprite_collection["witch_4_BA"].image,
+                    sprite_collection["witch_5_BA"].image, sprite_collection["witch_6_BA"].image,
+                    sprite_collection["witch_7_BA"].image, sprite_collection["witch_8_BA"].image,
+                    sprite_collection["witch_9_BA"].image]
+
+gWitchBattle_image_list = [gWitchBattleIdle_image_list, gWitchBattleAttack_image_list, gWitchBattleHurt_image_list,
+                            gWitchBattleDead_image_list, gWitchBattleDeadIdle_image_list, gWitchBattleSkill_image_list, gWitchBattleSkill2_image_list]
+
 
 #GroundMonk Queen of Club sprite
 gGroundMonkBattleIdle_image_list = [sprite_collection["groundmonk_1_BI"].image, sprite_collection["groundmonk_2_BI"].image,

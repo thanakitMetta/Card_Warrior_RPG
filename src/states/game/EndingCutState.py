@@ -65,9 +65,6 @@ class EndingCutState(BaseState):
         elif self.player.Class == "Wizard":
             self.player.X = self.playerW_X
             self.player.Y = self.playerW_Y
-
-        self.demon_slayed = params['demon_slayed']
-
         pass
 
     def update(self, dt, events):
@@ -94,20 +91,21 @@ class EndingCutState(BaseState):
                     # self.generator.text_generation_reset()
                     # shuffle
                     self.loading = 0
-                    self.state_machine.Change('StartState', {
-                        'chosen': self.player
+                    CardState.reset(CardState)
+                    self.state_machine.Change('start', {
+                    'chosen': self.player
                     })
 
     def render(self, screen):
         # text generator
-        if self.demon_slayed is False:
+        if self.player.joker_acquired is False:
             if not self.generator.fully_displayed:
                 self.generator.text_generation()
             if not self.generator1.fully_displayed:
                 self.generator1.text_generation()
             if not self.generator2.fully_displayed:
                 self.generator2.text_generation()
-        elif self.demon_slayed is True:
+        elif self.player.joker_acquired is True:
             if not self.generator3.fully_displayed:
                 self.generator3.text_generation()
             if not self.generator4.fully_displayed:

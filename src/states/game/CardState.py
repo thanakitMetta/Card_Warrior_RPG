@@ -93,6 +93,7 @@ class CardState(BaseState):
         return CardState.current_step
 
     def Enter(self, params):
+        print(self.current_stage)
         self.player = params['chosen']
         if self.player.Class == "Rogue":
             self.player.X = self.player_X
@@ -108,12 +109,16 @@ class CardState(BaseState):
         if CardState.current_step==len(self.level1)-1:
             CardState.level += 1
             CardState.current_step = 0
+            if CardState.level > 4:
+                CardState.level = 1
             if CardState.level == 2:
                 CardState.current_list = CardState.level2
             elif CardState.level == 3:
                 CardState.current_list = CardState.level3
             elif CardState.level == 4:
                 CardState.current_list = CardState.level4
+            elif CardState.level == 1:
+                CardState.current_list = CardState.level1
             print("step & lvl")
             print(CardState.level)
             print(CardState.current_step)
@@ -129,6 +134,60 @@ class CardState(BaseState):
             self.current_stage = 52
 
         pass
+
+    def reset(self):
+        self.current_step = 0
+        self.current_card = 0
+        self.current_stage = 0
+        self.level = 1
+        print(self.level)
+        self.level1 = [2,3,15,16,13,14]
+        self.level2 = [4,5,17,18,39,40]
+        self.level3 = [5,6,19,20,26,27]
+        self.level4 = [7,8,21,22,0,1]
+        self.heart = [28,29,30,31,32,33,34,35]
+        self.diamond = [41,42,43,44,45,46,47,48]
+        random.shuffle(self.heart)
+        random.shuffle(self.diamond)
+        self.current_list = self.level1
+        for i in range(2):
+            x = self.heart.pop()
+            y = self.diamond.pop()
+            self.level1.append(x)
+            self.level1.append(y)
+        for i in range(2):
+            x = self.heart.pop()
+            y = self.diamond.pop()
+            self.level2.append(x)
+            self.level2.append(y)
+        for i in range(2):
+            x = self.heart.pop()
+            y = self.diamond.pop()
+            self.level3.append(x)
+            self.level3.append(y)
+        for i in range(2):
+            x = self.heart.pop()
+            y = self.diamond.pop()
+            self.level4.append(x)
+            self.level4.append(y)
+        random.shuffle(self.level1)
+        random.shuffle(self.level2)
+        random.shuffle(self.level3)
+        random.shuffle(self.level4)
+        self.level1.extend(range(23,26))
+        self.level2.extend(range(49,52))
+        self.level3.extend(range(36,39))
+        self.level4.extend(range(10,13))
+        self.level1.insert(0,0)
+        self.level2.insert(0,0)
+        self.level3.insert(0,0)
+        self.level4.insert(0,0)
+        print(self.level1)
+        print(self.level2)
+        print(self.level3)
+        print(self.level4)
+        self.heart = [28,29,30,31,32,33,34,35]
+        self.diamond = [41,42,43,44,45,46,47,48]
 
     def get_current_card(self):
         return(self.current_card)

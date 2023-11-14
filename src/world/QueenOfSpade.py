@@ -11,12 +11,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class QueenOfSpade(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3):
-        super().__init__(name = gWaterPriestessBattle_image_list, max_hp = 1300, strength = 21)
+        super().__init__(name = gWaterPriestessBattle_image_list, max_hp = 1300, strength = 25)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
         self.enemy_type = "Boss"
         self.is_skill2_use = False
+        self.is_regen = False
 
     def update(self):
         super().update()
@@ -29,6 +30,9 @@ class QueenOfSpade(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
+        if self.is_regen == False and self.hp < int(0.3*self.max_hp):
+            self.hp = 650
+            self.is_regen = True
 
     def skill_1(self, target):
         self.rect.center = (self.x, self.y)

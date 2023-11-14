@@ -278,7 +278,7 @@ class BattleState(BaseState):
                         else:
                             self.battle_over = -1
 
-                    elif event.key == pygame.K_RETURN:
+                    elif event.key == pygame.K_RETURN and self.battle_over != 0:
                         # update player position
                         if self.player.Class == "Wizard" and self.player.is_use_skill2 == True:
                             self.player.strength = self.player.original_str
@@ -302,7 +302,7 @@ class BattleState(BaseState):
                             elif e.enemy_type == "Miniboss":
                                 self.player.hp += int(self.player.max_hp*0.2)
                             e.reset()
-                        
+
                         self.confirm_sound.play()
                         self.loading = 0
                         self.player.reset_pos = True
@@ -314,9 +314,26 @@ class BattleState(BaseState):
                         self.player.double_damage = False
                         #stop music
                         self.music_selected.stop()
-                        self.state_machine.Change('roll', {
+                        if self.battle_over == 1:
+                            if self.map == 12:
+                                if self.player.acquired_joker == True:
+                                    self.state_machine.Change('Ending', {
+                                    'chosen': self.player
+                                    })
+                                else:
+                                    CardState.reset(CardState)
+                                    self.state_machine.Change('EndingCut', {
+                                    'chosen': self.player
+                                    })
+                            else:
+                                self.state_machine.Change('roll', {
+                                    'chosen': self.player
+                                })
+                        if self.battle_over == -1:
+                            CardState.reset(CardState)
+                            self.state_machine.Change('start', {
                             'chosen': self.player
-                        })
+                            })
 
         for index, enemy in enumerate(self.enemy.enemy_list):
             if self.current_fighter == 2 + index:
@@ -325,6 +342,8 @@ class BattleState(BaseState):
                     if self.action_cooldown >= self.action_wait_time:
                         if enemy.enemy_type == "Normal" or enemy.enemy_type == "Miniboss":
                             enemy.attack(self.player)
+                            if self.player.alive == False:
+                                    self.battle_over = -1
                         elif enemy.enemy_type == "Boss":
                             if enemy.hp > int(enemy.max_hp*0.6):
                                 print("Normal pass")
@@ -337,6 +356,8 @@ class BattleState(BaseState):
                                     self.enemy_turn_skill_2 = True
                                 else:
                                     enemy.skill_1(self.player)
+                            if self.player.alive == False:
+                                    self.battle_over = -1
                         self.current_fighter += 1
                         self.action_cooldown = 0
                 else:
@@ -380,7 +401,7 @@ class BattleState(BaseState):
                 self.player.strength = self.player.original_str
                 self.player.double_damage = False
             elif self.player.skill_cooldown_2 == 0:
-                self.player.turn_count = 0 
+                self.player.turn_count = 0
 
         self.is_enemy_alive()
     
@@ -488,6 +509,20 @@ class BattleState(BaseState):
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 120))
             screen.blit(t_enter, rect)
 
+        elif self.battle_over == -1:
+            screen.blit(self.bg_image, (0, 0))
+            t_enter = gFonts['zelda'].render("Defeated"
+                                             , False, (175, 53, 42))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 - 10))
+            screen.blit(t_enter, rect)
+            t_enter = self.small_font.render("You are pathetic"
+                                             , False, (255, 255, 0))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 40))
+            screen.blit(t_enter, rect)
+            t_enter = self.small_font.render("Press 'Enter' to continue restart journey"
+                                             , False, (255, 255, 0))
+            rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 80))
+            screen.blit(t_enter, rect)
         
 
 
