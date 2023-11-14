@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class KingOfSpade(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 20):
-        super().__init__(name = gMedKingBattle_image_list, max_hp = 1200, strength = 30)
+        super().__init__(name = gMedKingBattle_image_list, max_hp = 1500, strength = 30)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
@@ -34,6 +34,9 @@ class KingOfSpade(Character):
         self.rect.center = (self.x, self.y)
         # deal damage to enemy
         damage = int(math.ceil(self.strength)*1.3)
+        if self.double_damage == True:
+            damage = int(damage*2)
+            self.double_damage = False
         # run enemy hurt animation
         target.hurt(damage)
         #set variables to attack animation
@@ -49,8 +52,10 @@ class KingOfSpade(Character):
             self.evade = True
         elif rand == 2:
             self.block = True
+        elif rand == 3:
+            self.double_damage = True
         self.strength += 1
-        self.action = 6
+        self.action = 5
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
@@ -71,7 +76,7 @@ class KingOfSpade(Character):
         self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
         self.block = True
-        self.action = 5
+        self.action = 6
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 

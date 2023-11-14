@@ -6,12 +6,13 @@ from src.Dependencies import *
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Jack(Character):
-    def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3):
-        super().__init__(name = gNightBorneBattle_image_list, max_hp = 50, strength = 15)
+    def __init__(self, hp, strength, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3):
+        super().__init__(name = gNightBorneBattle_image_list, max_hp = hp, strength = strength)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
-        self.enemy_type = "Normal"
+        self.enemy_type = "Miniboss"
+        self.dam_count = 0
 
     def update(self):
         super().update()
@@ -23,6 +24,10 @@ class Jack(Character):
         super().death()
 
     def hurt(self, damage):
+        self.dam_count += 1
+        if self.dam_count == 2:
+            self.strength += 1
+            self.dam_count = 0
         super().hurt(damage)
 
     def reset(self):

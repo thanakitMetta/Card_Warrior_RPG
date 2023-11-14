@@ -34,6 +34,7 @@ class KingOfHeart(Character):
         self.rect.center = (self.x, self.y)
         # deal damage to enemy
         damage = int(math.ceil(self.strength)*1.3)
+        rand = random.randint(1, 2)
         # run enemy hurt animation
         target.hurt(damage)
         #set variables to attack animation
@@ -43,6 +44,8 @@ class KingOfHeart(Character):
             target.death()
         self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
+        if rand == 1:
+            self.block = True
         self.hp += int(0.05*self.hp)
         self.action = 6
         self.frame_index = 0

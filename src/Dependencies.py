@@ -531,7 +531,8 @@ gSpearwomanBattleHurt_image_list = [sprite_collection["spearwoman_1_BH"].image, 
                     sprite_collection["spearwoman_3_BH"].image, sprite_collection["spearwoman_4_BH"].image]
 
 gSpearwomanBattle_image_list = [gSpearwomanBattleIdle_image_list, gSpearwomanBattleAttack_image_list, gSpearwomanBattleHurt_image_list,
-                              gSpearwomanBattleDead_image_list, gSpearwomanBattleSkill_image_list, gSpearwomanBattleSkill2_image_list]
+                              gSpearwomanBattleDead_image_list, gSpearwomanBattleDeadIdle_image_list,
+                              gSpearwomanBattleSkill_image_list, gSpearwomanBattleSkill2_image_list]
 
 #Water Priestess Queen of Spade sprite
 gWaterPriestessBattleIdle_image_list = [sprite_collection["priestess_1_BI"].image, sprite_collection["priestess_2_BI"].image,
@@ -745,6 +746,30 @@ gFireKnightBattleHurt_image_list = [sprite_collection["fireknight_1_BH"].image, 
 gFireKnightBattle_image_list = [gFireKnightBattleIdle_image_list, gFireKnightBattleAttack_image_list, gFireKnightBattleHurt_image_list,
                               gFireKnightBattleDead_image_list, gFireKnightBattleDeadIdle_image_list, 
                               gFireKnightBattleSkill_image_list, gFireKnightBattleSkill2_image_list]
+
+#Skeleton sprite
+gSkeletonBattleIdle_image_list = [sprite_collection["skeleton_1_BI"].image, sprite_collection["skeleton_2_BI"].image,
+                    sprite_collection["skeleton_3_BI"].image, sprite_collection["skeleton_4_BI"].image]
+
+gSkeletonBattleAttack_image_list = [sprite_collection["skeleton_1_BA"].image, sprite_collection["skeleton_2_BA"].image,
+                    sprite_collection["skeleton_3_BA"].image, sprite_collection["skeleton_4_BA"].image,
+                    sprite_collection["skeleton_5_BA"].image, sprite_collection["skeleton_6_BA"].image,
+                    sprite_collection["skeleton_7_BA"].image, sprite_collection["skeleton_8_BA"].image]
+
+gSkeletonBattleHurt_image_list = [sprite_collection["skeleton_1_BH"].image, sprite_collection["skeleton_2_BH"].image,
+                    sprite_collection["skeleton_3_BH"].image, sprite_collection["skeleton_4_BH"].image]
+
+gSkeletonBattleDead_image_list = [sprite_collection["skeleton_1_BD"].image, sprite_collection["skeleton_2_BD"].image,
+                    sprite_collection["skeleton_3_BD"].image, sprite_collection["skeleton_4_BD"].image,
+                    sprite_collection["skeleton_4_BD"].image,]
+
+gSkeletonBattleDeadIdle_image_list = [sprite_collection["skeleton_4_BD"].image, sprite_collection["skeleton_4_BD"].image]
+
+gSkeletonBattleSkill_image_list = [sprite_collection["skeleton_1_BS"].image, sprite_collection["skeleton_2_BS"].image,
+                    sprite_collection["skeleton_3_BS"].image, sprite_collection["skeleton_4_BS"].image]
+
+gSkeletonBattle_image_list = [gSkeletonBattleIdle_image_list, gSkeletonBattleAttack_image_list, gSkeletonBattleHurt_image_list,
+                              gSkeletonBattleDead_image_list, gSkeletonBattleDeadIdle_image_list, gSkeletonBattleSkill_image_list]
 
 
 

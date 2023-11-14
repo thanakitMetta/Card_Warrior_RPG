@@ -37,12 +37,11 @@ class Warrior(Character):
     def skill_1(self, target):
         self.rect.center = (self.X, self.Y)
         # deal damage to enemy
-        damage = int(math.ceil(self.strength))
+        damage = int(math.ceil(self.strength)+0.1*self.max_hp)
         for enemy in target:
-            # run enemy hurt animation
-            enemy.hurt(damage)
             #set variables to attack animation
-            if enemy.hp < 1:
+            enemy.hurt(damage)
+            if enemy.hp < 1 and enemy.alive is True:
                 enemy.hp = 0
                 enemy.alive = False
                 enemy.death()
@@ -72,7 +71,7 @@ class Warrior(Character):
             self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
             self.damage_text_group.add(self.damage_text)
             self.action = 6
-            heal_point = int(math.ceil(self.hp + 0.1*self.max_hp))
+            heal_point = int(math.ceil(self.hp + 10 + 0.1*self.max_hp))
             if heal_point > self.max_hp:
                 self.hp = self.max_hp
             else:
@@ -83,6 +82,7 @@ class Warrior(Character):
     
 
     def hurt(self, damage):
+        self.rect.center = (self.X, self.Y)
         super().hurt(damage)
         damage_text = DamageText(self.rect.centerx, self.rect.y, str(damage), (255, 255,255))
         self.damage_text_group.add(damage_text)

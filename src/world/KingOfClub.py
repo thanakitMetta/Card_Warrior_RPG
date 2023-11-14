@@ -62,6 +62,8 @@ class KingOfClub(Character):
         self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
         self.hp += 50
+        self.strength += 2
+        self.evade = True
         self.action = 6
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()

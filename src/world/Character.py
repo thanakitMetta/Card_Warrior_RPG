@@ -31,6 +31,7 @@ class Character():
         self.block = False
         self.turn_count = 0
         self.display_dmg = 0
+        self.double_damage = False
 
     def add_animation_list(self, name):
         for animation in name:
@@ -75,17 +76,20 @@ class Character():
     #change
 
     def hurt(self, damage):
-        if self.evade == True:
-            damage = 0
-        if self.block == True:
-            damage = int(0.5*damage)
-        self.hp -= damage
-        # set variables to hurt animation
-        self.action = 2
-        self.frame_index = 0
-        self.block = False
-        self.evade = False
-        self.update_time = pygame.time.get_ticks()
+        if self.alive == True:
+            if self.evade == True:
+                damage = 0
+            if self.block == True:
+                damage = int(0.5*damage)
+            self.hp -= damage
+            # set variables to hurt animation
+            self.action = 2
+            self.frame_index = 0
+            self.block = False
+            self.evade = False
+            self.update_time = pygame.time.get_ticks()
+        else:
+            self.action = 3
 
     def death(self):
         self.action = 3

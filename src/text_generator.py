@@ -20,6 +20,7 @@ class TextGenerator:
         self.fully_displayed = False
         self.typing_sound = gSounds['Retro_Single_v6']
         self.skipped = False
+        self.skip_able = True
 
     def text_generation(self):
         while self.text_index <= len(self.text) and not self.skipped:
@@ -27,7 +28,7 @@ class TextGenerator:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                if event.type == pygame.KEYDOWN:
+                if event.type == pygame.KEYDOWN and self.skip_able is True:
                     if event.key == pygame.K_RETURN:
                         self.skipped = True
 
@@ -45,7 +46,7 @@ class TextGenerator:
 
         if self.text_index > len(self.text):
             self.fully_displayed = True
-            time.sleep(1)  
+            time.sleep(1)
 
         return self.fully_displayed
 

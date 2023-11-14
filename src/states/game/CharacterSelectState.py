@@ -45,7 +45,7 @@ class CharacterSelectState(BaseState):
         font = pygame.font.Font('./fonts/font.ttf', 20)
         text = " I am Green Witch, and I request you, great being. The land is in chaos..."
         self.generator = TextGenerator(text, font, 50, HEIGHT / 2 - 80, 0.1, (255, 255, 255))
-        text1 = "The sacred cards are scattered throughout the land. They exist to protect this land..."
+        text1 = " The sacred cards are scattered throughout the land. They exist to protect this land..."
         self.generator1 = TextGenerator(text1, font, 50, HEIGHT / 2 - 40, 0.1, (255, 255, 255))
         text2 = " They must not fall to the hand of wrong. Collect them for me, and I will protect them from other"
         self.generator2 = TextGenerator(text2, font, 50, HEIGHT / 2, 0.1, (255, 255, 255))
@@ -53,6 +53,13 @@ class CharacterSelectState(BaseState):
         self.generator3 = TextGenerator(text3, font, 50, HEIGHT / 2 + 40, 0.1, (255, 255, 255))
         text4 = " Excellent. I knew you would accept my request. Let me take you the Library..."
         self.generator4 = TextGenerator(text4, font, 50, HEIGHT / 2 + 80, 0.1, (255, 255, 255))
+
+        #turnoff skip
+        self.generator.skip_able = True
+        self.generator1.skip_able = True
+        self.generator2.skip_able = True
+        self.generator3.skip_able = True
+        self.generator4.skip_able = True
 
         #make change later
         self.clock = pygame.time.Clock()

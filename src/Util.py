@@ -253,7 +253,14 @@ class SpriteManager:
                 "./sprite/item_sprite/Worm.json",
                 "./sprite/item_sprite/Spider.json",
                 #demon hunter
-                "./sprite/DhunterAnimationIdle.json"
+                "./sprite/DhunterAnimationIdle.json",
+                #skeleton
+                "./sprite/SkeletonAnimationBattleAttack.json",
+                "./sprite/SkeletonAnimationBattleDead.json",
+                "./sprite/SkeletonAnimationBattleDeadIdle.json",
+                "./sprite/SkeletonAnimationBattleHurt.json",
+                "./sprite/SkeletonAnimationBattleIdle.json",
+                "./sprite/SkeletonAnimationBattleSkill.json",
                 
             ]
         )

@@ -33,7 +33,7 @@ class Wizard(Character):
     def attack(self, target):
         self.rect.center = (self.X, self.Y - 120)
         # deal damage to enemy
-        damage = int(math.ceil(self.strength * 0.9) + ((self.max_hp - self.hp)*self.strength/100)*0.5)
+        damage = int(math.ceil(self.strength * 0.9) + ((self.max_hp - self.hp)*self.strength/100)*0.25)
         for enemy in target:
             # run enemy hurt animation
             enemy.hurt(damage)
@@ -57,7 +57,7 @@ class Wizard(Character):
             # run enemy hurt animation
             enemy.hurt(damage)
             #set variables to attack animation
-            if enemy.hp < 1:
+            if enemy.hp < 1 and enemy.alive is True:
                 enemy.hp = 0
                 enemy.alive = False
                 enemy.death()
@@ -69,6 +69,7 @@ class Wizard(Character):
         self.update_time = pygame.time.get_ticks()
     
     def skill_2(self): 
+        self.rect.center = (self.X, self.Y - 120)
         if self.skill_cooldown_2 == 0:
             self.is_use_skill2 = True
             self.original_str = self.strength
@@ -79,6 +80,7 @@ class Wizard(Character):
             else:
                 self.hp -= hp_down
             self.evade = True
+            self.double_damage = True
             self.skill_cooldown_2 = 4
             self.action = 1
             self.frame_index = 6

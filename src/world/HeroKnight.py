@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class HeroKnight(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 60):
-        super().__init__(name = gHeroknightBattle_image_list, max_hp = 120, strength = 12)
+        super().__init__(name = gHeroknightBattle_image_list, max_hp = 400, strength = 15)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
@@ -33,4 +33,4 @@ class HeroKnight(Character):
         self.update_time = pygame.time.get_ticks()
 
     def draw(self):
-        screen.blit(pygame.transform.flip(self.image, self.rect))
+        screen.blit(pygame.transform.flip(self.image, True, False), self.rect)

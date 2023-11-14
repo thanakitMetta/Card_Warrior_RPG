@@ -105,6 +105,8 @@ class BattleState(BaseState):
         self.total_step = self.player.step_count
         self.ATK_increase = int(math.ceil(1 + self.player.strength*0.05))
         self.HP_increase = int(math.ceil(5 + self.player.max_hp*0.05))
+        self.enemy_turn = 0
+        self.enemy_turn_skill_2 = False
         
 
         if CardState.get_current_card(CardState) == 25:
@@ -119,6 +121,8 @@ class BattleState(BaseState):
         elif CardState.get_current_card(CardState) == 12:
             self.map = 12
             self.bg_image = self.bg_image_list[7]
+            if self.player.Class == "Rogue":
+                self.player.Y += 20
         elif CardState.get_current_card(CardState) == 24:
             self.map = 24
             self.bg_image = self.bg_image_list[CardState.get_level(CardState) - 1]
@@ -147,7 +151,7 @@ class BattleState(BaseState):
             self.map = CardState.get_level(CardState)
             self.bg_image = self.bg_image_list[self.map - 1]
         
-        self.enemy = Enemy(self.map)
+        self.enemy = Enemy(self.map) 
 
         #game variable
         self.current_fighter = 1
@@ -295,6 +299,8 @@ class BattleState(BaseState):
                         for e in self.enemy.enemy_list:
                             if e.enemy_type == "Boss":
                                 self.player.hp = self.player.max_hp
+                            elif e.enemy_type == "Miniboss":
+                                self.player.hp += int(self.player.max_hp*0.2)
                             e.reset()
                         
                         self.confirm_sound.play()
@@ -303,6 +309,9 @@ class BattleState(BaseState):
                         self.player.action_count = 3
                         self.player.skill_cooldown_1 = 0
                         self.player.skill_cooldown_2 = 0
+                        self.player.block = False
+                        self.player.evade = False
+                        self.player.double_damage = False
                         #stop music
                         self.music_selected.stop()
                         self.state_machine.Change('roll', {
@@ -314,7 +323,7 @@ class BattleState(BaseState):
                 if enemy.alive == True and self.player.alive == True:
                     self.action_cooldown += 1
                     if self.action_cooldown >= self.action_wait_time:
-                        if enemy.enemy_type == "Normal":
+                        if enemy.enemy_type == "Normal" or enemy.enemy_type == "Miniboss":
                             enemy.attack(self.player)
                         elif enemy.enemy_type == "Boss":
                             if enemy.hp > int(enemy.max_hp*0.6):
@@ -325,6 +334,7 @@ class BattleState(BaseState):
                                 if enemy.is_skill2_use == False:
                                     enemy.skill_2(self.player)
                                     enemy.is_skill2_use = True
+                                    self.enemy_turn_skill_2 = True
                                 else:
                                     enemy.skill_1(self.player)
                         self.current_fighter += 1
@@ -333,8 +343,30 @@ class BattleState(BaseState):
                     self.current_fighter += 1
             else:
                 if self.current_fighter > self.total_fighter:
-                    self.current_fighter = 1 
-                    self.player.turn_count += 1
+                    if enemy.enemy_type == "Boss":
+                        if enemy.is_skill2_use == True and self.enemy_turn_skill_2 == True:
+                            if self.enemy_turn > 150:
+                                self.enemy_turn_skill_2 = False
+                                self.current_fighter = 1 
+                                self.player.turn_count += 1
+                                self.enemy_turn = 0
+                            else:
+                                self.enemy_turn += 1
+                        else:
+                            if self.enemy_turn > 80:
+                                self.current_fighter = 1 
+                                self.player.turn_count += 1
+                                self.enemy_turn = 0
+                            else:
+                                self.enemy_turn += 1
+                    else:
+                        if self.enemy_turn > 80:
+                            self.current_fighter = 1 
+                            self.player.turn_count += 1
+                            self.enemy_turn = 0
+                        else:
+                            self.enemy_turn += 1
+
 
         if self.player.action_count == 0:
             self.player.action_count = 3
@@ -346,6 +378,7 @@ class BattleState(BaseState):
         if self.player.Class == "Wizard":
             if self.player.turn_count == 2 and self.player.is_use_skill2 == True:
                 self.player.strength = self.player.original_str
+                self.player.double_damage = False
             elif self.player.skill_cooldown_2 == 0:
                 self.player.turn_count = 0 
 
@@ -391,17 +424,36 @@ class BattleState(BaseState):
         elif self.enemy.enemy_list[0].block == True:
             enemy_block = self.small_font.render(('Enemy: Block'), True, (0, 255, 0))
             screen.blit(enemy_block, (self.enemy.enemy_list[0].x - 100, self.player.Y + 70))
+        elif self.enemy.enemy_list[0].double_damage == True:
+            e_y = self.player.Y + 70
+            if self.enemy.enemy_list[0].evade == True:
+                e_y = self.player.Y + 90
+            enemy_double = self.small_font.render(('Enemy: Damage x2'), True, (0, 255, 0))
+            screen.blit(enemy_double, (self.enemy.enemy_list[0].x - 100, e_y))
 
         if self.player.evade == True:
+            r_y = self.player.Y + 105
+            if self.player.Class == "Rogue" and self.map == 12:
+                r_y = self.player.Y + 85
             player_evade = self.small_font.render(('Player: Evade'), True, (0, 255, 0))
-            screen.blit(player_evade, (self.player.X - 100, self.player.Y + 70))
+            screen.blit(player_evade, (self.player.X - 100, r_y))
         elif self.player.block == True:
             player_block = self.small_font.render(('Player: Block'), True, (0, 255, 0))
             screen.blit(player_block, (self.player.X - 100, self.player.Y + 70))
+        if self.player.double_damage == True:
+            if self.player.Class == "Wizard":
+                player_double = self.small_font.render(('Player: Damage x1.5'), True, (0, 255, 0))
+                screen.blit(player_double, (self.player.X - 100, self.player.Y + 85))
+            if self.player.Class == "Rogue":
+                d_y = self.player.Y + 85
+                if self.map == 12:
+                    d_y = self.player.Y + 65
+                player_double = self.small_font.render(('Player: Damage x2'), True, (0, 255, 0))
+                screen.blit(player_double, (self.player.X - 100, d_y))
 
         #display action count
         total_turn_text = font.render(('Action: '+str(self.player.action_count)), True, (255, 255, 255))
-        screen.blit(total_turn_text, (WIDTH - 170, HEIGHT - 70))
+        screen.blit(total_turn_text, (50, HEIGHT - 70))
 
         #loading
         if self.loading > 70:

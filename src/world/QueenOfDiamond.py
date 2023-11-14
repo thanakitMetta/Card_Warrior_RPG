@@ -41,7 +41,7 @@ class QueenOfDiamond(Character):
         self.rect.center = (self.x, self.y)
         # deal damage to enemy
         damage = int(math.ceil(self.strength)*1.2)
-        rand = random.randint(1,5)
+        rand = random.randint(1,4)
         # run enemy hurt animation
         target.hurt(damage)
         #set variables to attack animation
