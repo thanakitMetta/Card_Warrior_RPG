@@ -46,6 +46,11 @@ class GameEndingState(BaseState):
         self.generator2 = TextGenerator(self.opening_text2, self.opening_font, 100, HEIGHT / 2 - 100, 0.1, (220, 20, 60))
         self.generator3 = TextGenerator(self.opening_text3, self.opening_font, 100, HEIGHT / 2, 0.1, (220, 20, 60))
         self.generator4 = TextGenerator(self.opening_text, self.opening_font, 100, HEIGHT / 2 + 100, 0.1, (220, 20, 60))
+        
+        self.generator.skip_able = False
+        self.generator2.skip_able = False
+        self.generator3.skip_able = False
+        self.generator4.skip_able = False
 
         # final boss map
         self.map = 99

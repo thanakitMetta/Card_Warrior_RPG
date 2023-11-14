@@ -91,7 +91,7 @@ class CardState(BaseState):
             return CardState.current_step
         else:
             CardState.current_step += RollDiceState.GetDice(RollDiceState)
-            if CardState.current_step >= len(self.level1):
+            if CardState.current_step >= len(self.level1)-1:
                 CardState.current_step = 13
                 self.first_call = True # Update flag for subsequent calls
             return CardState.current_step

@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Cthulu(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 20):
-        super().__init__(name = gCthuluBattle_image_list, max_hp = 2000, strength = 15)
+        super().__init__(name = gCthuluBattle_image_list, max_hp = 2000, strength = 25)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
@@ -25,7 +25,7 @@ class Cthulu(Character):
         super().update()
 
     def idle(self):
-        if self.hp > 60:
+        if self.hp > 0.6*self.max_hp:
             self.action = 0
         else:
             self.action = 6
@@ -41,7 +41,7 @@ class Cthulu(Character):
         if self.dam_receive == 3 and self.strength < 40:
             self.strength += 2
             self.dam_receive = 0
-        if self.hp < self.max_hp*20 and self.regen == False:
+        if self.hp < self.max_hp*0.2 and self.regen == False:
             self.hp += 300
             self.regen = True
 

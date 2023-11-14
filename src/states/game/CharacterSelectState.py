@@ -55,11 +55,11 @@ class CharacterSelectState(BaseState):
         self.generator4 = TextGenerator(text4, font, 50, HEIGHT / 2 + 80, 0.1, (255, 255, 255))
 
         #turnoff skip
-        self.generator.skip_able = True
-        self.generator1.skip_able = True
-        self.generator2.skip_able = True
-        self.generator3.skip_able = True
-        self.generator4.skip_able = True
+        self.generator.skip_able = False
+        self.generator1.skip_able = False
+        self.generator2.skip_able = False
+        self.generator3.skip_able = False
+        self.generator4.skip_able = False
 
         #make change later
         self.clock = pygame.time.Clock()

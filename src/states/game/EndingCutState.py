@@ -50,6 +50,13 @@ class EndingCutState(BaseState):
         text5 = " Let there be blood and death upon thy path..."
         self.generator5 = TextGenerator(text5, font, 50, HEIGHT / 2 - 50, 0.1, (255, 0, 0))
 
+        self.generator.skip_able = False
+        self.generator1.skip_able = False
+        self.generator2.skip_able = False
+        self.generator3.skip_able = False
+        self.generator4.skip_able = False
+        self.generator5.skip_able = False
+
 
         # loading BG
         self.loading = 0
