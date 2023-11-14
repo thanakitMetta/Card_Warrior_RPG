@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Witch(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 20):
-        super().__init__(name = gWitchBattle_image_list, max_hp = 800, strength = 30)
+        super().__init__(name = gWitchBattle_image_list, max_hp = 1000, strength = 30)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
@@ -57,6 +57,7 @@ class Witch(Character):
         self.rect.center = (self.x, self.y)
         self.strength += int(0.05*target.hp)
         self.action = 5
+        self.hp += 100
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
 
