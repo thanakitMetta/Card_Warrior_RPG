@@ -11,6 +11,8 @@ from src.world.HealthBar import HealthBar
 from src.world.Rogue import Rogue
 from src.world.BattleMenu import BattleMenu
 from src.world.GenerateEnemy import Enemy
+from src.states.game.MeetingState import MeetingState
+from src.states.game.LootingState import LootingState
 
 # text generator
 from src.text_generator import TextGenerator
@@ -46,7 +48,7 @@ class GameEndingState(BaseState):
         self.generator4 = TextGenerator(self.opening_text, self.opening_font, 100, HEIGHT / 2 + 100, 0.1, (220, 20, 60))
 
         # final boss map
-        self.map = 36
+        self.map = 99
 
     def Enter(self, params):
         # sounds
@@ -55,17 +57,19 @@ class GameEndingState(BaseState):
         # make change
         self.player = params['chosen']
         if self.player.Class == "Rogue":
-            self.player.Y += 80
-            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 50,
+            self.player.Y += 40
+            self.player.X -= 20
+            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 40,
                                           self.player.hp, self.player.max_hp)
         elif self.player.Class == "Warrior":
-            self.player.Y += 80
-            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 50,
+            self.player.Y += 40
+            self.player.X -= 20
+            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 40,
                                           self.player.hp, self.player.max_hp)
         elif self.player.Class == "Wizard":
-            self.player.Y += 70
-            self.player.X += 40
-            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 100, HEIGHT - HEIGHT / 3 - 50,
+            self.player.Y += 90
+            self.player.X += 30
+            self.playerHealth = HealthBar(WIDTH / 2 - 96 - 110, HEIGHT - HEIGHT / 3 - 40,
                                           self.player.hp, self.player.max_hp)
             self.player.is_use_skill2 = False    
 
@@ -137,6 +141,10 @@ class GameEndingState(BaseState):
                                         self.player.action_count -= 1
                                         self.current_fighter += 1
                                         self.action_cooldown = 0
+                                        if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].b_name == "Witch" and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive == False:
+                                            self.map = 98
+                                            self.enemy.map_number = self.map
+                                            self.enemy.generate_enemy() 
                                 else:
                                     pass
                             else:
@@ -170,6 +178,10 @@ class GameEndingState(BaseState):
                                         self.player.action_count -= 1
                                         self.current_fighter += 1
                                         self.action_cooldown = 0
+                                    if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].b_name == "Witch" and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive == False:
+                                            self.map = 98
+                                            self.enemy.map_number = self.map
+                                            self.enemy.generate_enemy()
                                 else:
                                     pass
                             else:
@@ -199,6 +211,10 @@ class GameEndingState(BaseState):
                                         self.player.action_count -= 1
                                         self.current_fighter += 1
                                         self.action_cooldown = 0
+                                    if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].b_name == "Witch" and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive == False:
+                                            self.map = 98
+                                            self.enemy.map_number = self.map
+                                            self.enemy.generate_enemy()
                                 else:
                                     pass
                             else:
@@ -212,15 +228,6 @@ class GameEndingState(BaseState):
                             self.player.strength = self.player.original_str
                         self.player.strength+=self.ATK_increase
                         self.player.max_hp+=self.HP_increase
-                        if self.player.Class == "Rogue":
-                            self.player.X = self.playerResetR_X
-                            self.player.Y = self.playerResetR_X
-                        elif self.player.Class == "Warrior":
-                            self.player.X = self.playerResetR_X
-                            self.player.Y = self.playerResetR_Y
-                        elif self.player.Class == "Wizard":
-                            self.player.X = self.playerResetW_X
-                            self.player.Y = self.playerResetW_Y
                         print(self.player.max_hp)
                         #sound
                         #reset if want player to have full hp
@@ -243,22 +250,15 @@ class GameEndingState(BaseState):
                         #stop music
                         self.music_selected.stop()
                         if self.battle_over == 1:
-                            if self.map == 12:
+                            if self.map == 98:
                                 if self.player.acquired_joker == True:
-                                    self.state_machine.Change('Ending', {
-                                    'chosen': self.player
-                                    })
-                                else:
-                                    CardState.reset(CardState)
                                     self.state_machine.Change('EndingCut', {
                                     'chosen': self.player
                                     })
-                            else:
-                                self.state_machine.Change('roll', {
-                                    'chosen': self.player
-                                })
                         if self.battle_over == -1:
                             CardState.reset(CardState)
+                            MeetingState.reset(MeetingState)
+                            LootingState.reset(LootingState)
                             self.state_machine.Change('start', {
                             'chosen': self.player
                             })
@@ -323,6 +323,11 @@ class GameEndingState(BaseState):
                 self.player.skill_cooldown_1 -= 1
             if self.player.skill_cooldown_2 > 0:
                 self.player.skill_cooldown_2 -= 1
+
+        if self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].b_name == "Witch" and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive == False:
+                self.map = 98
+                self.enemy.map_number = self.map
+                self.enemy.generate_enemy() 
             
         if self.player.Class == "Wizard":
             if self.player.turn_count == 2 and self.player.is_use_skill2 == True:
@@ -340,7 +345,7 @@ class GameEndingState(BaseState):
             for enemy in self.enemy.enemy_list:
                 if enemy.alive == False:
                     self.enemy_alive -= 1
-            if self.enemy_alive == 0:
+            if self.enemy_alive == 0 and self.enemy.enemy_list[0].b_name == "Cthulu":
                 self.battle_over = 1
 
     def render(self, screen):
@@ -454,7 +459,7 @@ class GameEndingState(BaseState):
                                              , False, (255, 255, 0))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 40))
             screen.blit(t_enter, rect)
-            t_enter = self.small_font.render("Press 'Enter' to continue restart journey"
+            t_enter = self.small_font.render("Press 'Enter' to restart journey"
                                              , False, (255, 255, 0))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 80))
             screen.blit(t_enter, rect)

@@ -151,7 +151,8 @@ class CharacterSelectState(BaseState):
             screen.blit(t_enter, rect)
 
             #skill
-            t_enter2 = self.small_font.render("Q Attack, W Evade 1 attack, E Deal critical damage", False, (255, 255, 255))
+            t_enter2 = self.small_font.render("Q Attack, W Evade 1 time and damage up for next attack, E Deal "
+                                              "critical damage", False, (255, 255, 255))
             rect2 = t_enter2.get_rect(center=(WIDTH / 2, HEIGHT / 3 + 50))
             screen.blit(t_enter2, rect2)
 
@@ -203,10 +204,14 @@ class CharacterSelectState(BaseState):
             rect = t_enter.get_rect(center=(WIDTH / 2, HEIGHT / 3))
             screen.blit(t_enter, rect)
             # skill
-            t_enter2 = self.small_font.render("Q Deal area damage, W Deal critical area damage, E Increase strength", False,
-                                              (255, 255, 255))
+            t_enter2 = self.small_font.render("Q Deal area damage, W Deal critical area damage", False, (255, 255, 255))
+            t_enter3 = self.small_font.render("E sacrifice health to apply damage up for two turns and evade for 1 "
+                                              "time",
+                                              False, (255, 255, 255))
             rect2 = t_enter2.get_rect(center=(WIDTH / 2, HEIGHT / 3 + 50))
             screen.blit(t_enter2, rect2)
+            rect3 = t_enter3.get_rect(center=(WIDTH / 2, HEIGHT / 3 + 70))
+            screen.blit(t_enter3, rect3)
 
             if self.current_sprite >= len(gWizard_image_list):
                 self.current_sprite = 0

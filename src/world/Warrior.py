@@ -12,7 +12,7 @@ class Warrior(Character):
         self.X = x
         self.Y = y+20
         self.Class = "Warrior"
-        self.action_list = ["Q (Attack)", "W (Skill 1)", "E (Skill 2)"]
+        self.action_list = ["Q (Attack)", "W (Flash)", "E (Raijin)"]
         self.evade = False
         self.rect.center = (self.X, self.Y)
         self.action_count = 3

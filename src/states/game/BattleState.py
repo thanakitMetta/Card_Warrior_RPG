@@ -12,6 +12,8 @@ from src.world.Rogue import Rogue
 from src.world.BattleMenu import BattleMenu
 from src.world.GenerateEnemy import Enemy
 from src.states.game.CardState import CardState
+from src.states.game.MeetingState import MeetingState
+from src.states.game.LootingState import LootingState
 
 class BattleState(BaseState):
     def __init__(self, state_machine):
@@ -192,7 +194,6 @@ class BattleState(BaseState):
                         if self.player.alive == True:
                             if self.current_fighter == 1:
                                 self.action_cooldown += 1
-                                print(f"Action cooldown = {self.action_cooldown}")
                                 if self.attack == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive:
                                     if self.player.action_count > 1:
                                         if self.player.Class == "Wizard":
@@ -223,7 +224,6 @@ class BattleState(BaseState):
                         if self.player.alive == True:
                             if self.current_fighter == 1:
                                 self.action_cooldown += 1
-                                print(f"Action cooldown = {self.action_cooldown}")
                                 if self.skill_1 == True and self.player.skill_cooldown_1 == 0:
                                     if self.player.action_count > 1:
                                         if self.player.Class == "Rogue":
@@ -254,7 +254,6 @@ class BattleState(BaseState):
                         if self.player.alive == True:
                             if self.current_fighter == 1:
                                 self.action_cooldown += 1
-                                print(f"Action cooldown = {self.action_cooldown}")
                                 if self.skill_2 == True and self.enemy.enemy_list[self.enemy.selected_enemy_index - 1].alive and self.player.skill_cooldown_2 == 0:
                                     if self.player.action_count > 1:
                                         if self.player.Class == "Wizard":
@@ -293,7 +292,6 @@ class BattleState(BaseState):
                         elif self.player.Class == "Wizard":
                             self.player.X = self.playerResetW_X
                             self.player.Y = self.playerResetW_Y
-                        print(self.player.max_hp)
                         #sound
                         #reset if want player to have full hp
                         for e in self.enemy.enemy_list:
@@ -331,6 +329,8 @@ class BattleState(BaseState):
                                 })
                         if self.battle_over == -1:
                             CardState.reset(CardState)
+                            MeetingState.reset(MeetingState)
+                            LootingState.reset(LootingState)
                             self.state_machine.Change('start', {
                             'chosen': self.player
                             })
@@ -346,10 +346,8 @@ class BattleState(BaseState):
                                     self.battle_over = -1
                         elif enemy.enemy_type == "Boss":
                             if enemy.hp > int(enemy.max_hp*0.6):
-                                print("Normal pass")
                                 enemy.attack(self.player)
                             else:
-                                print("Skill pass")
                                 if enemy.is_skill2_use == False:
                                     enemy.skill_2(self.player)
                                     enemy.is_skill2_use = True
@@ -418,7 +416,6 @@ class BattleState(BaseState):
 
     def render(self, screen):
         #make change
-        print(CardState.get_level(CardState))
 
         screen.blit(self.bg_image, (0, 0))
         #fighter & health
@@ -480,7 +477,7 @@ class BattleState(BaseState):
         if self.loading > 70:
             self.player.reset_pos = False
             if self.loading > 80:
-                print(f"loading = {self.loading}")
+                pass
             else:
                 self.loading+=1
         else:
@@ -519,7 +516,7 @@ class BattleState(BaseState):
                                              , False, (255, 255, 0))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 40))
             screen.blit(t_enter, rect)
-            t_enter = self.small_font.render("Press 'Enter' to continue restart journey"
+            t_enter = self.small_font.render("Press 'Enter' to restart journey"
                                              , False, (255, 255, 0))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 + 80))
             screen.blit(t_enter, rect)

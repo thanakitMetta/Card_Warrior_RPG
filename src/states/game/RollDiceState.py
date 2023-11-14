@@ -71,12 +71,7 @@ class RollDiceState(BaseState):
                     self.confirm_sound.play()
                     self.dice_stop = True
                     self.render(screen)
-                    print("DiceCurrentFace is")
                     RollDiceState.diceCurrentFace = self.current_sprite_dice+1
-                    print(RollDiceState.diceCurrentFace)
-                    print("dice stop == true")
-                    print("current dice")
-                    print(self.current_sprite_dice)
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
@@ -151,7 +146,6 @@ class RollDiceState(BaseState):
         if self.dice_stop:
             dice_img = pygame.transform.scale(self.diceList[self.diceCurrentFace], (100, 100))
             screen.blit(dice_img, (WIDTH / 2 - 100, HEIGHT - HEIGHT / 2 - 60))
-            print(self.diceCurrentFace)
             
         else:
             # text above witch
@@ -166,7 +160,6 @@ class RollDiceState(BaseState):
                 self.current_sprite_dice += 1  # Update frame index
                 if self.current_sprite_dice >= len(self.diceList):
                     self.current_sprite_dice = 0  # Reset frame index when it reaches the end
-                    print(self.current_sprite_dice)
             dice_img = pygame.transform.scale(self.diceList[self.current_sprite_dice], (100, 100))
             self.frame_index_dice += 1
         # Display the current frame of the character image

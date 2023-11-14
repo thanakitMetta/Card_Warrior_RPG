@@ -122,6 +122,10 @@ class LootingState(BaseState):
 
         pass
 
+    def reset(self):
+        self.item_container = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        self.current_item = 0
+
     def update(self, dt, events):
         for event in events:
             if event.type == pygame.QUIT:

@@ -11,7 +11,7 @@ class Rogue(Character):
         self.X = x
         self.Y = y + 15
         self.Class = "Rogue"
-        self.action_list = ["Q (Attack)", "W (Evade)", "E (Slash)"]
+        self.action_list = ["Q(Attack)", "W(Evade)", "E(Slash)"]
         self.evade = False
         self.rect.center = (self.X, self.Y)
         self.action_count = 3

@@ -11,12 +11,15 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Cthulu(Character):
     def __init__(self, x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 - 20):
-        super().__init__(name = gCthuluBattle_image_list, max_hp = 2000, strength = 30)
+        super().__init__(name = gCthuluBattle_image_list, max_hp = 2000, strength = 15)
         self.x = x
         self.y = y
         self.rect.center = (x, y)
         self.enemy_type = "Boss"
         self.is_skill2_use = False
+        self.b_name = "Cthulu"
+        self.regen = False
+        self.dam_receive = 0
 
     def update(self):
         super().update()
@@ -34,6 +37,13 @@ class Cthulu(Character):
 
     def hurt(self, damage):
         super().hurt(damage)
+        self.dam_receive += 1
+        if self.dam_receive == 3 and self.strength < 40:
+            self.strength += 2
+            self.dam_receive = 0
+        if self.hp < self.max_hp*20 and self.regen == False:
+            self.hp += 300
+            self.regen = True
 
     def skill_1(self, target):
         self.rect.center = (self.x, self.y)
@@ -52,14 +62,14 @@ class Cthulu(Character):
         self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
         self.hp += int(0.05*(self.max_hp - self.hp))
-        rand = random.randint(1, 4)
-        if rand == 1:
-            self.evade = True
-        elif rand == 2:
+        rand = random.randint(2, 3)
+        if rand == 2:
             self.block = True
         elif rand == 3:
             self.double_damage = True
-        self.strength += 2
+        if self.strength >= 40 and self.strength <= 50:
+            self.strength += 2
+        self.hp += 30
         self.action = 5
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()
@@ -102,6 +112,6 @@ class Cthulu(Character):
         self.update_time = pygame.time.get_ticks()
 
     def draw(self):
-        screen.blit(self.image, self.rect)
+        screen.blit(pygame.transform.flip(self.image, True, False), self.rect)
 
 

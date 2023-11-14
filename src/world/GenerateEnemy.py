@@ -138,16 +138,16 @@ class Enemy():
             self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 50, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
-        elif self.map_number == 33:
+        elif self.map_number == 98:
             #Cthulu
-            self.enemy_list.append(Cthulu(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 20))
-            self.enemy_health_list.append(Cthulu(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 70, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(Cthulu(x = WIDTH / 2 - 96 + 350, y = HEIGHT - HEIGHT / 3 + 50))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 350, HEIGHT - HEIGHT / 3 - 90, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
         
-        elif self.map_number == 32:
+        elif self.map_number == 99:
             #Witch
-            self.enemy_list.append(Witch(x = WIDTH / 2 - 96 + 400, y = HEIGHT - HEIGHT / 3 + 20))
-            self.enemy_health_list.append(Witch(WIDTH / 2 - 96 - 50 + 400, HEIGHT - HEIGHT / 3 - 20, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
+            self.enemy_list.append(Witch(x = WIDTH / 2 - 96 + 300, y = HEIGHT - HEIGHT / 3 + 70))
+            self.enemy_health_list.append(HealthBar(WIDTH / 2 - 96 - 50 + 300, HEIGHT - HEIGHT / 3 - 40, self.enemy_list[0].hp, self.enemy_list[0].max_hp))
             self.selected_enemy_index = len(self.enemy_list) - 1
             
             

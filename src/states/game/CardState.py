@@ -52,10 +52,6 @@ class CardState(BaseState):
     level2.insert(0,0)
     level3.insert(0,0)
     level4.insert(0,0)
-    print(level1)
-    print(level2)
-    print(level3)
-    print(level4)
     heart = [28,29,30,31,32,33,34,35]
     diamond = [41,42,43,44,45,46,47,48]
 
@@ -67,6 +63,7 @@ class CardState(BaseState):
         self.current_sprite_flame = 0
         self.flameList = flame_image_list
         self.A2_list=[0,1,13,14,26,27,39,40]
+        self.first_call = True
 
         self.current_stage = 0
         #current step
@@ -86,14 +83,20 @@ class CardState(BaseState):
         self.small_font = pygame.font.Font('./fonts/font.ttf', 24)
 
     def get_current_step(self):
-        CardState.current_step+=RollDiceState.GetDice(RollDiceState)
-        if CardState.current_step>=len(self.level1):
-            CardState.current_step = 13
-            return(CardState.current_step)
-        return CardState.current_step
+        if self.first_call:
+            CardState.current_step += RollDiceState.GetDice(RollDiceState)
+            if CardState.current_step >= 12:
+                CardState.current_step = 12
+                self.first_call = False  # Update flag for subsequent calls
+            return CardState.current_step
+        else:
+            CardState.current_step += RollDiceState.GetDice(RollDiceState)
+            if CardState.current_step >= len(self.level1):
+                CardState.current_step = 13
+                self.first_call = True # Update flag for subsequent calls
+            return CardState.current_step
 
     def Enter(self, params):
-        print(self.current_stage)
         self.player = params['chosen']
         if self.player.Class == "Rogue":
             self.player.X = self.player_X
@@ -119,9 +122,6 @@ class CardState(BaseState):
                 CardState.current_list = CardState.level4
             elif CardState.level == 1:
                 CardState.current_list = CardState.level1
-            print("step & lvl")
-            print(CardState.level)
-            print(CardState.current_step)
         
         self.current_stage+=RollDiceState.GetDice(RollDiceState)
         if self.current_stage >= 13 and self.level == 1:
@@ -140,7 +140,6 @@ class CardState(BaseState):
         self.current_card = 0
         self.current_stage = 0
         self.level = 1
-        print(self.level)
         self.level1 = [2,3,15,16,13,14]
         self.level2 = [4,5,17,18,39,40]
         self.level3 = [5,6,19,20,26,27]
@@ -182,10 +181,6 @@ class CardState(BaseState):
         self.level2.insert(0,0)
         self.level3.insert(0,0)
         self.level4.insert(0,0)
-        print(self.level1)
-        print(self.level2)
-        print(self.level3)
-        print(self.level4)
         self.heart = [28,29,30,31,32,33,34,35]
         self.diamond = [41,42,43,44,45,46,47,48]
 
@@ -203,12 +198,8 @@ class CardState(BaseState):
             if event.type == pygame.KEYDOWN:
                 #press to down stop card
                 if event.key == pygame.K_DOWN and not self.card_stop:
-                    print("DA step")
                     CardState.current_step = self.get_current_step()
                     self.player.step_count = CardState.current_step
-                    print(CardState.current_step)
-                    print(self.level1[CardState.current_step])
-                    print(self.current_list[CardState.current_step])
                     CardState.current_card = self.current_list[CardState.current_step]
 
                     self.confirm_sound.play()
@@ -232,11 +223,11 @@ class CardState(BaseState):
                         'chosen': self.player
                         })
                     elif self.current_list[CardState.current_step] in self.A2_list:
-                        print(self.current_list[CardState.current_step])
                         self.state_machine.Change('meeting', {
                         'chosen': self.player
                         })
                     else:
+                        self.player.acquired_joker = True
                         self.state_machine.Change('battle', {
                             'chosen': self.player
                         })
@@ -309,7 +300,7 @@ class CardState(BaseState):
 
         if self.card_stop:
             screen.blit(self.cardList[self.current_list[CardState.current_step]], (card_xOpen, HEIGHT - HEIGHT / 2 - 200))
-            t_enter = self.small_font.render("%d challenges to conquer thy fate" %(53-self.current_stage), False, (255, 255, 255))
+            t_enter = self.small_font.render("%d challenges to conquer thy fate (press 'Enter' to continue)" %(53-self.current_stage), False, (255, 255, 255))
             rect = t_enter.get_rect(center=(WIDTH / 2 - 10, HEIGHT / 3 - 10))
             screen.blit(t_enter, rect)
         else:

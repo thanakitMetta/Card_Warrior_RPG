@@ -71,7 +71,7 @@ class QueenOfDiamond(Character):
         self.damage_text = DamageText(target.rect.centerx, target.rect.y, str(damage), (255, 0, 0))
         self.damage_text_group.add(self.damage_text)
         self.evade = True
-        self += 5
+        self.strength += 5
         self.action = 6
         self.frame_index = 0
         self.update_time = pygame.time.get_ticks()

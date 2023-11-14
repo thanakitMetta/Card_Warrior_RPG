@@ -119,6 +119,10 @@ class MeetingState(BaseState):
 
         pass
 
+    def reset(self):
+        self.current_meeting = 0
+        self.demonhunter_favor = 0
+
     def update(self, dt, events):
         for event in events:
             if event.type == pygame.QUIT:

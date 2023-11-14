@@ -7,6 +7,8 @@ from src.states.game.CardState import *
 from src.text_generator import TextGenerator
 # make change
 import random
+from src.states.game.MeetingState import MeetingState
+from src.states.game.LootingState import LootingState
 
 
 class EndingCutState(BaseState):
@@ -92,20 +94,22 @@ class EndingCutState(BaseState):
                     # shuffle
                     self.loading = 0
                     CardState.reset(CardState)
+                    MeetingState.reset(MeetingState)
+                    LootingState.reset(LootingState)
                     self.state_machine.Change('start', {
                     'chosen': self.player
                     })
 
     def render(self, screen):
         # text generator
-        if self.player.joker_acquired is False:
+        if self.player.acquired_joker is False:
             if not self.generator.fully_displayed:
                 self.generator.text_generation()
             if not self.generator1.fully_displayed:
                 self.generator1.text_generation()
             if not self.generator2.fully_displayed:
                 self.generator2.text_generation()
-        elif self.player.joker_acquired is True:
+        elif self.player.acquired_joker is True:
             if not self.generator3.fully_displayed:
                 self.generator3.text_generation()
             if not self.generator4.fully_displayed:

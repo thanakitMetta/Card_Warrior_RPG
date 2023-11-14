@@ -13,7 +13,7 @@ class Wizard(Character):
         self.X = x
         self.Y = y+20
         self.Class = "Wizard"
-        self.action_list = ["Q (Attack)", "W (______)", "E (_______)"]
+        self.action_list = ["Q(Attack)", "W(Blast)", "E(Devour)"]
         self.evade = False
         self.rect.center = (self.X, self.Y)
         self.action_count = 3
